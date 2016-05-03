@@ -11,7 +11,15 @@ import Alamofire
 import SwiftyJSON
 import CoreLocation
 
-class FinalViewController: UIViewController, CLLocationManagerDelegate{
+class FinalViewController: UIViewController, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource{
+    
+   
+    @IBOutlet weak var tableView: UITableView!
+    
+    
+    var names = ["Vancouver Genral Hospital","Burnaby General Hospital","Jan's Clinic","penis"]
+    var address = ["588 Broadway, Vancouver, B.C., Canada","4994 Kingsway, B.C., Burnaby, Canada","3990 Dream Way, Burnaby, B.C., Canada","penis"]
+    
     
     var locationManager : CLLocationManager!
     let util            : Utility            = Utility()
@@ -103,6 +111,17 @@ class FinalViewController: UIViewController, CLLocationManagerDelegate{
         
         print("out function")
         
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            return address.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cell = self.tableView.dequeueReusableCellWithIdentifier("cell",forIndexPath: indexPath) as! CustomeCell
+        cell.address.text = address[indexPath.row]
+        cell.name.text = names[indexPath.row]
+        return cell
     }
     
 }
