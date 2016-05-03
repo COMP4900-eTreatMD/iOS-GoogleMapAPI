@@ -2,6 +2,23 @@
 All notable changes to this project will be documented to this file.
 Change Log history will be recorded in descending order
 
+## 0.0.5
+** Changed Files **
+- Final View Controller
+    - displayed the map
+- HomeViewController
+    - made it so it gets the location in the home page
+
+## 0.0.4
+** Added Files **
+- Custom Cell
+    - Used to create custom cells for the table view
+
+** Changed Files **
+- Final View Controller
+    - extended UITableViewDelegate, UITableViewDataSource
+        - to override the delagates
+
 ## 0.0.3
 ** Added Files **
 - App Delagate
