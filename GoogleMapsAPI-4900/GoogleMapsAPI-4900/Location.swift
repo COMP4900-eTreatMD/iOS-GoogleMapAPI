@@ -1,0 +1,30 @@
+//
+//  Location.swift
+//  GoogleMapsAPI-4900
+//
+//  Created by Jan Ycasas on 2016-05-02.
+//  Copyright © 2016 Jan Ycasas. All rights reserved.
+//
+
+import Foundation
+
+class Location{
+    
+    var name            : String!
+    var lat             : Double!
+    var long            : Double!
+    var vicinity        : String!
+    var rating          : Int!
+    var currentlyOpen   : String!
+
+    init(name : String, lat : Double, long : Double, vicinity : String, rating : Int, currentlyOpen : String){
+        
+        self.name               = name
+        self.lat                = lat
+        self.long               = long
+        self.vicinity           = vicinity
+        self.rating             = rating
+        self.currentlyOpen      = currentlyOpen
+    }
+    
+}

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="gcu-Np-IkJ">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Final View Controller-->
+        <scene sceneID="xTM-to-gUB">
+            <objects>
+                <viewController id="cc5-U1-q3n" customClass="FinalViewController" customModule="GoogleMapsAPI_4900" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GX6-So-q9T"/>
+                        <viewControllerLayoutGuide type="bottom" id="xog-Wk-O0n"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7XK-l4-TYT">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cJf-0j-aJ3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1009.5" y="299"/>
+        </scene>
+        <!--Home View Controller-->
+        <scene sceneID="ZPP-tC-qXI">
+            <objects>
+                <viewController id="gcu-Np-IkJ" customClass="HomeViewController" customModule="GoogleMapsAPI_4900" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Jql-Bp-7Jd"/>
+                        <viewControllerLayoutGuide type="bottom" id="6iy-N7-cDG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ujK-5z-Jkz">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e1v-f1-eMF">
+                                <rect key="frame" x="241" y="176" width="118" height="30"/>
+                                <state key="normal" title="Google Maps API"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="AWp-20-nQo"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zzs-wj-Ff5">
+                                <rect key="frame" x="238" y="311" width="125" height="30"/>
+                                <state key="normal" title="Google Places API"/>
+                                <connections>
+                                    <segue destination="dHF-4h-h2G" kind="show" id="BBr-0m-VSw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6np-iB-EEq">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Final"/>
+                                <connections>
+                                    <segue destination="cc5-U1-q3n" kind="show" id="yfr-AS-Uok"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="zzs-wj-Ff5" firstAttribute="centerX" secondItem="6np-iB-EEq" secondAttribute="centerX" id="3x3-R4-gnV"/>
+                            <constraint firstItem="e1v-f1-eMF" firstAttribute="centerX" secondItem="ujK-5z-Jkz" secondAttribute="centerX" id="8YU-QF-nY1"/>
+                            <constraint firstItem="e1v-f1-eMF" firstAttribute="centerX" secondItem="zzs-wj-Ff5" secondAttribute="centerX" id="FKP-i1-52Z"/>
+                            <constraint firstItem="e1v-f1-eMF" firstAttribute="top" secondItem="Jql-Bp-7Jd" secondAttribute="bottom" constant="156" id="e0I-jp-fGD"/>
+                            <constraint firstItem="6np-iB-EEq" firstAttribute="top" secondItem="zzs-wj-Ff5" secondAttribute="bottom" constant="71" id="gMW-xf-8xI"/>
+                            <constraint firstItem="6iy-N7-cDG" firstAttribute="top" secondItem="6np-iB-EEq" secondAttribute="bottom" constant="158" id="m0i-tI-p0R"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="6np-iB-EEq"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="3x3-R4-gnV"/>
+                                <exclude reference="gMW-xf-8xI"/>
+                                <exclude reference="m0i-tI-p0R"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="6np-iB-EEq"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="3x3-R4-gnV"/>
+                                <include reference="gMW-xf-8xI"/>
+                                <include reference="m0i-tI-p0R"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mja-B2-SrN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-34" y="-474"/>
+        </scene>
+        <!--Places View Controller-->
+        <scene sceneID="QGH-i0-hJq">
+            <objects>
+                <viewController id="dHF-4h-h2G" customClass="PlacesViewController" customModule="GoogleMapsAPI_4900" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="naO-AS-zuk"/>
+                        <viewControllerLayoutGuide type="bottom" id="N29-8d-SL0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="V1I-tF-Igo">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Google Places API" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nvW-MU-iz0">
+                                <rect key="frame" x="230" y="54" width="140" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="nvW-MU-iz0" firstAttribute="centerX" secondItem="V1I-tF-Igo" secondAttribute="centerX" id="9qF-QI-IRg"/>
+                            <constraint firstItem="nvW-MU-iz0" firstAttribute="top" secondItem="naO-AS-zuk" secondAttribute="bottom" constant="34" id="j21-ox-zb1"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hxr-pA-s4p" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-34" y="382"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="MapViewController" customModule="GoogleMapsAPI_4900" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="755" y="-474"/>
+        </scene>
+    </scenes>
+</document>
