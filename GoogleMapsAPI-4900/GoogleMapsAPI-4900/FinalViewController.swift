@@ -9,9 +9,9 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
-import CoreLocation
+import GoogleMaps
 
-class FinalViewController: UIViewController, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource{
+class FinalViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
    
     @IBOutlet weak var tableView: UITableView!
@@ -20,10 +20,10 @@ class FinalViewController: UIViewController, CLLocationManagerDelegate, UITableV
     var names = ["Vancouver Genral Hospital","Burnaby General Hospital","Jan's Clinic","penis"]
     var address = ["588 Broadway, Vancouver, B.C., Canada","4994 Kingsway, B.C., Burnaby, Canada","3990 Dream Way, Burnaby, B.C., Canada","penis"]
     
-    
-    var locationManager : CLLocationManager!
     let util            : Utility            = Utility()
     
+    var long            : Double!
+    var lat             : Double!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,16 +48,28 @@ class FinalViewController: UIViewController, CLLocationManagerDelegate, UITableV
          
          */
         
+        setMap(lat, long: long)
         
-        locationManager = CLLocationManager()
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        checkCoreLocationPermission()
+        let util = Utility()
+        print("utility")
+        util.doHttpRequest(lat,long: long) {
+            choiceList in
+            for element in choiceList {
+                print("/nLOCATION")
+                print(element.name)
+                print(element.lat)
+                print(element.long)
+                print(element.rating)
+                print(element.vicinity)
+                print(element.currentlyOpen)
+            }
+        }
         
         
     }
     
     override func viewDidAppear(animated: Bool) {
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -68,21 +80,7 @@ class FinalViewController: UIViewController, CLLocationManagerDelegate, UITableV
     
     // MARK: --Location (CLLocationManagerDelagate) + Location functions
     
-    func checkCoreLocationPermission(){
-        if(CLLocationManager.authorizationStatus() ==  .AuthorizedWhenInUse){
-            print("GOOD")
-            locationManager.startUpdatingLocation()
-            
-        } else if(CLLocationManager.authorizationStatus() ==  .NotDetermined){
-            print("NOT ON")
-            locationManager.requestWhenInUseAuthorization()
-        } else if(CLLocationManager.authorizationStatus() ==  .Restricted) {
-            // put an alert and explain what is going on
-            print("RESTRICTED")
-            
-        }
-    }
-    
+    /*
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         var location : CLLocation!
@@ -112,12 +110,37 @@ class FinalViewController: UIViewController, CLLocationManagerDelegate, UITableV
         print("out function")
         
     }
+    */
+    
+    func setMap(lat : Double, long : Double){
+        
+        let camera = GMSCameraPosition.cameraWithLatitude(lat,
+                                                          longitude: long, zoom: 6)
+        let mapView = GMSMapView.mapWithFrame(CGRectMake(0,64,400,400), camera: camera)
+        mapView.myLocationEnabled = true
+        
+        self.view.addSubview(mapView)
+        /*
+         let marker = GMSMarker()
+         marker.position = CLLocationCoordinate2DMake(lat, long)
+         marker.title = "Sydney"
+         marker.snippet = "Australia"
+         marker.map = mapView
+         */
+    }
+    
+    
+    // MARK: -- TableView
+
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             return address.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        print("table view")
+        
         var cell = self.tableView.dequeueReusableCellWithIdentifier("cell",forIndexPath: indexPath) as! CustomeCell
         cell.address.text = address[indexPath.row]
         cell.name.text = names[indexPath.row]

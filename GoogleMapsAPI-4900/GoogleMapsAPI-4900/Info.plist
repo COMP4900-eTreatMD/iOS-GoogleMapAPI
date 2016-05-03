@@ -24,6 +24,8 @@
 	<true/>
 	<key>NSLocationAlwaysUseUsageDescription</key>
 	<string>PLEASE WORK</string>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Please allow me</string>
 	<key>UILaunchStoryboardName</key>
