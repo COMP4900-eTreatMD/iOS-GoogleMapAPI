@@ -1,12 +1,14 @@
 PODS:
   - Alamofire (3.3.1)
-  - GoogleMaps (1.13.0)
+  - GoogleMaps (1.13.1)
+  - MBProgressHUD (0.9.2)
   - ReachabilitySwift (2.3.3)
   - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
   - Alamofire (~> 3.0)
   - GoogleMaps
+  - MBProgressHUD (~> 0.9.2)
   - ReachabilitySwift (from `https://github.com/ashleymills/Reachability.swift`)
   - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
 
@@ -26,7 +28,8 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Alamofire: 369bc67b6f5ac33ded3648d7bd21c5bfb91c2ecc
-  GoogleMaps: 7a6caeb8336d7cb42982e969fc9b1b20a889fe79
+  GoogleMaps: 8935220056a6cc8e9ca298b4da4ae530620aa71b
+  MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   ReachabilitySwift: e0f6b6f280effb47731acfaaa2d5ffe223703793
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 

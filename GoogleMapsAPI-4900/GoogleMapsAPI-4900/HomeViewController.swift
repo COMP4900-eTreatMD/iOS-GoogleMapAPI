@@ -83,7 +83,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         
         location = (locations).last!
         
-        print("in function")
+        //print("in function")
         locationManager.stopUpdatingLocation()
         
         print(location.coordinate)
@@ -91,7 +91,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         lat = Double(location.coordinate.latitude)
         long = Double(location.coordinate.longitude)
         
-        print("out function")
+        //print("out function")
         
     }
     
@@ -102,8 +102,8 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
             let yourNextViewController = (segue.destinationViewController as! FinalViewController)
             
             
-            yourNextViewController.lat  = lat
-            yourNextViewController.long = long
+            //yourNextViewController.lat  = lat
+            //yourNextViewController.long = long
             
         }
     }
