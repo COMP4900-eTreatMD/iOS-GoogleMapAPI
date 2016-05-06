@@ -12,14 +12,24 @@ import SwiftyJSON
 
 public class Utility{
     
+    
+    /** 
+     
+        Uses Alamofire to do the REST call. uses the category and radius to find places that 
+        the user wants. When the REST call is finish returns a list of locations that matches 
+        the request of the user.
+     
+     */
     func doHttpRequest(lat : Double, long : Double, radius : String, type : String, completion: (locationList: Array<Location>) -> Void) {
 
-        var locationList : Array<Location> = Array<Location>()
-        let coord = String(lat) + "," + String(long)
+        var locationList : Array<Location>?
+        var coord        : String?
         
-        print("http request")
+        locationList = Array<Location>()
+        coord        = String(lat) + "," + String(long)
         
-        Alamofire.request(.GET, "https://maps.googleapis.com/maps/api/place/nearbysearch/json", parameters: [   "location"  :   coord,
+        
+        Alamofire.request(.GET, "https://maps.googleapis.com/maps/api/place/nearbysearch/json", parameters: [   "location"  :   coord!,
                             "radius"    :   radius,
                             "type"      :   type,
                             //"name"      :   "harbour",
@@ -71,10 +81,10 @@ public class Utility{
                                 
                                 let location = Location(name : name, lat : lat, long: long, vicinity: vicinity, rating: rating, currentlyOpen: currentlyOpen)
                                 
-                                locationList.append(location)
+                                locationList!.append(location)
                                 
                             }
-                            completion(locationList: locationList)
+                            completion(locationList: locationList!)
                     }
 
                     case .Failure(let error):

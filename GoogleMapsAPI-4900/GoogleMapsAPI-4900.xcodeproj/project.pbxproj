@@ -102,10 +102,10 @@
 		87FBC6E21CD864DC002C9034 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				87FBC6DE1CD85D19002C9034 /* FinalViewController.swift */,
 				876DB0DF1CD468AA00B39C98 /* PlacesViewController.swift */,
 				876DB0DD1CD467F200B39C98 /* HomeViewController.swift */,
 				871697211CD40A53004073FF /* MapViewController.swift */,
+				87FBC6DE1CD85D19002C9034 /* FinalViewController.swift */,
 				87A8E1701CDC3F5300610C81 /* FilterViewController.swift */,
 			);
 			name = ViewController;

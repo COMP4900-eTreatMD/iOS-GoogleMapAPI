@@ -13,38 +13,24 @@ import GoogleMaps
 import MBProgressHUD
 
 class FinalViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
-    
    
     @IBOutlet weak var tableView: UITableView!
-    
-    
-    var names = ["Vancouver Genral Hospital","Burnaby General Hospital","Jan's Clinic","penis"]
-    var address = ["588 Broadway, Vancouver, B.C., Canada","4994 Kingsway, B.C., Burnaby, Canada","3990 Dream Way, Burnaby, B.C., Canada","penis"]
     
     let util            : Utility            = Utility()
     var locationList    : Array<Location>    = Array<Location>()
     
-    //var long            : Double = -123.15777489999999
-    //var lat             : Double = 49.1353796
-    
     var long            : Double!
     var lat             : Double!
-    
-    var count = 0
     
     var mapView : GMSMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
-        self.tableView.delegate = self;
-        self.tableView.dataSource = self;
+        tableView.delegate = self;
+        tableView.dataSource = self;
     
-        self.setMap(self.lat, long: self.long)
-        
-        print("final view loaded")
-        
+        setMap(lat, long: long)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -59,89 +45,153 @@ class FinalViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     // MARK: -- MapView
     
+    
+    /** 
+     
+        Setting the initial map of the view.
+     
+     */
+    
     func setMap(lat : Double, long : Double){
         
-        let camera = GMSCameraPosition.cameraWithLatitude(lat,
-                                                          longitude: long, zoom: 10)
-        mapView = GMSMapView.mapWithFrame(CGRectMake(0,64,400,400), camera: camera)
-        mapView.myLocationEnabled = true
+        var camera      : GMSCameraPosition?
+        var boundaries  : CGRect?
         
-        print("set map")
+        camera      = GMSCameraPosition.cameraWithLatitude(lat, longitude: long, zoom: 10)
+        boundaries  = CGRectMake(0,64,400,400)
+        
+
+        mapView                     = GMSMapView.mapWithFrame(boundaries!, camera: camera!)
+        mapView.myLocationEnabled   = true
         
         self.view.addSubview(mapView)
     }
     
+    /**
+     
+        Used to set the marker on the map.
+     
+     */
+    
     func setMarker(index : NSIndexPath){
-        let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2DMake(locationList[index.row].lat, locationList[index.row].long)
-        marker.title = locationList[index.row].name
-        marker.snippet = locationList[index.row].vicinity
-        marker.map = mapView
+        
+        var marker : GMSMarker?
+        var locationCoordinates : CLLocationCoordinate2D?
+        
+        marker              = GMSMarker()
+        locationCoordinates = CLLocationCoordinate2DMake(locationList[index.row].lat,
+                                                         locationList[index.row].long)
+
+        marker!.position    = locationCoordinates!
+        marker!.title       = locationList[index.row].name
+        marker!.snippet     = locationList[index.row].vicinity
+        marker!.map         = mapView
     }
     
     // MARK: -- TableView
 
+    /**
+        
+        Used to figure out how much elements there are in the locationlist.
+     
+     */
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return locationList.count
     }
     
+    /**
+        
+        Called when trying to diplay the cell.
+     
+     */
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        print("table view")
-        print(locationList.count)
+        var cell : CustomeCell?
         
         setMarker(indexPath)
         
-        var cell = self.tableView.dequeueReusableCellWithIdentifier("cell",forIndexPath: indexPath) as! CustomeCell
+        cell = self.tableView.dequeueReusableCellWithIdentifier("cell",forIndexPath: indexPath)
+            as? CustomeCell
         
-        cell.address.text = locationList[indexPath.row].vicinity
-        cell.name.text = locationList[indexPath.row].name
-        cell.availiability.text = locationList[indexPath.row].currentlyOpen
+        cell!.address.text          = locationList[indexPath.row].vicinity
+        cell!.name.text             = locationList[indexPath.row].name
+        cell!.availiability.text    = locationList[indexPath.row].currentlyOpen
  
-        return cell
+        return cell!
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
+    /** 
+     
+        Called when the table view is trying to display the cell. 
+        It alternates between grey and white.
+     
+     */
+    
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.row % 2 == 0 {
+            
+            cell.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0) // very light gray
+            
+        } else {
+            
+            cell.backgroundColor = UIColor.whiteColor()
+            
+        }
     }
 
+    /** 
+     
+        Passes variables (Lat, Long)to FilterViewController.
+     
+     */
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if(segue.identifier == "goToFilter") {
             
-            let yourNextViewController = (segue.destinationViewController as! FilterViewController)
+            var yourNextViewController : FilterViewController?
             
+            yourNextViewController = (segue.destinationViewController as! FilterViewController)
             
-            yourNextViewController.lat  = lat
-            yourNextViewController.long = long
+            yourNextViewController!.lat  = lat
+            yourNextViewController!.long = long
             
         }
     }
     
+    
+    /**
+     
+        Does a REST call with Google Places API to search for Doctors, Hospitals, Pharmacy.
+     
+     */
     func initialSetUp(){
+        
+        let util : Utility?
+        
+        util = Utility()
         
         dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), {
             // Do something...
-            let util = Utility()
-            print("utility")
-            util.doHttpRequest(self.lat,long: self.long,radius: "1000", type: "doctor") {
+            self.util.doHttpRequest(self.lat,long: self.long,radius: "10000", type: "doctor") {
                 choiceList in
-                print("done")
+                
                 self.locationList += choiceList
                 self.tableView.reloadData()
             }
             
-            util.doHttpRequest(self.lat,long: self.long,radius: "0", type: "hospital") {
+            self.util.doHttpRequest(self.lat,long: self.long,radius: "10000", type: "hospital") {
                 choiceList in
-                print("done")
+
                 self.locationList += choiceList
                 self.tableView.reloadData()
             }
             
-            util.doHttpRequest(self.lat,long: self.long,radius: "0", type: "pharmacy") {
+            self.util.doHttpRequest(self.lat,long: self.long,radius: "10000", type: "pharmacy") {
                 choiceList in
-                print("done")
+                
                 self.locationList += choiceList
                 self.tableView.reloadData()
             }
@@ -149,7 +199,12 @@ class FinalViewController: UIViewController, UITableViewDelegate, UITableViewDat
         });
     }
     
-    func filteredOutput(){
+    /**
+     
+        Used to reload the table view.
+     
+     */
+    func tableViewReloaded(){
         self.tableView.reloadData()
     }
     
