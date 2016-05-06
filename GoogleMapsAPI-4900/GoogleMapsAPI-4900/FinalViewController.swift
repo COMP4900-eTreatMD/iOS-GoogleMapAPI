@@ -24,8 +24,13 @@ class FinalViewController: UIViewController, UITableViewDelegate, UITableViewDat
     let util            : Utility            = Utility()
     var locationList    : Array<Location>    = Array<Location>()
     
-    var long            : Double = -123.00098139716535
-    var lat             : Double = 49.249433253388375
+    //var long            : Double = -123.15777489999999
+    //var lat             : Double = 49.1353796
+    
+    var long            : Double!
+    var lat             : Double!
+    
+    var count = 0
     
     var mapView : GMSMapView!
     
@@ -33,71 +38,17 @@ class FinalViewController: UIViewController, UITableViewDelegate, UITableViewDat
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        /*
-            let util = Utility()
-            print("utility")
-            util.doHttpRequest(49.246292,long: -123.116226) {choiceList in
-                print("choiceList")
-                print(choiceList.count)
-                for element in choiceList {
-                    print("/nLOCATION")
-                    print(element.name)
-                    print(element.lat)
-                    print(element.long)
-                    print(element.rating)
-                    print(element.vicinity)
-                    print(element.currentlyOpen)
-                }
-            }
-         
-         */
-        
-        //var hud: MBProgressHUD = MBProgressHUD()
-
-        
-        //let progressHUD = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_HIGH, 0), {
-            // Do something...
-            let util = Utility()
-            print("utility")
-            util.doHttpRequest(self.lat,long: self.long) {
-                choiceList in
-                print(choiceList.count)
-                self.locationList = choiceList
-                /*
-                for element in choiceList {
-                    print("/nLOCATION")
-                 
-                    print(element.name)
-                    print(element.lat)
-                    print(element.long)
-                    print(element.rating)
-                    print(element.vicinity)
-                    print(element.currentlyOpen)
- 
-                }
-                */
-            }
-            dispatch_async(dispatch_get_main_queue(), {
-                print("async tableview")
-                //progressHUD.hide(true)
-                //self.setMap(self.lat, long: self.long)
-            });
-            /*
-            dispatch_async(dispatch_get_main_queue(), {
-                print("async map")
-                progressHUD.hide(true)
-                self.setMap(self.lat, long: self.long)
-            });
-             */
-        });
+        self.tableView.delegate = self;
+        self.tableView.dataSource = self;
     
         self.setMap(self.lat, long: self.long)
+        
+        print("final view loaded")
         
     }
     
     override func viewDidAppear(animated: Bool) {
-
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -106,39 +57,7 @@ class FinalViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
     }
     
-    // MARK: --Location (CLLocationManagerDelagate) + Location functions
-    
-    /*
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-        var location : CLLocation!
-        
-        location = (locations).last!
-        
-        print("in function")
-        locationManager.stopUpdatingLocation()
-        
-        print(location.coordinate)
-        
-        let util = Utility()
-        print("utility")
-        util.doHttpRequest(location.coordinate.latitude,long: location.coordinate.longitude) {
-            choiceList in
-            for element in choiceList {
-                print("/nLOCATION")
-                print(element.name)
-                print(element.lat)
-                print(element.long)
-                print(element.rating)
-                print(element.vicinity)
-                print(element.currentlyOpen)
-            }
-        }
-        
-        print("out function")
-        
-    }
-    */
+    // MARK: -- MapView
     
     func setMap(lat : Double, long : Double){
         
@@ -147,54 +66,9 @@ class FinalViewController: UIViewController, UITableViewDelegate, UITableViewDat
         mapView = GMSMapView.mapWithFrame(CGRectMake(0,64,400,400), camera: camera)
         mapView.myLocationEnabled = true
         
-        //self.view.addSubview(mapView)
-        /*
-         let marker = GMSMarker()
-         marker.position = CLLocationCoordinate2DMake(lat, long)
-         marker.title = "Sydney"
-         marker.snippet = "Australia"
-         marker.map = mapView
-         */
         print("set map")
-        /*
-        for element in locationList {
-            print("element")
-            let marker = GMSMarker()
-            marker.position = CLLocationCoordinate2DMake(element.lat, element.long)
-            marker.title = element.name
-            marker.snippet = element.vicinity
-            marker.map = mapView
-        }
-         */
-    
         
         self.view.addSubview(mapView)
-    }
-    
-    
-    // MARK: -- TableView
-
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return locationList.count
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        print("table view")
-        print(locationList.count)
-        
-        
-        setMarker(indexPath)
-        
-        var cell = self.tableView.dequeueReusableCellWithIdentifier("cell",forIndexPath: indexPath) as! CustomeCell
-        
-        
-        cell.address.text = locationList[indexPath.row].vicinity
-        cell.name.text = locationList[indexPath.row].name
-        cell.availiability.text = locationList[indexPath.row].currentlyOpen
-        
-        return cell
     }
     
     func setMarker(index : NSIndexPath){
@@ -203,6 +77,80 @@ class FinalViewController: UIViewController, UITableViewDelegate, UITableViewDat
         marker.title = locationList[index.row].name
         marker.snippet = locationList[index.row].vicinity
         marker.map = mapView
+    }
+    
+    // MARK: -- TableView
+
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return locationList.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        print("table view")
+        print(locationList.count)
+        
+        setMarker(indexPath)
+        
+        var cell = self.tableView.dequeueReusableCellWithIdentifier("cell",forIndexPath: indexPath) as! CustomeCell
+        
+        cell.address.text = locationList[indexPath.row].vicinity
+        cell.name.text = locationList[indexPath.row].name
+        cell.availiability.text = locationList[indexPath.row].currentlyOpen
+ 
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+    }
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if(segue.identifier == "goToFilter") {
+            
+            let yourNextViewController = (segue.destinationViewController as! FilterViewController)
+            
+            
+            yourNextViewController.lat  = lat
+            yourNextViewController.long = long
+            
+        }
+    }
+    
+    func initialSetUp(){
+        
+        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), {
+            // Do something...
+            let util = Utility()
+            print("utility")
+            util.doHttpRequest(self.lat,long: self.long,radius: "1000", type: "doctor") {
+                choiceList in
+                print("done")
+                self.locationList += choiceList
+                self.tableView.reloadData()
+            }
+            
+            util.doHttpRequest(self.lat,long: self.long,radius: "0", type: "hospital") {
+                choiceList in
+                print("done")
+                self.locationList += choiceList
+                self.tableView.reloadData()
+            }
+            
+            util.doHttpRequest(self.lat,long: self.long,radius: "0", type: "pharmacy") {
+                choiceList in
+                print("done")
+                self.locationList += choiceList
+                self.tableView.reloadData()
+            }
+            
+        });
+    }
+    
+    func filteredOutput(){
+        self.tableView.reloadData()
     }
     
 }

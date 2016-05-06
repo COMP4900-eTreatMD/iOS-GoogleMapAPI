@@ -14,8 +14,8 @@ import CoreLocation
 class HomeViewController: UIViewController, CLLocationManagerDelegate {
     
     var locationManager : CLLocationManager!
-    var long            : Double!
-    var lat             : Double!
+    var long            : Double?
+    var lat             : Double? 
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,15 +64,15 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
     
     func checkCoreLocationPermission(){
         if(CLLocationManager.authorizationStatus() ==  .AuthorizedWhenInUse){
-            print("GOOD")
+
             locationManager.startUpdatingLocation()
         } else if(CLLocationManager.authorizationStatus() ==  .NotDetermined){
-            print("NOT ON")
+
             locationManager.requestWhenInUseAuthorization()
             checkCoreLocationPermission()
         } else if(CLLocationManager.authorizationStatus() ==  .Restricted) {
             // put an alert and explain what is going on
-            print("RESTRICTED")
+
             
         }
     }
@@ -85,8 +85,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         
         //print("in function")
         locationManager.stopUpdatingLocation()
-        
-        print(location.coordinate)
         
         lat = Double(location.coordinate.latitude)
         long = Double(location.coordinate.longitude)
@@ -102,8 +100,10 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
             let yourNextViewController = (segue.destinationViewController as! FinalViewController)
             
             
-            //yourNextViewController.lat  = lat
-            //yourNextViewController.long = long
+            yourNextViewController.lat  = lat!
+            yourNextViewController.long = long!
+            
+            yourNextViewController.initialSetUp()
             
         }
     }
