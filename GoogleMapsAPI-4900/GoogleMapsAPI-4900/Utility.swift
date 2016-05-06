@@ -12,17 +12,16 @@ import SwiftyJSON
 
 public class Utility{
     
-    func doHttpRequest(lat : Double, long : Double,completion: (locationList: Array<Location>) -> Void) {
+    func doHttpRequest(lat : Double, long : Double, radius : String, type : String, completion: (locationList: Array<Location>) -> Void) {
 
         var locationList : Array<Location> = Array<Location>()
         let coord = String(lat) + "," + String(long)
-        print(coord)
         
         print("http request")
         
         Alamofire.request(.GET, "https://maps.googleapis.com/maps/api/place/nearbysearch/json", parameters: [   "location"  :   coord,
-                            "radius"    :   "10000",
-                            "type"      :   "hospital",
+                            "radius"    :   radius,
+                            "type"      :   type,
                             //"name"      :   "harbour",
                             "key"       :   "AIzaSyBWQyWLKeu_VGL2RgXeyM-_TgBSTDP9-Fs",
             ]).responseJSON { response in
