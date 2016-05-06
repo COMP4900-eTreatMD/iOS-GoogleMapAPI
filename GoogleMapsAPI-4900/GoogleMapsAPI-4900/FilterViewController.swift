@@ -34,34 +34,36 @@ class FilterViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func filterResult(sender: AnyObject) {
-        print("filtering results")
-        
-        
-    }
+    /**
+     
+        Passes variables (Lat, Long)to FinalViewController. Does REST call with 
+        the Google Places API. Gets the radius and category that the user is looking 
+        for.
     
-    @IBOutlet weak var filterResult: UIButton!
+     */
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if(segue.identifier == "goToFinal") {
             
+            var util                    : Utility?
+            var yourNextViewController  : FinalViewController?
             
-            print("doing segue")
-            let yourNextViewController = (segue.destinationViewController as! FinalViewController)
+            util                    = Utility()
+            yourNextViewController  = (segue.destinationViewController as! FinalViewController)
             
-            let util = Utility()
-            util.doHttpRequest(self.lat!,long: self.long!,radius: radiusInput.text!, type: categoryInput.text!) {
+            util!.doHttpRequest(self.lat!, long: self.long!,
+                               radius: radiusInput.text!, type: categoryInput.text!) {
                 choiceList in
-                print("done")
-                print(choiceList.count)
-                yourNextViewController.locationList = choiceList
-                yourNextViewController.filteredOutput()
+
+                yourNextViewController!.locationList = choiceList
+                yourNextViewController!.tableViewReloaded()
             }
             
-            
-            yourNextViewController.lat  = lat!
-            yourNextViewController.long = long!
+            yourNextViewController!.lat  = lat!
+            yourNextViewController!.long = long!
         }
+        
     }
     
 }
