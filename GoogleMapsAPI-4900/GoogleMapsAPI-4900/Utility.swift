@@ -30,13 +30,13 @@ public class Utility{
         
         
         Alamofire.request(.GET, "https://maps.googleapis.com/maps/api/place/nearbysearch/json", parameters: [   "location"  :   coord!,
-                            "radius"    :   radius,
-                            "types"      :   type,
+                            //"radius"    :   radius,
+                            "types"     :   type,
                             //"name"      :   "harbour",
                             "rankby"    : "distance",
                             "key"       :   "AIzaSyBWQyWLKeu_VGL2RgXeyM-_TgBSTDP9-Fs",
             ]).responseJSON { response in
-
+                print(response.request)
                 switch response.result {
                     case .Success:
                         if let responseJSON = response.result.value {

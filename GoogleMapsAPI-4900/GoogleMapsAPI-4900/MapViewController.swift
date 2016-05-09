@@ -77,7 +77,7 @@ class MapViewController: UIViewController , CLLocationManagerDelegate{
     func setMap(lat : Double, long : Double){
         
         let camera = GMSCameraPosition.cameraWithLatitude(lat,
-                                                          longitude: long, zoom: 6)
+                                                          longitude: long, zoom: 15)
         let mapView = GMSMapView.mapWithFrame(CGRectMake(0,50,400,400), camera: camera)
         mapView.myLocationEnabled = true
         
