@@ -19,6 +19,12 @@ class FilterViewController: UIViewController {
     @IBOutlet weak var categoryInput: UITextField!
     @IBOutlet weak var radiusInput: UITextField!
     
+    @IBOutlet weak var hospitalSwitch: UISwitch!
+    @IBOutlet weak var pharmacySwitch: UISwitch!
+    @IBOutlet weak var physiotherapistSwitch: UISwitch!
+    @IBOutlet weak var doctorSwitch: UISwitch!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -58,6 +64,22 @@ class FilterViewController: UIViewController {
 
                 yourNextViewController!.locationList = choiceList
                 yourNextViewController!.tableViewReloaded()
+            }
+            
+            if(hospitalSwitch.on){
+                print("hospitalSwitch is on")
+            }
+            
+            if(pharmacySwitch.on){
+                print("pharmacySwitch is on")
+            }
+            
+            if(physiotherapistSwitch.on){
+                print("physiotherapistSwitch is on")
+            }
+            
+            if(doctorSwitch.on){
+                print("doctorSwitch")
             }
             
             yourNextViewController!.lat  = lat!

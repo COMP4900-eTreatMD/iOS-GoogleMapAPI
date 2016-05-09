@@ -195,7 +195,7 @@ class FinalViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 self.locationList += choiceList
                 self.tableView.reloadData()
             }
-            */
+             */
         });
     }
     
