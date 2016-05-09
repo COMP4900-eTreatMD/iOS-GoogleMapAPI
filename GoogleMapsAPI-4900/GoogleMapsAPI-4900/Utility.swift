@@ -28,7 +28,6 @@ public class Utility{
         locationList = Array<Location>()
         coord        = String(lat) + "," + String(long)
         
-        
         Alamofire.request(.GET, "https://maps.googleapis.com/maps/api/place/nearbysearch/json", parameters: [   "location"  :   coord!,
                             //"radius"    :   radius,
                             "types"     :   type,
