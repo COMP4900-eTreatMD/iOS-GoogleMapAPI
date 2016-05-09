@@ -16,6 +16,11 @@ class FilterViewController: UIViewController {
     var long            : Double?
     var lat             : Double?
     
+    var hospitalOn              : Bool = true
+    var pharmacyOn              : Bool = true
+    var phsiotherapistOn        : Bool = true
+    var doctorOn                : Bool = true
+    
     @IBOutlet weak var categoryInput: UITextField!
     @IBOutlet weak var radiusInput: UITextField!
     
@@ -28,6 +33,11 @@ class FilterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        hospitalSwitch.setOn(hospitalOn, animated: true)
+        pharmacySwitch.setOn(pharmacyOn, animated: true)
+        physiotherapistSwitch.setOn(phsiotherapistOn, animated: true)
+        doctorSwitch.setOn(doctorOn, animated: true)
         
     }
     
@@ -54,33 +64,39 @@ class FilterViewController: UIViewController {
             
             var util                    : Utility?
             var yourNextViewController  : FinalViewController?
+            var types                   : String                = ""
             
             util                    = Utility()
             yourNextViewController  = (segue.destinationViewController as! FinalViewController)
             
+            if(hospitalSwitch.on){
+                types             += "hospital|"
+            }
+            
+            if(pharmacySwitch.on){
+                types             += "pharmacy|"
+            }
+            
+            if(physiotherapistSwitch.on){
+                types             += "physiotherapist|"
+            }
+            
+            if(doctorSwitch.on){
+                types             += "doctor|"
+            }
+            
             util!.doHttpRequest(self.lat!, long: self.long!,
-                               radius: radiusInput.text!, type: categoryInput.text!) {
+                               radius: radiusInput.text!, type: types) {
                 choiceList in
 
                 yourNextViewController!.locationList = choiceList
                 yourNextViewController!.tableViewReloaded()
             }
             
-            if(hospitalSwitch.on){
-                print("hospitalSwitch is on")
-            }
-            
-            if(pharmacySwitch.on){
-                print("pharmacySwitch is on")
-            }
-            
-            if(physiotherapistSwitch.on){
-                print("physiotherapistSwitch is on")
-            }
-            
-            if(doctorSwitch.on){
-                print("doctorSwitch")
-            }
+            yourNextViewController?.hospitalOn = hospitalSwitch.on
+            yourNextViewController?.pharmacyOn = pharmacySwitch.on
+            yourNextViewController?.phsiotherapistOn = physiotherapistSwitch.on
+            yourNextViewController?.doctorOn = doctorSwitch.on
             
             yourNextViewController!.lat  = lat!
             yourNextViewController!.long = long!

@@ -24,6 +24,11 @@ class FinalViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     var mapView : GMSMapView!
     
+    var hospitalOn              : Bool    = true
+    var pharmacyOn              : Bool    = true
+    var phsiotherapistOn        : Bool    = true
+    var doctorOn                : Bool    = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -158,6 +163,10 @@ class FinalViewController: UIViewController, UITableViewDelegate, UITableViewDat
             yourNextViewController!.lat  = lat
             yourNextViewController!.long = long
             
+            yourNextViewController!.hospitalOn          = hospitalOn
+            yourNextViewController!.pharmacyOn          = pharmacyOn
+            yourNextViewController!.phsiotherapistOn    = phsiotherapistOn
+            yourNextViewController!.doctorOn            = doctorOn
         }
     }
     
@@ -176,7 +185,8 @@ class FinalViewController: UIViewController, UITableViewDelegate, UITableViewDat
         dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), {
             // Do something...
             self.util.doHttpRequest(self.lat,long: self.long,radius: "10000",
-                                    type: "doctor|hospital|pharmacy") { choiceList in
+                                    type: "doctor|hospital|pharmacy|physiotherapist") {
+                                        choiceList in
                 
                 self.locationList += choiceList
                 self.tableView.reloadData()
