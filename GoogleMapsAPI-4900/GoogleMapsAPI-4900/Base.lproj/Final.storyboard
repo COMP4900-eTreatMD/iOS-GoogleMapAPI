@@ -167,7 +167,7 @@
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <state key="normal" title="Filter"/>
                                 <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="176" y="420" width="35" height="30"/>
+                                    <rect key="frame" x="183" y="543" width="35" height="30"/>
                                 </variation>
                                 <connections>
                                     <segue destination="cc5-U1-q3n" kind="show" identifier="goToFinal" id="fDm-DM-hpl"/>
@@ -183,31 +183,31 @@
                                     <rect key="frame" x="0.0" y="20" width="400" height="44"/>
                                 </variation>
                             </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZR5-AX-OBj">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hospital" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZR5-AX-OBj">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="119" y="234" width="42" height="21"/>
+                                    <rect key="frame" x="98" y="234" width="63" height="21"/>
                                 </variation>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AeV-bs-ZE9">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pharmacy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AeV-bs-ZE9">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="119" y="289" width="42" height="21"/>
+                                    <rect key="frame" x="84" y="289" width="77" height="21"/>
                                 </variation>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wpc-Mm-tIQ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Physiotherapist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wpc-Mm-tIQ">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="119" y="348" width="42" height="21"/>
+                                    <rect key="frame" x="42" y="348" width="119" height="21"/>
                                 </variation>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2kA-ft-TlI">
@@ -226,6 +226,21 @@
                                 <rect key="frame" x="-25" y="-15" width="51" height="31"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="218" y="338" width="51" height="31"/>
+                                </variation>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Doctor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jzd-hq-wgT">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="108" y="401" width="53" height="21"/>
+                                </variation>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="90m-aN-24w">
+                                <rect key="frame" x="-25" y="-15" width="51" height="31"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="218" y="391" width="51" height="31"/>
                                 </variation>
                             </switch>
                         </subviews>
@@ -252,6 +267,8 @@
                                 <exclude reference="2kA-ft-TlI"/>
                                 <exclude reference="5qs-q6-Au4"/>
                                 <exclude reference="53X-Jq-wed"/>
+                                <exclude reference="jzd-hq-wgT"/>
+                                <exclude reference="90m-aN-24w"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="AQ3-Jc-8GZ"/>
@@ -276,6 +293,8 @@
                                 <include reference="2kA-ft-TlI"/>
                                 <include reference="5qs-q6-Au4"/>
                                 <include reference="53X-Jq-wed"/>
+                                <include reference="jzd-hq-wgT"/>
+                                <include reference="90m-aN-24w"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="AQ3-Jc-8GZ"/>
@@ -291,6 +310,10 @@
                     </view>
                     <connections>
                         <outlet property="categoryInput" destination="3hG-DK-NPK" id="TIH-ZD-iQe"/>
+                        <outlet property="doctorSwitch" destination="90m-aN-24w" id="BhX-NM-LDm"/>
+                        <outlet property="hospitalSwitch" destination="2kA-ft-TlI" id="Sv3-Zt-VGE"/>
+                        <outlet property="pharmacySwitch" destination="5qs-q6-Au4" id="OBS-kN-qmc"/>
+                        <outlet property="physiotherapistSwitch" destination="53X-Jq-wed" id="xMq-jE-gjd"/>
                         <outlet property="radiusInput" destination="yhf-RB-DAF" id="Zsl-Bo-UFD"/>
                     </connections>
                 </viewController>
