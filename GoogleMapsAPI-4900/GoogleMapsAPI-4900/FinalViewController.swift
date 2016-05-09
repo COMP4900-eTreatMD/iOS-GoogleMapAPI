@@ -175,13 +175,13 @@ class FinalViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), {
             // Do something...
-            self.util.doHttpRequest(self.lat,long: self.long,radius: "10000", type: "doctor") {
-                choiceList in
+            self.util.doHttpRequest(self.lat,long: self.long,radius: "10000",
+                                    type: "doctor|hospital|pharmacy") { choiceList in
                 
                 self.locationList += choiceList
                 self.tableView.reloadData()
             }
-            
+            /*
             self.util.doHttpRequest(self.lat,long: self.long,radius: "10000", type: "hospital") {
                 choiceList in
 
@@ -195,8 +195,7 @@ class FinalViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 self.locationList += choiceList
                 self.tableView.reloadData()
             }
-            
-            
+             */
         });
     }
     
