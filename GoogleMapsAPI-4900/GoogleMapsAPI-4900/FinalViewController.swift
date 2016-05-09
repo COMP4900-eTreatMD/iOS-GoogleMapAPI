@@ -57,7 +57,7 @@ class FinalViewController: UIViewController, UITableViewDelegate, UITableViewDat
         var camera      : GMSCameraPosition?
         var boundaries  : CGRect?
         
-        camera      = GMSCameraPosition.cameraWithLatitude(lat, longitude: long, zoom: 30)
+        camera      = GMSCameraPosition.cameraWithLatitude(lat, longitude: long, zoom: 13)
         boundaries  = CGRectMake(0,64,400,400)
         
 
