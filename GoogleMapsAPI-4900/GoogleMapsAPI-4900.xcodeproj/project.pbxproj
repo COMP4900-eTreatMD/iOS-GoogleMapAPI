@@ -163,6 +163,7 @@
 				TargetAttributes = {
 					8716971B1CD40A53004073FF = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 2C2SVKZN4H;
 					};
 				};
 			};
@@ -375,6 +376,7 @@
 			baseConfigurationReference = CD2508B3C5E41E4CB2FC3200 /* Pods-GoogleMapsAPI-4900.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "GoogleMapsAPI-4900/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.janycasas.GoogleMapsAPI-4900";
@@ -387,6 +389,7 @@
 			baseConfigurationReference = D4B30D068B691F7A9B8196F5 /* Pods-GoogleMapsAPI-4900.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "GoogleMapsAPI-4900/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.janycasas.GoogleMapsAPI-4900";

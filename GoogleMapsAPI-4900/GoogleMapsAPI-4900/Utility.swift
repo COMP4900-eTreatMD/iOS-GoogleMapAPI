@@ -31,8 +31,9 @@ public class Utility{
         
         Alamofire.request(.GET, "https://maps.googleapis.com/maps/api/place/nearbysearch/json", parameters: [   "location"  :   coord!,
                             "radius"    :   radius,
-                            "type"      :   type,
+                            "types"      :   type,
                             //"name"      :   "harbour",
+                            "rankby"    : "distance",
                             "key"       :   "AIzaSyBWQyWLKeu_VGL2RgXeyM-_TgBSTDP9-Fs",
             ]).responseJSON { response in
 
