@@ -24,11 +24,6 @@ class FinalViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     var mapView : GMSMapView!
     
-    var hospitalOn              : Bool    = true
-    var pharmacyOn              : Bool    = true
-    var phsiotherapistOn        : Bool    = true
-    var doctorOn                : Bool    = true
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -180,11 +175,7 @@ class FinalViewController: UIViewController, UITableViewDelegate, UITableViewDat
             yourNextViewController!.lat  = lat
             yourNextViewController!.long = long
             
-            yourNextViewController!.hospitalOn          = hospitalOn
-            yourNextViewController!.pharmacyOn          = pharmacyOn
-            yourNextViewController!.phsiotherapistOn    = phsiotherapistOn
-            yourNextViewController!.doctorOn            = doctorOn
-        }
+       }
     }
     
     

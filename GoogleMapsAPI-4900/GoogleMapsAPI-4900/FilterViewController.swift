@@ -11,30 +11,22 @@ import Alamofire
 import SwiftyJSON
 import CoreLocation
 
-class FilterViewController: UIViewController {
+class FilterViewController: UIViewController,UIPickerViewDataSource, UIPickerViewDelegate {
     
     var long            : Double?
     var lat             : Double?
     
-    var hospitalOn              : Bool = true
-    var pharmacyOn              : Bool = true
-    var phsiotherapistOn        : Bool = true
-    var doctorOn                : Bool = true
+    var types           : String  = ""
+
     
-    @IBOutlet weak var hospitalSwitch: UISwitch!
-    @IBOutlet weak var pharmacySwitch: UISwitch!
-    @IBOutlet weak var physiotherapistSwitch: UISwitch!
-    @IBOutlet weak var doctorSwitch: UISwitch!
-    
+    @IBOutlet weak var filter: UIPickerView!
+    var filterData     = ["Hospital", "Pharmacy", "Physiotherapist", "Docotor"];
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        hospitalSwitch.setOn(hospitalOn, animated: true)
-        pharmacySwitch.setOn(pharmacyOn, animated: true)
-        physiotherapistSwitch.setOn(phsiotherapistOn, animated: true)
-        doctorSwitch.setOn(doctorOn, animated: true)
+        self.filter.dataSource = self;
+        self.filter.delegate = self;
         
     }
     
@@ -45,6 +37,31 @@ class FilterViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return filterData.count;
+    }
+    
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return filterData[row]
+    }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
+    {
+        if(row == 0) {
+            types             = "hospital"
+        } else if(row == 1) {
+            types             = "pharmacy"
+        } else if(row == 2) {
+            types             = "physiotherapist"
+        } else {
+            types             = "doctor"
+        }
     }
     
     /**
@@ -59,11 +76,11 @@ class FilterViewController: UIViewController {
 
         var util                    : Utility?
         var yourNextViewController  : FinalViewController?
-        var types                   : String                = ""
         
         util                    = Utility()
         yourNextViewController  = (segue.destinationViewController as! FinalViewController)
-        types                   = getListOfTypes()
+        
+        print(types)
         
         util!.doHttpRequest(self.lat!, long: self.long!, type: types) {
             choiceList in
@@ -72,36 +89,10 @@ class FilterViewController: UIViewController {
             yourNextViewController!.tableViewReloaded()
         }
         
-        yourNextViewController?.hospitalOn = hospitalSwitch.on
-        yourNextViewController?.pharmacyOn = pharmacySwitch.on
-        yourNextViewController?.phsiotherapistOn = physiotherapistSwitch.on
-        yourNextViewController?.doctorOn = doctorSwitch.on
         
         yourNextViewController!.lat  = lat!
         yourNextViewController!.long = long!
         
-    }
-    
-    func getListOfTypes() -> String{
-        var types : String = ""
-        
-        if(hospitalSwitch.on){
-            types             += "hospital|"
-        }
-        
-        if(pharmacySwitch.on){
-            types             += "pharmacy|"
-        }
-        
-        if(physiotherapistSwitch.on){
-            types             += "physiotherapist|"
-        }
-        
-        if(doctorSwitch.on){
-            types             += "doctor|"
-        }
-        
-        return types
     }
     
 }
