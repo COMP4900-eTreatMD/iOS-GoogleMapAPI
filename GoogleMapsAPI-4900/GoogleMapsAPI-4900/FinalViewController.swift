@@ -24,18 +24,12 @@ class FinalViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     var mapView : GMSMapView!
     
-    var hospitalOn              : Bool    = true
-    var pharmacyOn              : Bool    = true
-    var phsiotherapistOn        : Bool    = true
-    var doctorOn                : Bool    = true
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.delegate = self;
         tableView.dataSource = self;
-        
-        print("setting map")
+
         setMap(lat, long: long)
     }
     
@@ -81,22 +75,6 @@ class FinalViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func setMarker(){
         
-        //var marker : GMSMarker?
-        //var locationCoordinates : CLLocationCoordinate2D?
-        /*
-        marker              = GMSMarker()
-        locationCoordinates = CLLocationCoordinate2DMake(locationList[index.row].lat,
-                                                         locationList[index.row].long)
-
-        marker!.position    = locationCoordinates!
-        marker!.title       = locationList[index.row].name
-        marker!.snippet     = locationList[index.row].vicinity
-        marker!.map         = mapView
-         */
-        
-        
-        
-        print("adding marker")
         for location in locationList{
             var marker : GMSMarker?
             var locationCoordinates : CLLocationCoordinate2D?
@@ -180,11 +158,7 @@ class FinalViewController: UIViewController, UITableViewDelegate, UITableViewDat
             yourNextViewController!.lat  = lat
             yourNextViewController!.long = long
             
-            yourNextViewController!.hospitalOn          = hospitalOn
-            yourNextViewController!.pharmacyOn          = pharmacyOn
-            yourNextViewController!.phsiotherapistOn    = phsiotherapistOn
-            yourNextViewController!.doctorOn            = doctorOn
-        }
+       }
     }
     
     
@@ -207,8 +181,6 @@ class FinalViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 
                 self.locationList += choiceList
                 self.tableView.reloadData()
-                                        
-                print("loading markers all")
                 self.setMarker()
             }
             /*
