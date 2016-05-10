@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="cc5-U1-q3n">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="cc5-U1-q3n">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -26,7 +26,7 @@
                                     <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="86" id="ldC-qX-K31" customClass="CustomeCell" customModule="GoogleMapsAPI_4900" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ldC-qX-K31" id="cdd-ka-UM0">
-                                            <rect key="frame" x="0.0" y="0.0" width="240" height="85.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="85"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZJh-PF-uFN">
@@ -178,6 +178,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="366" id="0DW-Gh-bV8"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <state key="normal" title="Filter">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -186,7 +187,8 @@
                                         <exclude reference="0DW-Gh-bV8"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact">
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="14" y="520" width="366" height="60"/>
                                     <mask key="constraints">
                                         <include reference="0DW-Gh-bV8"/>
                                     </mask>
@@ -197,9 +199,6 @@
                             </button>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bvX-zD-7Um">
                                 <rect key="frame" x="0.0" y="-216" width="320" height="216"/>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="136" width="400" height="216"/>
-                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="bSn-kp-Kww" id="SKZ-1I-w9i"/>
                                     <outlet property="delegate" destination="bSn-kp-Kww" id="H7k-c6-j16"/>
@@ -215,9 +214,11 @@
                             <constraint firstItem="jvg-KW-gUQ" firstAttribute="trailing" secondItem="f8h-w5-Peo" secondAttribute="trailingMargin" id="RkF-Vm-gTI"/>
                             <constraint firstItem="bvX-zD-7Um" firstAttribute="centerY" secondItem="f8h-w5-Peo" secondAttribute="centerY" id="SHM-HQ-1wW"/>
                             <constraint firstItem="jvg-KW-gUQ" firstAttribute="centerY" secondItem="f8h-w5-Peo" secondAttribute="centerY" id="Xbl-Sf-kAo">
-                                <variation key="widthClass=compact" constant="262.5"/>
+                                <variation key="widthClass=compact" constant="250"/>
                             </constraint>
-                            <constraint firstItem="jvg-KW-gUQ" firstAttribute="leading" secondItem="f8h-w5-Peo" secondAttribute="leadingMargin" constant="10" id="Ypr-U2-g8J"/>
+                            <constraint firstItem="jvg-KW-gUQ" firstAttribute="leading" secondItem="f8h-w5-Peo" secondAttribute="leadingMargin" constant="10" id="Ypr-U2-g8J">
+                                <variation key="widthClass=compact" constant="-6"/>
+                            </constraint>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">

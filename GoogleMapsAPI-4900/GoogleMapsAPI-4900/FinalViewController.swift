@@ -102,7 +102,7 @@ class FinalViewController: UIViewController, UITableViewDelegate, UITableViewDat
             marker!.position    = locationCoordinates!
             marker!.title       = location.name
             marker!.snippet     = location.vicinity
-            marker!.icon        = GMSMarker.markerImageWithColor(UIColor.blackColor())
+            marker!.icon        = UIImage(named: "clinic")
             marker!.map         = mapView
         }
     }
