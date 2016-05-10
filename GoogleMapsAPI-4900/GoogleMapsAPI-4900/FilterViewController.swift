@@ -70,6 +70,7 @@ class FilterViewController: UIViewController {
 
             yourNextViewController!.locationList = choiceList
             yourNextViewController!.tableViewReloaded()
+            yourNextViewController!.setMarker()
         }
         
         yourNextViewController?.hospitalOn = hospitalSwitch.on
