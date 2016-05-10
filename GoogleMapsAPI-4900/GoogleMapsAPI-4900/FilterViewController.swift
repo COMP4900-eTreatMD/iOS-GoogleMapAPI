@@ -59,49 +59,53 @@ class FilterViewController: UIViewController {
      */
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+            
+        var util                    : Utility?
+        var yourNextViewController  : FinalViewController?
+        var types                   : String                = ""
         
-        if(segue.identifier == "goToFinal") {
-            
-            var util                    : Utility?
-            var yourNextViewController  : FinalViewController?
-            var types                   : String                = ""
-            
-            util                    = Utility()
-            yourNextViewController  = (segue.destinationViewController as! FinalViewController)
-            
-            if(hospitalSwitch.on){
-                types             += "hospital|"
-            }
-            
-            if(pharmacySwitch.on){
-                types             += "pharmacy|"
-            }
-            
-            if(physiotherapistSwitch.on){
-                types             += "physiotherapist|"
-            }
-            
-            if(doctorSwitch.on){
-                types             += "doctor|"
-            }
-            
-            util!.doHttpRequest(self.lat!, long: self.long!,
-                               radius: radiusInput.text!, type: types) {
-                choiceList in
+        util                    = Utility()
+        yourNextViewController  = (segue.destinationViewController as! FinalViewController)
+        types                   = getListOfTypes()
+        
+        util!.doHttpRequest(self.lat!, long: self.long!,
+                           radius: radiusInput.text!, type: types) {
+            choiceList in
 
-                yourNextViewController!.locationList = choiceList
-                yourNextViewController!.tableViewReloaded()
-            }
-            
-            yourNextViewController?.hospitalOn = hospitalSwitch.on
-            yourNextViewController?.pharmacyOn = pharmacySwitch.on
-            yourNextViewController?.phsiotherapistOn = physiotherapistSwitch.on
-            yourNextViewController?.doctorOn = doctorSwitch.on
-            
-            yourNextViewController!.lat  = lat!
-            yourNextViewController!.long = long!
+            yourNextViewController!.locationList = choiceList
+            yourNextViewController!.tableViewReloaded()
         }
         
+        yourNextViewController?.hospitalOn = hospitalSwitch.on
+        yourNextViewController?.pharmacyOn = pharmacySwitch.on
+        yourNextViewController?.phsiotherapistOn = physiotherapistSwitch.on
+        yourNextViewController?.doctorOn = doctorSwitch.on
+        
+        yourNextViewController!.lat  = lat!
+        yourNextViewController!.long = long!
+        
+    }
+    
+    func getListOfTypes() -> String{
+        var types : String = ""
+        
+        if(hospitalSwitch.on){
+            types             += "hospital|"
+        }
+        
+        if(pharmacySwitch.on){
+            types             += "pharmacy|"
+        }
+        
+        if(physiotherapistSwitch.on){
+            types             += "physiotherapist|"
+        }
+        
+        if(doctorSwitch.on){
+            types             += "doctor|"
+        }
+        
+        return types
     }
     
 }
