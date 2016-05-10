@@ -16,14 +16,11 @@ class FilterViewController: UIViewController,UIPickerViewDataSource, UIPickerVie
     var long            : Double?
     var lat             : Double?
     
-    var hospitalOn              : Bool = true
-    var pharmacyOn              : Bool = true
-    var phsiotherapistOn        : Bool = true
-    var doctorOn                : Bool = true
+    var types           : String  = ""
+
     
     @IBOutlet weak var filter: UIPickerView!
     var filterData     = ["Hospital", "Pharmacy", "Physiotherapist", "Docotor"];
-    var types: String  = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,21 +53,14 @@ class FilterViewController: UIViewController,UIPickerViewDataSource, UIPickerVie
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
-        if(row == 0)
-        {
-            types             += "hospital|"
-        }
-        else if(row == 1)
-        {
-            types             += "pharmacy|"
-        }
-        else if(row == 2)
-        {
-            types             += "physiotherapist|"
-        }
-        else
-        {
-            types             += "doctor|"
+        if(row == 0) {
+            types             = "hospital"
+        } else if(row == 1) {
+            types             = "pharmacy"
+        } else if(row == 2) {
+            types             = "physiotherapist"
+        } else {
+            types             = "doctor"
         }
     }
     
@@ -83,27 +73,25 @@ class FilterViewController: UIViewController,UIPickerViewDataSource, UIPickerVie
      */
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-        if(segue.identifier == "goToFinal") {
-            
-            var util                    : Utility?
-            var yourNextViewController  : FinalViewController?
-            
-            util                    = Utility()
-            yourNextViewController  = (segue.destinationViewController as! FinalViewController)
-            
-            
-            util!.doHttpRequest(self.lat!, long: self.long!,
-                               radius: "1000", type: types) {
-                choiceList in
 
-                yourNextViewController!.locationList = choiceList
-                yourNextViewController!.tableViewReloaded()
-            }
-            
-            yourNextViewController!.lat  = lat!
-            yourNextViewController!.long = long!
+        var util                    : Utility?
+        var yourNextViewController  : FinalViewController?
+        
+        util                    = Utility()
+        yourNextViewController  = (segue.destinationViewController as! FinalViewController)
+        
+        print(types)
+        
+        util!.doHttpRequest(self.lat!, long: self.long!, type: types) {
+            choiceList in
+
+            yourNextViewController!.locationList = choiceList
+            yourNextViewController!.tableViewReloaded()
         }
+        
+        
+        yourNextViewController!.lat  = lat!
+        yourNextViewController!.long = long!
         
     }
     
