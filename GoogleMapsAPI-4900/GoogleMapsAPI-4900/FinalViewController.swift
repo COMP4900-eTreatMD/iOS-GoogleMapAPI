@@ -34,7 +34,8 @@ class FinalViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         tableView.delegate = self;
         tableView.dataSource = self;
-    
+        
+        print("setting map")
         setMap(lat, long: long)
     }
     
@@ -78,11 +79,11 @@ class FinalViewController: UIViewController, UITableViewDelegate, UITableViewDat
      
      */
     
-    func setMarker(index : NSIndexPath){
+    func setMarker(){
         
-        var marker : GMSMarker?
-        var locationCoordinates : CLLocationCoordinate2D?
-        
+        //var marker : GMSMarker?
+        //var locationCoordinates : CLLocationCoordinate2D?
+        /*
         marker              = GMSMarker()
         locationCoordinates = CLLocationCoordinate2DMake(locationList[index.row].lat,
                                                          locationList[index.row].long)
@@ -91,6 +92,24 @@ class FinalViewController: UIViewController, UITableViewDelegate, UITableViewDat
         marker!.title       = locationList[index.row].name
         marker!.snippet     = locationList[index.row].vicinity
         marker!.map         = mapView
+         */
+        
+        
+        
+        print("adding marker")
+        for location in locationList{
+            var marker : GMSMarker?
+            var locationCoordinates : CLLocationCoordinate2D?
+            
+            marker              = GMSMarker()
+            locationCoordinates = CLLocationCoordinate2DMake(location.lat,
+                                                             location.long)
+            marker!.position    = locationCoordinates!
+            marker!.title       = location.name
+            marker!.snippet     = location.vicinity
+            marker!.icon        = GMSMarker.markerImageWithColor(UIColor.blackColor())
+            marker!.map         = mapView
+        }
     }
     
     // MARK: -- TableView
@@ -114,8 +133,6 @@ class FinalViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         var cell : CustomeCell?
-        
-        setMarker(indexPath)
         
         cell = self.tableView.dequeueReusableCellWithIdentifier("cell",forIndexPath: indexPath)
             as? CustomeCell
@@ -184,12 +201,15 @@ class FinalViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), {
             // Do something...
-            self.util.doHttpRequest(self.lat,long: self.long,radius: "10000",
+            self.util.doHttpRequest(self.lat,long: self.long,
                                     type: "doctor|hospital|pharmacy|physiotherapist") {
                                         choiceList in
                 
                 self.locationList += choiceList
                 self.tableView.reloadData()
+                                        
+                print("loading markers all")
+                self.setMarker()
             }
             /*
             self.util.doHttpRequest(self.lat,long: self.long,radius: "10000", type: "hospital") {

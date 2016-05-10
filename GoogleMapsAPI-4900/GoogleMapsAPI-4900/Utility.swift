@@ -20,7 +20,7 @@ public class Utility{
         the request of the user.
      
      */
-    func doHttpRequest(lat : Double, long : Double, radius : String, type : String, completion: (locationList: Array<Location>) -> Void) {
+    func doHttpRequest(lat : Double, long : Double, type : String, completion: (locationList: Array<Location>) -> Void) {
 
         var locationList : Array<Location>?
         var coord        : String?
@@ -35,7 +35,6 @@ public class Utility{
                             "rankby"    : "distance",
                             "key"       :   "AIzaSyBWQyWLKeu_VGL2RgXeyM-_TgBSTDP9-Fs",
             ]).responseJSON { response in
-                print(response.request)
                 switch response.result {
                     case .Success:
                         if let responseJSON = response.result.value {
