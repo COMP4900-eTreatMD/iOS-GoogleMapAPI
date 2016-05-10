@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="cc5-U1-q3n">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="cc5-U1-q3n">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -25,7 +26,7 @@
                                     <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="86" id="ldC-qX-K31" customClass="CustomeCell" customModule="GoogleMapsAPI_4900" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ldC-qX-K31" id="cdd-ka-UM0">
-                                            <rect key="frame" x="0.0" y="0.0" width="240" height="85"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="85.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZJh-PF-uFN">
@@ -171,66 +172,6 @@
                                     <rect key="frame" x="0.0" y="20" width="400" height="44"/>
                                 </variation>
                             </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hospital" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZR5-AX-OBj">
-                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="106" y="171" width="63" height="21"/>
-                                </variation>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pharmacy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AeV-bs-ZE9">
-                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="92" y="226" width="77" height="21"/>
-                                </variation>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Physiotherapist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wpc-Mm-tIQ">
-                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="50" y="285" width="119" height="21"/>
-                                </variation>
-                            </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2kA-ft-TlI">
-                                <rect key="frame" x="-25" y="-15" width="51" height="31"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="226" y="166" width="51" height="31"/>
-                                </variation>
-                            </switch>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5qs-q6-Au4">
-                                <rect key="frame" x="-25" y="-15" width="51" height="31"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="226" y="216" width="51" height="31"/>
-                                </variation>
-                            </switch>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="53X-Jq-wed">
-                                <rect key="frame" x="-25" y="-15" width="51" height="31"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="226" y="275" width="51" height="31"/>
-                                </variation>
-                            </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Doctor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jzd-hq-wgT">
-                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="116" y="338" width="53" height="21"/>
-                                </variation>
-                            </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="90m-aN-24w">
-                                <rect key="frame" x="-25" y="-15" width="51" height="31"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="226" y="328" width="51" height="31"/>
-                                </variation>
-                            </switch>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jvg-KW-gUQ">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <color key="backgroundColor" red="0.98431372549019602" green="0.41960784313725491" blue="0.035294117647058823" alpha="1" colorSpace="calibratedRGB"/>
@@ -245,8 +186,7 @@
                                         <exclude reference="0DW-Gh-bV8"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="14" y="545" width="366" height="35"/>
+                                <variation key="widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="0DW-Gh-bV8"/>
                                     </mask>
@@ -255,13 +195,25 @@
                                     <segue destination="cc5-U1-q3n" kind="show" identifier="goToFinal" id="fDm-DM-hpl"/>
                                 </connections>
                             </button>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bvX-zD-7Um">
+                                <rect key="frame" x="0.0" y="-216" width="320" height="216"/>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="136" width="400" height="216"/>
+                                </variation>
+                                <connections>
+                                    <outlet property="dataSource" destination="bSn-kp-Kww" id="SKZ-1I-w9i"/>
+                                    <outlet property="delegate" destination="bSn-kp-Kww" id="H7k-c6-j16"/>
+                                </connections>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="jvg-KW-gUQ" firstAttribute="leading" secondItem="f8h-w5-Peo" secondAttribute="leading" constant="176" id="0nl-lK-gbm">
                                 <variation key="widthClass=compact" constant="14"/>
                             </constraint>
+                            <constraint firstItem="bvX-zD-7Um" firstAttribute="centerX" secondItem="f8h-w5-Peo" secondAttribute="centerX" id="BA6-ej-C36"/>
                             <constraint firstItem="jvg-KW-gUQ" firstAttribute="trailing" secondItem="f8h-w5-Peo" secondAttribute="trailingMargin" id="RkF-Vm-gTI"/>
+                            <constraint firstItem="bvX-zD-7Um" firstAttribute="centerY" secondItem="f8h-w5-Peo" secondAttribute="centerY" id="SHM-HQ-1wW"/>
                             <constraint firstItem="jvg-KW-gUQ" firstAttribute="centerY" secondItem="f8h-w5-Peo" secondAttribute="centerY" id="Xbl-Sf-kAo">
                                 <variation key="widthClass=compact" constant="262.5"/>
                             </constraint>
@@ -270,17 +222,12 @@
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="bbA-Sf-F1I"/>
-                                <exclude reference="ZR5-AX-OBj"/>
-                                <exclude reference="AeV-bs-ZE9"/>
-                                <exclude reference="wpc-Mm-tIQ"/>
-                                <exclude reference="2kA-ft-TlI"/>
-                                <exclude reference="5qs-q6-Au4"/>
-                                <exclude reference="53X-Jq-wed"/>
-                                <exclude reference="jzd-hq-wgT"/>
-                                <exclude reference="90m-aN-24w"/>
                                 <exclude reference="jvg-KW-gUQ"/>
+                                <exclude reference="bvX-zD-7Um"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="BA6-ej-C36"/>
+                                <exclude reference="SHM-HQ-1wW"/>
                                 <exclude reference="0nl-lK-gbm"/>
                                 <exclude reference="RkF-Vm-gTI"/>
                                 <exclude reference="Xbl-Sf-kAo"/>
@@ -290,17 +237,12 @@
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="bbA-Sf-F1I"/>
-                                <include reference="ZR5-AX-OBj"/>
-                                <include reference="AeV-bs-ZE9"/>
-                                <include reference="wpc-Mm-tIQ"/>
-                                <include reference="2kA-ft-TlI"/>
-                                <include reference="5qs-q6-Au4"/>
-                                <include reference="53X-Jq-wed"/>
-                                <include reference="jzd-hq-wgT"/>
-                                <include reference="90m-aN-24w"/>
                                 <include reference="jvg-KW-gUQ"/>
+                                <include reference="bvX-zD-7Um"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="BA6-ej-C36"/>
+                                <include reference="SHM-HQ-1wW"/>
                                 <include reference="0nl-lK-gbm"/>
                                 <include reference="RkF-Vm-gTI"/>
                                 <include reference="Xbl-Sf-kAo"/>
@@ -309,10 +251,7 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="doctorSwitch" destination="90m-aN-24w" id="BhX-NM-LDm"/>
-                        <outlet property="hospitalSwitch" destination="2kA-ft-TlI" id="Sv3-Zt-VGE"/>
-                        <outlet property="pharmacySwitch" destination="5qs-q6-Au4" id="OBS-kN-qmc"/>
-                        <outlet property="physiotherapistSwitch" destination="53X-Jq-wed" id="xMq-jE-gjd"/>
+                        <outlet property="filter" destination="bvX-zD-7Um" id="m2M-EF-EU9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yrL-MD-nMB" userLabel="First Responder" sceneMemberID="firstResponder"/>
