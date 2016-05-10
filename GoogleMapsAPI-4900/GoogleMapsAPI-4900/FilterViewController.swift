@@ -21,9 +21,6 @@ class FilterViewController: UIViewController {
     var phsiotherapistOn        : Bool = true
     var doctorOn                : Bool = true
     
-    @IBOutlet weak var categoryInput: UITextField!
-    @IBOutlet weak var radiusInput: UITextField!
-    
     @IBOutlet weak var hospitalSwitch: UISwitch!
     @IBOutlet weak var pharmacySwitch: UISwitch!
     @IBOutlet weak var physiotherapistSwitch: UISwitch!
@@ -59,7 +56,7 @@ class FilterViewController: UIViewController {
      */
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-            
+
         var util                    : Utility?
         var yourNextViewController  : FinalViewController?
         var types                   : String                = ""
@@ -68,8 +65,7 @@ class FilterViewController: UIViewController {
         yourNextViewController  = (segue.destinationViewController as! FinalViewController)
         types                   = getListOfTypes()
         
-        util!.doHttpRequest(self.lat!, long: self.long!,
-                           radius: radiusInput.text!, type: types) {
+        util!.doHttpRequest(self.lat!, long: self.long!, type: types) {
             choiceList in
 
             yourNextViewController!.locationList = choiceList

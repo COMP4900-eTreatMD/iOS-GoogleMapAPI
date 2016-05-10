@@ -20,7 +20,7 @@ public class Utility{
         the request of the user.
      
      */
-    func doHttpRequest(lat : Double, long : Double, radius : String, type : String, completion: (locationList: Array<Location>) -> Void) {
+    func doHttpRequest(lat : Double, long : Double, type : String, completion: (locationList: Array<Location>) -> Void) {
 
         var locationList : Array<Location>?
         var coord        : String?
