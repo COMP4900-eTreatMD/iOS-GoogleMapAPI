@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -154,29 +153,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="400" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Category" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3hG-DK-NPK">
-                                <rect key="frame" x="-25" y="-30" width="97" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Radius" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yhf-RB-DAF">
-                                <rect key="frame" x="-25" y="-30" width="97" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jvg-KW-gUQ">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="Filter"/>
-                                <connections>
-                                    <segue destination="cc5-U1-q3n" kind="show" identifier="goToFinal" id="fDm-DM-hpl"/>
-                                </connections>
-                            </button>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bbA-Sf-F1I">
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <color key="backgroundColor" red="0.12941176469999999" green="0.67843137249999996" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="barTintColor" red="0.12941176469999999" green="0.67843137249999996" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <items>
-                                    <navigationItem title="Filter" id="mOZ-9V-x0A"/>
+                                    <navigationItem title="Filter" id="mOZ-9V-x0A">
+                                        <barButtonItem key="leftBarButtonItem" image="back-btn" id="ylN-OT-iey">
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <connections>
+                                                <segue destination="cc5-U1-q3n" kind="show" id="YXp-Rx-hcj"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
                                 </items>
                                 <variation key="widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="0.0" y="20" width="400" height="44"/>
@@ -242,23 +231,31 @@
                                     <rect key="frame" x="218" y="391" width="51" height="31"/>
                                 </variation>
                             </switch>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jvg-KW-gUQ">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="0.98431372549019602" green="0.41960784313725491" blue="0.035294117647058823" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Filter">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="14" y="545" width="366" height="35"/>
+                                </variation>
+                                <connections>
+                                    <segue destination="cc5-U1-q3n" kind="show" identifier="goToFinal" id="fDm-DM-hpl"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="jvg-KW-gUQ" firstAttribute="leading" secondItem="f8h-w5-Peo" secondAttribute="leading" constant="176" id="0nl-lK-gbm"/>
-                            <constraint firstItem="3hG-DK-NPK" firstAttribute="leading" secondItem="f8h-w5-Peo" secondAttribute="leadingMargin" id="AQ3-Jc-8GZ"/>
-                            <constraint firstItem="yhf-RB-DAF" firstAttribute="top" secondItem="3hG-DK-NPK" secondAttribute="bottom" constant="34" id="O5P-VW-jgF"/>
-                            <constraint firstItem="jvg-KW-gUQ" firstAttribute="centerY" secondItem="f8h-w5-Peo" secondAttribute="centerY" id="Xbl-Sf-kAo"/>
-                            <constraint firstItem="3hG-DK-NPK" firstAttribute="top" secondItem="uJp-ZR-OnH" secondAttribute="bottom" constant="73" id="cAF-zx-ajM"/>
-                            <constraint firstItem="3hG-DK-NPK" firstAttribute="trailing" secondItem="f8h-w5-Peo" secondAttribute="trailingMargin" id="fbE-5n-DES"/>
-                            <constraint firstItem="3hG-DK-NPK" firstAttribute="trailing" secondItem="yhf-RB-DAF" secondAttribute="trailing" id="kE6-Sn-q8F"/>
-                            <constraint firstItem="3hG-DK-NPK" firstAttribute="leading" secondItem="yhf-RB-DAF" secondAttribute="leading" id="mdz-Xb-cBa"/>
+                            <constraint firstItem="jvg-KW-gUQ" firstAttribute="leading" secondItem="f8h-w5-Peo" secondAttribute="leading" constant="176" id="0nl-lK-gbm">
+                                <variation key="widthClass=compact" constant="14"/>
+                            </constraint>
+                            <constraint firstItem="jvg-KW-gUQ" firstAttribute="centerY" secondItem="f8h-w5-Peo" secondAttribute="centerY" id="Xbl-Sf-kAo">
+                                <variation key="widthClass=compact" constant="262.5"/>
+                            </constraint>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="3hG-DK-NPK"/>
-                                <exclude reference="yhf-RB-DAF"/>
-                                <exclude reference="jvg-KW-gUQ"/>
                                 <exclude reference="bbA-Sf-F1I"/>
                                 <exclude reference="ZR5-AX-OBj"/>
                                 <exclude reference="AeV-bs-ZE9"/>
@@ -268,23 +265,15 @@
                                 <exclude reference="53X-Jq-wed"/>
                                 <exclude reference="jzd-hq-wgT"/>
                                 <exclude reference="90m-aN-24w"/>
+                                <exclude reference="jvg-KW-gUQ"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="AQ3-Jc-8GZ"/>
-                                <exclude reference="cAF-zx-ajM"/>
-                                <exclude reference="fbE-5n-DES"/>
-                                <exclude reference="kE6-Sn-q8F"/>
-                                <exclude reference="mdz-Xb-cBa"/>
-                                <exclude reference="O5P-VW-jgF"/>
                                 <exclude reference="0nl-lK-gbm"/>
                                 <exclude reference="Xbl-Sf-kAo"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
-                                <include reference="3hG-DK-NPK"/>
-                                <include reference="yhf-RB-DAF"/>
-                                <include reference="jvg-KW-gUQ"/>
                                 <include reference="bbA-Sf-F1I"/>
                                 <include reference="ZR5-AX-OBj"/>
                                 <include reference="AeV-bs-ZE9"/>
@@ -294,26 +283,19 @@
                                 <include reference="53X-Jq-wed"/>
                                 <include reference="jzd-hq-wgT"/>
                                 <include reference="90m-aN-24w"/>
+                                <include reference="jvg-KW-gUQ"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="AQ3-Jc-8GZ"/>
-                                <include reference="cAF-zx-ajM"/>
-                                <include reference="fbE-5n-DES"/>
-                                <include reference="kE6-Sn-q8F"/>
-                                <include reference="mdz-Xb-cBa"/>
-                                <include reference="O5P-VW-jgF"/>
                                 <include reference="0nl-lK-gbm"/>
                                 <include reference="Xbl-Sf-kAo"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="categoryInput" destination="3hG-DK-NPK" id="TIH-ZD-iQe"/>
                         <outlet property="doctorSwitch" destination="90m-aN-24w" id="BhX-NM-LDm"/>
                         <outlet property="hospitalSwitch" destination="2kA-ft-TlI" id="Sv3-Zt-VGE"/>
                         <outlet property="pharmacySwitch" destination="5qs-q6-Au4" id="OBS-kN-qmc"/>
                         <outlet property="physiotherapistSwitch" destination="53X-Jq-wed" id="xMq-jE-gjd"/>
-                        <outlet property="radiusInput" destination="yhf-RB-DAF" id="Zsl-Bo-UFD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yrL-MD-nMB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -333,6 +315,7 @@
         <image name="back-btn" width="20" height="17"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="fDm-DM-hpl"/>
         <segue reference="cwT-CN-Zj0"/>
     </inferredMetricsTieBreakers>
 </document>

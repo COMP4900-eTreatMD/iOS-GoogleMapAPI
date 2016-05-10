@@ -21,9 +21,6 @@ class FilterViewController: UIViewController {
     var phsiotherapistOn        : Bool = true
     var doctorOn                : Bool = true
     
-    @IBOutlet weak var categoryInput: UITextField!
-    @IBOutlet weak var radiusInput: UITextField!
-    
     @IBOutlet weak var hospitalSwitch: UISwitch!
     @IBOutlet weak var pharmacySwitch: UISwitch!
     @IBOutlet weak var physiotherapistSwitch: UISwitch!
@@ -86,7 +83,7 @@ class FilterViewController: UIViewController {
             }
             
             util!.doHttpRequest(self.lat!, long: self.long!,
-                               radius: radiusInput.text!, type: types) {
+                               radius: "1000", type: types) {
                 choiceList in
 
                 yourNextViewController!.locationList = choiceList

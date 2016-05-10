@@ -19,8 +19,8 @@ class FinalViewController: UIViewController, UITableViewDelegate, UITableViewDat
     let util            : Utility            = Utility()
     var locationList    : Array<Location>    = Array<Location>()
     
-    var long            : Double!
-    var lat             : Double!
+    var long            : Double = -123.2324
+    var lat             : Double = 42.235
     
     var mapView : GMSMapView!
     
