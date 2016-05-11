@@ -75,6 +75,11 @@ class FinalViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func setMarker(){
         
+        let pharmacy = UIImage(named : "pharmacy")
+        let hospital = UIImage(named : "hospital")
+        let physio   = UIImage(named : "clinic")
+        let doctor   = UIImage(named : "acupuncture")
+        
         for location in locationList{
             var marker : GMSMarker?
             var locationCoordinates : CLLocationCoordinate2D?
@@ -85,7 +90,18 @@ class FinalViewController: UIViewController, UITableViewDelegate, UITableViewDat
             marker!.position    = locationCoordinates!
             marker!.title       = location.name
             marker!.snippet     = location.vicinity
-            marker!.icon        = UIImage(named: "clinic")
+            //marker!.icon        = UIImage(named: "clinic")
+            
+            if(location.type == "hospital"){
+                marker!.icon = hospital
+            } else if(location.type == "pharmacy"){
+                marker!.icon = pharmacy
+            } else if(location.type == "physiotherapist"){
+                marker!.icon = physio
+            } else if(location.type == "doctor"){
+                marker!.icon = doctor
+            }
+            
             marker!.map         = mapView
         }
     }
