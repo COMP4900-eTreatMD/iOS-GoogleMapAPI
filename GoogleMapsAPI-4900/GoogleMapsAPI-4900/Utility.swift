@@ -49,6 +49,7 @@ public class Utility{
                                 var vicinity        : String    = ""
                                 var rating          : Int       = 0
                                 var currentlyOpen   : String    = "Unknown"
+                                var type            : String    = ""
                                 
                                 if let resultName = subJson["name"].string {
                                     name = resultName
@@ -78,7 +79,26 @@ public class Utility{
                                     }
                                 }
                                 
-                                let location = Location(name : name, lat : lat, long: long, vicinity: vicinity, rating: rating, currentlyOpen: currentlyOpen)
+                                let resultTypes = subJson["types"]
+                                
+                                for (_, subJson) in resultTypes {
+                                    let valueType = subJson.string
+                                    if(valueType == "hospital"){
+                                        type = "hospital"
+                                        break
+                                    } else if(valueType == "doctor"){
+                                        type = "doctor"
+                                        break
+                                    } else if(valueType == "pharmacy"){
+                                        type = "pharmacy"
+                                        break
+                                    } else if(valueType == "physiotherapist"){
+                                        type = "physiotherapist"
+                                        break
+                                    }
+                                }
+                                
+                                let location = Location(name : name, lat : lat, long: long, vicinity: vicinity, rating: rating, currentlyOpen: currentlyOpen, type: type)
                                 
                                 locationList!.append(location)
                                 

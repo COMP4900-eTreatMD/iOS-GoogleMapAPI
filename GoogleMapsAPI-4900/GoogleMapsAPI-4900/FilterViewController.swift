@@ -16,11 +16,11 @@ class FilterViewController: UIViewController,UIPickerViewDataSource, UIPickerVie
     var long            : Double?
     var lat             : Double?
     
-    var types           : String  = ""
+    var types           : String  = "hospital|pharmacy|physiotherapist|doctor"
 
     
     @IBOutlet weak var filter: UIPickerView!
-    var filterData     = ["Hospital", "Pharmacy", "Physiotherapist", "Docotor"];
+    var filterData     = ["All","Hospital", "Pharmacy", "Physiotherapist", "Docotor"];
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +31,7 @@ class FilterViewController: UIViewController,UIPickerViewDataSource, UIPickerVie
     }
     
     override func viewDidAppear(animated: Bool) {
-        
+        filter.selectRow(0, inComponent: 0, animated: true)
     }
     
     override func didReceiveMemoryWarning() {
@@ -53,13 +53,15 @@ class FilterViewController: UIViewController,UIPickerViewDataSource, UIPickerVie
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
-        if(row == 0) {
+        print("getting picker view")
+
+        if(row == 1) {
             types             = "hospital"
-        } else if(row == 1) {
-            types             = "pharmacy"
         } else if(row == 2) {
+            types             = "pharmacy"
+        } else if(row == 3) {
             types             = "physiotherapist"
-        } else {
+        } else if(row == 4){
             types             = "doctor"
         }
     }
@@ -80,13 +82,12 @@ class FilterViewController: UIViewController,UIPickerViewDataSource, UIPickerVie
         util                    = Utility()
         yourNextViewController  = (segue.destinationViewController as! FinalViewController)
         
-        print(types)
-        
         util!.doHttpRequest(self.lat!, long: self.long!, type: types) {
             choiceList in
 
             yourNextViewController!.locationList = choiceList
             yourNextViewController!.tableViewReloaded()
+            yourNextViewController!.setMarker()
         }
         
         

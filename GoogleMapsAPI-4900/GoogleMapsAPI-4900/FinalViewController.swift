@@ -29,8 +29,7 @@ class FinalViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         tableView.delegate = self;
         tableView.dataSource = self;
-        
-        print("setting map")
+
         setMap(lat, long: long)
     }
     
@@ -76,22 +75,11 @@ class FinalViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func setMarker(){
         
-        //var marker : GMSMarker?
-        //var locationCoordinates : CLLocationCoordinate2D?
-        /*
-        marker              = GMSMarker()
-        locationCoordinates = CLLocationCoordinate2DMake(locationList[index.row].lat,
-                                                         locationList[index.row].long)
-
-        marker!.position    = locationCoordinates!
-        marker!.title       = locationList[index.row].name
-        marker!.snippet     = locationList[index.row].vicinity
-        marker!.map         = mapView
-         */
+        let pharmacy = UIImage(named : "pharmacy")
+        let hospital = UIImage(named : "hospital")
+        let physio   = UIImage(named : "clinic")
+        let doctor   = UIImage(named : "acupuncture")
         
-        
-        
-        print("adding marker")
         for location in locationList{
             var marker : GMSMarker?
             var locationCoordinates : CLLocationCoordinate2D?
@@ -102,7 +90,18 @@ class FinalViewController: UIViewController, UITableViewDelegate, UITableViewDat
             marker!.position    = locationCoordinates!
             marker!.title       = location.name
             marker!.snippet     = location.vicinity
-            marker!.icon        = UIImage(named: "clinic")
+            //marker!.icon        = UIImage(named: "clinic")
+            
+            if(location.type == "hospital"){
+                marker!.icon = hospital
+            } else if(location.type == "pharmacy"){
+                marker!.icon = pharmacy
+            } else if(location.type == "physiotherapist"){
+                marker!.icon = physio
+            } else if(location.type == "doctor"){
+                marker!.icon = doctor
+            }
+            
             marker!.map         = mapView
         }
     }
@@ -198,8 +197,6 @@ class FinalViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 
                 self.locationList += choiceList
                 self.tableView.reloadData()
-                                        
-                print("loading markers all")
                 self.setMarker()
             }
             /*
