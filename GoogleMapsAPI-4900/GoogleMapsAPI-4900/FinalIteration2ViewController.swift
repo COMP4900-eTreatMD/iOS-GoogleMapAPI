@@ -32,6 +32,7 @@ class FinalIteration2ViewController: UIViewController, UITextFieldDelegate,
         
         self.filterTextField.delegate = self;
         currentLocation = CLLocation(latitude: lat,longitude: long)
+
     }
     
     override func viewDidAppear(animated: Bool) {

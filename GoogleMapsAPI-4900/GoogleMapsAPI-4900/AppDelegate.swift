@@ -10,16 +10,26 @@ import UIKit
 import GoogleMaps
 import CoreLocation
 
+var reachability: Reachability?
+let REACHABLE = "reachable"
+let NOTREACHABLE = "NotReachable"
+var reachabilityStatus: String?
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var internetReach: Reachability?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reachabilityChanged:", name: kReachabilityChangedNotification, object: nil)
         GMSServices.provideAPIKey("AIzaSyBPqY-Cb5udIHNCIwwWQi3qmdtXMQbCCGw")
-        
+        internetReach = Reachability.reachabilityForInternetConnection()
+        internetReach?.startNotifier()
+        if internetReach != nil{
+            self.statusChangeWithReachability(internetReach!)
+        }
         
         //GMSServices.provideAPIKey("AIzaSyDUVbyFfzQdOPLjfxnFhLmMQDev4I_upII")
         
@@ -28,6 +38,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         return true
+    }
+    
+    func reachabilityChanged(notification: NSNotification){
+        print("status changed")
+        reachability = notification.object as? Reachability
+        self.statusChangeWithReachability(reachability!)
+    }
+    
+    func statusChangeWithReachability(currentStatus: Reachability){
+        let networkStatus: NetworkStatus = currentStatus.currentReachabilityStatus()
+        if(networkStatus.rawValue == NotReachable.rawValue){
+            print("Network not available")
+            reachabilityStatus = NOTREACHABLE
+        }else if(networkStatus == ReachableViaWiFi || networkStatus == ReachableViaWWAN){
+            print("network is okay")
+            reachabilityStatus = REACHABLE
+        }
+        NSNotificationCenter.defaultCenter().postNotificationName("ReachStatusChanged", object: nil)
     }
 
     func applicationWillResignActive(application: UIApplication) {
@@ -50,6 +78,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: kReachabilityChangedNotification, object: nil)
     }
 
 
