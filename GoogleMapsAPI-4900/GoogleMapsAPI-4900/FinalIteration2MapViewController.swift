@@ -40,7 +40,7 @@ class FinalIteration2MapViewController: UIViewController{
         var camera      : GMSCameraPosition?
         var boundaries  : CGRect?
         
-        camera      = GMSCameraPosition.cameraWithLatitude(lat, longitude: long, zoom: 13)
+        camera      = GMSCameraPosition.cameraWithLatitude(lat, longitude: long, zoom: 16)
         boundaries  = CGRectMake(0,64,606,606)
         
         
@@ -54,10 +54,7 @@ class FinalIteration2MapViewController: UIViewController{
     
     func setMarker(){
         
-        let pharmacy = UIImage(named : "pharmacy")
-        let hospital = UIImage(named : "hospital")
-        let physio   = UIImage(named : "clinic")
-        let doctor   = UIImage(named : "acupuncture")
+        let util = Utility()
         
         for location in locationList{
             var marker : GMSMarker?
@@ -71,15 +68,7 @@ class FinalIteration2MapViewController: UIViewController{
             marker!.snippet     = location.vicinity
             //marker!.icon        = UIImage(named: "clinic")
             
-            if(location.type == "hospital"){
-                marker!.icon = hospital
-            } else if(location.type == "pharmacy"){
-                marker!.icon = pharmacy
-            } else if(location.type == "physiotherapist"){
-                marker!.icon = physio
-            } else if(location.type == "doctor"){
-                marker!.icon = doctor
-            }
+            marker!.icon = util.properIcon(location)
             
             marker!.map         = mapView
         }

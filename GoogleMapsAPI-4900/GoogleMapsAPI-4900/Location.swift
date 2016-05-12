@@ -10,6 +10,7 @@ import Foundation
 
 class Location{
     
+    var placeId         : Int!
     var name            : String!
     var lat             : Double!
     var long            : Double!
@@ -18,8 +19,9 @@ class Location{
     var currentlyOpen   : String!
     var type            : String!
 
-    init(name : String, lat : Double, long : Double, vicinity : String, rating : Int, currentlyOpen : String, type: String){
+    init(placeId : Int, name : String, lat : Double, long : Double, vicinity : String, rating : Int, currentlyOpen : String, type: String){
         
+        self.placeId            = placeId
         self.name               = name
         self.lat                = lat
         self.long               = long
@@ -27,6 +29,7 @@ class Location{
         self.rating             = rating
         self.currentlyOpen      = currentlyOpen
         self.type               = type
+
     }
     
 }

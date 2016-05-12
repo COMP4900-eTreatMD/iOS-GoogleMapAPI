@@ -19,8 +19,8 @@
 		8794985A1CE3FEDE00A1FAF1 /* FinalIteration2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879498591CE3FEDE00A1FAF1 /* FinalIteration2ViewController.swift */; };
 		8794985C1CE412EA00A1FAF1 /* FinalIteration2MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8794985B1CE412EA00A1FAF1 /* FinalIteration2MapViewController.swift */; };
 		87A8E1711CDC3F5300610C81 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A8E1701CDC3F5300610C81 /* FilterViewController.swift */; };
+		87F456D61CE427F500092F27 /* FinalIteration2DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F456D51CE427F500092F27 /* FinalIteration2DetailViewController.swift */; };
 		87FBC6DF1CD85D19002C9034 /* FinalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FBC6DE1CD85D19002C9034 /* FinalViewController.swift */; };
-		87FBC6E61CD86B32002C9034 /* CustomLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FBC6E51CD86B32002C9034 /* CustomLocationManager.swift */; };
 		D3C91B66DCE6FD95C15427BD /* Pods_GoogleMapsAPI_4900.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC712430909BC01B661259B0 /* Pods_GoogleMapsAPI_4900.framework */; };
 		EB6ABF641CE1374F009826BD /* Final.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB6ABF621CE1374F009826BD /* Final.storyboard */; };
 		EB6ABF6A1CE4084D009826BD /* CustomeCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6ABF691CE4084D009826BD /* CustomeCell2.swift */; };
@@ -42,8 +42,8 @@
 		879498591CE3FEDE00A1FAF1 /* FinalIteration2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinalIteration2ViewController.swift; sourceTree = "<group>"; };
 		8794985B1CE412EA00A1FAF1 /* FinalIteration2MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinalIteration2MapViewController.swift; sourceTree = "<group>"; };
 		87A8E1701CDC3F5300610C81 /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		87F456D51CE427F500092F27 /* FinalIteration2DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinalIteration2DetailViewController.swift; sourceTree = "<group>"; };
 		87FBC6DE1CD85D19002C9034 /* FinalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinalViewController.swift; sourceTree = "<group>"; };
-		87FBC6E51CD86B32002C9034 /* CustomLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLocationManager.swift; sourceTree = "<group>"; };
 		CD2508B3C5E41E4CB2FC3200 /* Pods-GoogleMapsAPI-4900.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoogleMapsAPI-4900.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GoogleMapsAPI-4900/Pods-GoogleMapsAPI-4900.debug.xcconfig"; sourceTree = "<group>"; };
 		D4B30D068B691F7A9B8196F5 /* Pods-GoogleMapsAPI-4900.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoogleMapsAPI-4900.release.xcconfig"; path = "Pods/Target Support Files/Pods-GoogleMapsAPI-4900/Pods-GoogleMapsAPI-4900.release.xcconfig"; sourceTree = "<group>"; };
 		EB6ABF631CE1374F009826BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Final.storyboard; sourceTree = "<group>"; };
@@ -103,7 +103,6 @@
 				EB7A46591CD9502E005A4477 /* CustomeCell.swift */,
 				8764351B1CD8268A00741BA1 /* Utility.swift */,
 				8764351D1CD826CD00741BA1 /* Location.swift */,
-				87FBC6E51CD86B32002C9034 /* CustomLocationManager.swift */,
 				EB6ABF691CE4084D009826BD /* CustomeCell2.swift */,
 			);
 			name = Classes;
@@ -119,6 +118,7 @@
 				87A8E1701CDC3F5300610C81 /* FilterViewController.swift */,
 				879498591CE3FEDE00A1FAF1 /* FinalIteration2ViewController.swift */,
 				8794985B1CE412EA00A1FAF1 /* FinalIteration2MapViewController.swift */,
+				87F456D51CE427F500092F27 /* FinalIteration2DetailViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -273,9 +273,9 @@
 				871697201CD40A53004073FF /* AppDelegate.swift in Sources */,
 				87A8E1711CDC3F5300610C81 /* FilterViewController.swift in Sources */,
 				8764351C1CD8268A00741BA1 /* Utility.swift in Sources */,
-				87FBC6E61CD86B32002C9034 /* CustomLocationManager.swift in Sources */,
 				EB7A465A1CD9502E005A4477 /* CustomeCell.swift in Sources */,
 				8764351E1CD826CD00741BA1 /* Location.swift in Sources */,
+				87F456D61CE427F500092F27 /* FinalIteration2DetailViewController.swift in Sources */,
 				876DB0DE1CD467F200B39C98 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
