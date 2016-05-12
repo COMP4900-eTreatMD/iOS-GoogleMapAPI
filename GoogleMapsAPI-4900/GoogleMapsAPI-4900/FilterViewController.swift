@@ -82,7 +82,7 @@ class FilterViewController: UIViewController,UIPickerViewDataSource, UIPickerVie
         util                    = Utility()
         yourNextViewController  = (segue.destinationViewController as! FinalViewController)
         
-        util!.doHttpRequest(self.lat!, long: self.long!, type: types) {
+        util!.getAllLocations(self.lat!, long: self.long!, type: types) {
             choiceList in
 
             yourNextViewController!.locationList = choiceList

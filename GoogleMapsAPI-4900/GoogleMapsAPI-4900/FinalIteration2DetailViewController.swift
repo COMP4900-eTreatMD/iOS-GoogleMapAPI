@@ -17,11 +17,12 @@ class FinalIteration2DetailViewController: UIViewController{
     var long            : Double!
     var lat             : Double!
     
+    var mapView         : GMSMapView!
+    
     var locationList    : Array<Location>    = Array<Location>()
     var location        : Location!
-    var index           : Int!
     
-    var mapView         : GMSMapView!
+    var util            : Utility = Utility()
     
     @IBOutlet weak var locationTitle        : UINavigationItem!
     @IBOutlet weak var locationImage        : UIImageView!
@@ -32,10 +33,6 @@ class FinalIteration2DetailViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let util     = Utility()
-        
-        location = locationList[index]
         
         locationTitle.title     = location.name
         locationName.text       = location.name
@@ -103,6 +100,15 @@ class FinalIteration2DetailViewController: UIViewController{
         
         marker!.map = mapView
         
+    }
+    
+    func initialSetUp(){
+        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), {
+            // Do something...
+            self.util.getLocationDetails(self.location) { phoneNumber in
+                self.locationPhoneNumber.text = phoneNumber
+            }
+        });
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
