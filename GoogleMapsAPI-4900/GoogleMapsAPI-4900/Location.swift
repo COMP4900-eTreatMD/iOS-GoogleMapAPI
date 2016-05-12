@@ -16,8 +16,9 @@ class Location{
     var vicinity        : String!
     var rating          : Int!
     var currentlyOpen   : String!
+    var type            : String!
 
-    init(name : String, lat : Double, long : Double, vicinity : String, rating : Int, currentlyOpen : String){
+    init(name : String, lat : Double, long : Double, vicinity : String, rating : Int, currentlyOpen : String, type: String){
         
         self.name               = name
         self.lat                = lat
@@ -25,6 +26,7 @@ class Location{
         self.vicinity           = vicinity
         self.rating             = rating
         self.currentlyOpen      = currentlyOpen
+        self.type               = type
     }
     
 }
