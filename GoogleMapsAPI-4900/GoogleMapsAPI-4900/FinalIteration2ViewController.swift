@@ -16,6 +16,11 @@ class FinalIteration2ViewController: UIViewController, UITextFieldDelegate,
                                      UITableViewDelegate, UITableViewDataSource{
     
     @IBOutlet weak var filterTextField: UITextField!
+    @IBOutlet weak var myTable: UITableView!
+    
+    var names = ["1","2","3"]
+    var address = ["123","123","123"]
+    var category = ["123","123","123"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,5 +46,21 @@ class FinalIteration2ViewController: UIViewController, UITextFieldDelegate,
         return false
     }
     
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return names.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cell: CustomeCell2?
+        
+        cell = self.myTable.dequeueReusableCellWithIdentifier("mycell2",forIndexPath: indexPath) as?
+        CustomeCell2
+        
+        cell?.name.text = names[indexPath.row]
+        cell?.address.text = address[indexPath.row]
+        cell?.category.text = address[indexPath.row]
+        
+        return cell!
+    }
 }
 

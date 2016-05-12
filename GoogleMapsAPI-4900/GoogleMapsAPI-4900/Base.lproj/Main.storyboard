@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="gcu-Np-IkJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="gcu-Np-IkJ">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -41,9 +42,6 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6np-iB-EEq">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <state key="normal" title="Final"/>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="184" y="249" width="32" height="30"/>
-                                </variation>
                                 <connections>
                                     <segue destination="6lX-uA-uav" kind="show" identifier="finalViewControllerSegue" id="yfr-AS-Uok"/>
                                 </connections>
@@ -51,9 +49,6 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YeJ-3Q-Xk7">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <state key="normal" title="Final Iteration 2"/>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="147" y="333" width="106" height="30"/>
-                                </variation>
                                 <connections>
                                     <segue destination="EcP-CN-E1n" kind="show" id="E1P-rD-jbK"/>
                                 </connections>
@@ -76,10 +71,10 @@
                                 <exclude reference="YeJ-3Q-Xk7"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="3x3-R4-gnV"/>
                                 <exclude reference="gMW-xf-8xI"/>
                                 <exclude reference="plw-eO-Fuh"/>
                                 <exclude reference="tiU-UF-U3A"/>
+                                <exclude reference="3x3-R4-gnV"/>
                                 <exclude reference="m0i-tI-p0R"/>
                             </mask>
                         </variation>
@@ -89,10 +84,10 @@
                                 <include reference="YeJ-3Q-Xk7"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="3x3-R4-gnV"/>
                                 <include reference="gMW-xf-8xI"/>
                                 <include reference="plw-eO-Fuh"/>
                                 <include reference="tiU-UF-U3A"/>
+                                <include reference="3x3-R4-gnV"/>
                                 <include reference="m0i-tI-p0R"/>
                             </mask>
                         </variation>
@@ -141,6 +136,7 @@
                         <viewControllerLayoutGuide type="bottom" id="5Wf-vy-yZ4"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="PPR-6s-vph">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rc0-bH-eGi">
@@ -164,10 +160,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="95" id="Bc5-yH-e1Q">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="mycell2" rowHeight="95" id="Bc5-yH-e1Q" customClass="CustomeCell2" customModule="GoogleMapsAPI_4900" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Bc5-yH-e1Q" id="5aZ-aD-ON9">
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="94.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zWL-Zh-Mga">
@@ -224,8 +221,17 @@
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="address" destination="zWL-Zh-Mga" id="RLU-B0-vJF"/>
+                                            <outlet property="category" destination="unU-lE-z6o" id="YSZ-GD-9Uh"/>
+                                            <outlet property="name" destination="mxG-DY-JIq" id="3lA-5z-5hJ"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="EcP-CN-E1n" id="T0R-SB-faG"/>
+                                    <outlet property="delegate" destination="EcP-CN-E1n" id="N2A-BO-p2z"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -251,18 +257,18 @@
                                 <exclude reference="npI-VJ-c0y"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="Lyr-VK-vcg"/>
+                                <exclude reference="NEP-jV-3Fm"/>
+                                <exclude reference="hmb-Jd-fJW"/>
+                                <exclude reference="aB1-mG-jiw"/>
                                 <exclude reference="Lpk-hW-rbx"/>
                                 <exclude reference="cjA-ov-UAg"/>
                                 <exclude reference="g5H-ZY-8IT"/>
                                 <exclude reference="zk0-IP-M9K"/>
-                                <exclude reference="Lyr-VK-vcg"/>
-                                <exclude reference="NEP-jV-3Fm"/>
-                                <exclude reference="hmb-Jd-fJW"/>
                                 <exclude reference="C1m-2E-tm6"/>
                                 <exclude reference="Qu6-pj-P7D"/>
                                 <exclude reference="U3p-p4-qJj"/>
                                 <exclude reference="tti-hn-Kr9"/>
-                                <exclude reference="aB1-mG-jiw"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -273,23 +279,24 @@
                                 <include reference="npI-VJ-c0y"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="Lyr-VK-vcg"/>
+                                <include reference="NEP-jV-3Fm"/>
+                                <include reference="hmb-Jd-fJW"/>
+                                <include reference="aB1-mG-jiw"/>
                                 <include reference="Lpk-hW-rbx"/>
                                 <include reference="cjA-ov-UAg"/>
                                 <include reference="g5H-ZY-8IT"/>
                                 <include reference="zk0-IP-M9K"/>
-                                <include reference="Lyr-VK-vcg"/>
-                                <include reference="NEP-jV-3Fm"/>
-                                <include reference="hmb-Jd-fJW"/>
                                 <include reference="C1m-2E-tm6"/>
                                 <include reference="Qu6-pj-P7D"/>
                                 <include reference="U3p-p4-qJj"/>
                                 <include reference="tti-hn-Kr9"/>
-                                <include reference="aB1-mG-jiw"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
                         <outlet property="filterTextField" destination="F58-kO-g6k" id="eQQ-aH-i7Z"/>
+                        <outlet property="myTable" destination="npI-VJ-c0y" id="U0Q-Uf-gSr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eyT-qd-gtz" userLabel="First Responder" sceneMemberID="firstResponder"/>
