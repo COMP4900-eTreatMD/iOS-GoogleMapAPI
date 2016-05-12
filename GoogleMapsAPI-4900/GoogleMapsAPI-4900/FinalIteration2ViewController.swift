@@ -30,10 +30,23 @@ class FinalIteration2ViewController: UIViewController, UITextFieldDelegate,
         super.viewDidLoad()
         
         self.filterTextField.delegate = self;
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reachabilityStatusChanged", name: "ReachStatusChanged", object: nil)
+    }
+    
+    deinit{
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "ReachStatusChanged", object: nil)
     }
     
     override func viewDidAppear(animated: Bool) {
         
+    }
+    
+    func reachabilityStatusChanged(){
+        if(reachability == NOTREACHABLE){
+            print("not good")
+        }else if(reachability == REACHABLE){
+            print("good")
+        }
     }
     
     override func didReceiveMemoryWarning() {
