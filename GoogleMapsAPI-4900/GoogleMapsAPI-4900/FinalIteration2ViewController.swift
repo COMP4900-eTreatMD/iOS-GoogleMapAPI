@@ -21,6 +21,7 @@ class FinalIteration2ViewController: UIViewController, UITextFieldDelegate,
     var long            : Double!
     var lat             : Double!
     var locationList    : Array<Location>    = Array<Location>()
+    var currentLocation : CLLocation!
     
     var names = ["1","2","3"]
     var address = ["123","123","123"]
@@ -30,23 +31,12 @@ class FinalIteration2ViewController: UIViewController, UITextFieldDelegate,
         super.viewDidLoad()
         
         self.filterTextField.delegate = self;
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reachabilityStatusChanged", name: "ReachStatusChanged", object: nil)
-    }
-    
-    deinit{
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: "ReachStatusChanged", object: nil)
+        currentLocation = CLLocation(latitude: lat,longitude: long)
+
     }
     
     override func viewDidAppear(animated: Bool) {
         
-    }
-    
-    func reachabilityStatusChanged(){
-        if(reachability == NOTREACHABLE){
-            print("not good")
-        }else if(reachability == REACHABLE){
-            print("good")
-        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -67,7 +57,31 @@ class FinalIteration2ViewController: UIViewController, UITextFieldDelegate,
             type: "doctor|hospital|pharmacy|physiotherapist") {
                 choiceList in
                 
-                self.locationList += choiceList
+                self.locationList = choiceList
+                self.myTable.reloadData()
+            }
+        });
+    }
+    
+    func filterResults(type : String){
+        let util        : Utility?
+        var resultType  : String!
+        
+        util = Utility()
+        
+        if(type == "All"){
+            resultType = "doctor|hospital|pharmacy|physiotherapist"
+        } else {
+            resultType = type.lowercaseString
+        }
+        
+        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), {
+            // Do something...
+            util!.getAllLocations(self.lat,long: self.long,
+            type: resultType) {
+                choiceList in
+                
+                self.locationList = choiceList
                 self.myTable.reloadData()
             }
         });
@@ -96,6 +110,15 @@ class FinalIteration2ViewController: UIViewController, UITextFieldDelegate,
             }
         }
         
+        if(segue.identifier == "goToFilterViewController") {
+            let yourNextViewController = (segue.destinationViewController as! FinalIteration2FilterViewController)
+            
+            yourNextViewController.lat          = lat!
+            yourNextViewController.long         = long!
+            yourNextViewController.locationList = locationList
+        }
+        
+        
     }
     
     
@@ -115,8 +138,12 @@ class FinalIteration2ViewController: UIViewController, UITextFieldDelegate,
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let util = Utility()
         
-        var cell    : CustomeCell2?
-        var type    : String        = locationList[indexPath.row].type
+        var cell             : CustomeCell2?
+        let placeLocation    : CLLocation    = CLLocation(latitude: locationList[indexPath.row].lat,
+                                                         longitude: locationList[indexPath.row].long)
+        var type             : String        = locationList[indexPath.row].type
+        
+        let distanceInMeters  = currentLocation.distanceFromLocation(placeLocation)/1000
         
         type = util.formatString(type)
         
@@ -127,6 +154,8 @@ class FinalIteration2ViewController: UIViewController, UITextFieldDelegate,
         cell?.name.text     = locationList[indexPath.row].name
         cell?.address.text  = locationList[indexPath.row].vicinity
         cell?.category.text = type
+        
+        cell?.distance.text = String(format: "%.2f", distanceInMeters) + " M"
         
         return cell!
     }
