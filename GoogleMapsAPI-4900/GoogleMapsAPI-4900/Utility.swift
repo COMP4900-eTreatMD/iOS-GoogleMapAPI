@@ -12,15 +12,43 @@ import SwiftyJSON
 
 public class Utility{
     
+    func formatString(type : String) -> String{
+        
+        var returnType : String!
+        
+        returnType = String(type.characters.first!).capitalizedString + String(type.characters.dropFirst())
+        
+        return returnType
+    }
     
-    /** 
+    func properIcon(location : Location) -> UIImage{
      
-        Uses Alamofire to do the REST call. uses the category and radius to find places that 
+        let pharmacy = UIImage(named : "pharmacy")
+        let hospital = UIImage(named : "hospital")
+        let physio   = UIImage(named : "clinic")
+        let doctor   = UIImage(named : "acupuncture")
+        
+        if(location.type == "hospital"){
+            return hospital!
+        } else if(location.type == "pharmacy"){
+            return pharmacy!
+        } else if(location.type == "physiotherapist"){
+            return physio!
+        } else {
+            return doctor!
+        }
+        
+    }
+    
+    /**
+     
+        Uses Alamofire to do the REST call. uses the category and radius to find places that
         the user wants. When the REST call is finish returns a list of locations that matches 
         the request of the user.
      
      */
-    func doHttpRequest(lat : Double, long : Double, type : String, completion: (locationList: Array<Location>) -> Void) {
+
+    func getAllLocations(lat : Double, long : Double, type : String, completion: (locationList: Array<Location>) -> Void) {
 
         var locationList : Array<Location>?
         var coord        : String?
@@ -29,7 +57,6 @@ public class Utility{
         coord        = String(lat) + "," + String(long)
         
         Alamofire.request(.GET, "https://maps.googleapis.com/maps/api/place/nearbysearch/json", parameters: [   "location"  :   coord!,
-                            //"radius"    :   radius,
                             "types"     :   type,
                             //"name"      :   "harbour",
                             "rankby"    : "distance",
@@ -43,6 +70,7 @@ public class Utility{
                             
                             for (_, subJson) in mainJSON["results"] {
                                 
+                                var placeId         : String    = ""
                                 var name            : String    = ""
                                 var lat             : Double    = 0.0
                                 var long            : Double    = 0.0
@@ -50,6 +78,11 @@ public class Utility{
                                 var rating          : Int       = 0
                                 var currentlyOpen   : String    = "Unknown"
                                 var type            : String    = ""
+                                
+                                
+                                if let resultPlaceId = subJson["place_id"].string {
+                                    placeId = resultPlaceId
+                                }
                                 
                                 if let resultName = subJson["name"].string {
                                     name = resultName
@@ -98,7 +131,7 @@ public class Utility{
                                     }
                                 }
                                 
-                                let location = Location(name : name, lat : lat, long: long, vicinity: vicinity, rating: rating, currentlyOpen: currentlyOpen, type: type)
+                                let location = Location(placeId : placeId, name : name, lat : lat, long: long, vicinity: vicinity, rating: rating, currentlyOpen: currentlyOpen, type: type)
                                 
                                 locationList!.append(location)
                                 
@@ -111,5 +144,33 @@ public class Utility{
                 }
         }
     }
+    
+    func getLocationDetails(location : Location, completion: (phoneNumber: String) -> Void) {
+        
+        Alamofire.request(.GET, "https://maps.googleapis.com/maps/api/place/details/json"
+            , parameters: [ "placeid"  :   location.placeId,
+                            "key"       :   "AIzaSyBWQyWLKeu_VGL2RgXeyM-_TgBSTDP9-Fs",
+            ]).responseJSON { response in
+                
+                switch response.result {
+                case .Success:
+                    if let responseJSON = response.result.value {
+                        let mainJSON    = JSON(responseJSON)
+                        
+                        var phoneNumber : String = ""
+                        
+                        if let resultPhoneNumber = mainJSON["result"]["formatted_phone_number"].string {
+                            phoneNumber = resultPhoneNumber
+                        }
+                        
+                        completion(phoneNumber: phoneNumber)
+                    }
+                    
+                case .Failure(let error):
+                    print(error)
+                }
+        }
+    }
+
     
 }

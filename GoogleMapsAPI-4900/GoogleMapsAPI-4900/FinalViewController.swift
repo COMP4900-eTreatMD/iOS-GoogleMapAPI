@@ -185,13 +185,9 @@ class FinalViewController: UIViewController, UITableViewDelegate, UITableViewDat
      */
     func initialSetUp(){
         
-        let util : Utility?
-        
-        util = Utility()
-        
         dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), {
             // Do something...
-            self.util.doHttpRequest(self.lat,long: self.long,
+            self.util.getAllLocations(self.lat,long: self.long,
                                     type: "doctor|hospital|pharmacy|physiotherapist") {
                                         choiceList in
                 

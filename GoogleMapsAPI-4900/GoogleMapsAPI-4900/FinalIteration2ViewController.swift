@@ -50,7 +50,7 @@ class FinalIteration2ViewController: UIViewController, UITextFieldDelegate,
         
         dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), {
             // Do something...
-            util!.doHttpRequest(self.lat,long: self.long,
+            util!.getAllLocations(self.lat,long: self.long,
             type: "doctor|hospital|pharmacy|physiotherapist") {
                 choiceList in
                 
@@ -62,11 +62,26 @@ class FinalIteration2ViewController: UIViewController, UITextFieldDelegate,
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        let yourNextViewController = (segue.destinationViewController as! FinalIteration2MapViewController)
+        if(segue.identifier == "goToFinalIteration2MapViewController") {
+            let yourNextViewController = (segue.destinationViewController as! FinalIteration2MapViewController)
+            
+            yourNextViewController.lat          = lat!
+            yourNextViewController.long         = long!
+            yourNextViewController.locationList = locationList
+        }
         
-        yourNextViewController.lat          = lat!
-        yourNextViewController.long         = long!
-        yourNextViewController.locationList = locationList
+        if(segue.identifier == "goToFinalIteration2DetailViewController"){
+            if let indexPath = myTable.indexPathForSelectedRow {
+                
+                let viewController = segue.destinationViewController as! FinalIteration2DetailViewController
+                viewController.lat          = lat!
+                viewController.long         = long!
+                viewController.locationList = locationList
+                viewController.location     = locationList[indexPath.row]
+                
+                viewController.initialSetUp()
+            }
+        }
         
     }
     
@@ -85,10 +100,12 @@ class FinalIteration2ViewController: UIViewController, UITextFieldDelegate,
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let util = Utility()
+        
         var cell    : CustomeCell2?
         var type    : String        = locationList[indexPath.row].type
         
-        type = String(type.characters.first!).capitalizedString + String(type.characters.dropFirst())
+        type = util.formatString(type)
         
         cell = self.myTable.dequeueReusableCellWithIdentifier("mycell2",forIndexPath: indexPath) as?
         CustomeCell2
@@ -100,5 +117,6 @@ class FinalIteration2ViewController: UIViewController, UITextFieldDelegate,
         
         return cell!
     }
+    
 }
 
