@@ -106,6 +106,17 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
             yourNextViewController.initialSetUp()
             
         }
+        
+        if(segue.identifier == "finalIteration2ControllerSegue") {
+            
+            let yourNextViewController = (segue.destinationViewController as! FinalIteration2ViewController)
+            
+            yourNextViewController.lat  = lat!
+            yourNextViewController.long = long!
+            
+            yourNextViewController.initialSetUp()
+            
+        }
     }
     
 }
