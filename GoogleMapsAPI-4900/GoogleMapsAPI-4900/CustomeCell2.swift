@@ -13,7 +13,7 @@ class CustomeCell2: UITableViewCell {
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var address: UILabel!
     @IBOutlet weak var category: UILabel!
-    
+    @IBOutlet weak var distance: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
