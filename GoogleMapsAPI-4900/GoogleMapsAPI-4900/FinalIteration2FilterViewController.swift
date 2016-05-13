@@ -17,16 +17,19 @@ class FinalIteration2FilterViewController: UIViewController, UITextFieldDelegate
     
     @IBOutlet weak var picker: UIPickerView!
     @IBOutlet weak var specialization: UIPickerView!
+    @IBOutlet weak var specializationLabel: UILabel!
     
     var long                 : Double!
     var lat                  : Double!
     
-    var index                : Int      = 0
+    var filterIndex                : Int      = 0
+    var specIndex                  : Int      = 0
     
     var locationList         : Array<Location>    = Array<Location>()
     var specilizationString  : String   = ""
 
     var filterData = ["All","Hospital", "Pharmacy", "Physiotherapist", "Doctor"];
+    var specilizationArray = ["Audiologist","Allergist","Andrologists","Anesthesiologist","Cardiologist","Dentist","Dermatologist","Endocrinologist","Epidemiologists","Gastroenterologist","Gynecologist","Hematologist","Hepatologists","Immunologist","Internists","Neonatologist","Nephrologists","Neurologist","Neurosurgeons","Obstetrician","Oncologist","Ophthalmologist","Orthopedist","Primatologist","Parasitologist","Pathologists","Pediatrician","Physiatrist","Plastic Surgeon","Podiatrists","Psychiatrists","Pulmonologist","Radiologists","Reproductive Endocrinologist","Rheumatologist","Surgeon","Thoracic Oncologist","Urologist"]
     
     var filter          : String            = "All"
     
@@ -37,7 +40,8 @@ class FinalIteration2FilterViewController: UIViewController, UITextFieldDelegate
         picker.dataSource = self
         picker.delegate = self
         
-
+        specializationLabel.hidden = true
+        specialization.hidden = true
     }
     
     func ReachabilityStatusChanged(){
@@ -68,24 +72,36 @@ class FinalIteration2FilterViewController: UIViewController, UITextFieldDelegate
             print("SPEC")
         }'
          */
-        return filterData.count
+        if(pickerView == picker){
+            return filterData.count
+        } else {
+            return specilizationArray.count
+        }
     }
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return filterData[row]
+        if(pickerView == picker){
+            return filterData[row]
+        } else {
+            return specilizationArray[row]
+        }
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if(filterData[row] == "Doctor"){
-            //specilization.hidden = false
-        }
         if(pickerView == picker){
             print("PICKER")
+            filterIndex = row
+            if(filterData[filterIndex] == "Doctor"){
+                specialization.hidden = false
+                specializationLabel.hidden = false
+            } else {
+                specialization.hidden = true
+                specializationLabel.hidden = true
+            }
         } else {
-            print("SPEC")
+            specIndex = row
         }
         
-        index = row
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -103,16 +119,16 @@ class FinalIteration2FilterViewController: UIViewController, UITextFieldDelegate
         let yourNextViewController = (segue.destinationViewController as! FinalIteration2ViewController)
         
         print("segue")
-        if(filterData[index] == "Doctor"){
-            //specilizationString = specilization.text!
+        if(filterData[filterIndex] == "Doctor"){
+            specilizationString = specilizationArray[specIndex]
         }
         
         yourNextViewController.lat          = lat!
         yourNextViewController.long         = long!
         yourNextViewController.locationList = locationList
-        yourNextViewController.filter       = filterData[index]
+        yourNextViewController.filter       = filterData[filterIndex]
         
-        yourNextViewController.filterResults(filterData[index],name: specilizationString)
+        yourNextViewController.filterResults(filterData[filterIndex],name: specilizationString)
         
     }
                                             
@@ -122,4 +138,5 @@ class FinalIteration2FilterViewController: UIViewController, UITextFieldDelegate
     }
     
 }
+
 
