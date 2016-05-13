@@ -48,7 +48,8 @@ public class Utility{
      
      */
 
-    func getAllLocations(lat : Double, long : Double, type : String, completion: (locationList: Array<Location>) -> Void) {
+    func getAllLocations(lat : Double, long : Double, name : String , type : String,
+                         completion: (locationList: Array<Location>) -> Void) {
 
         var locationList : Array<Location>?
         var coord        : String?
@@ -58,7 +59,7 @@ public class Utility{
         
         Alamofire.request(.GET, "https://maps.googleapis.com/maps/api/place/nearbysearch/json", parameters: [   "location"  :   coord!,
                             "types"     :   type,
-                            //"name"      :   "harbour",
+                            "name"      :   name,
                             "rankby"    : "distance",
                             "key"       :   "AIzaSyBWQyWLKeu_VGL2RgXeyM-_TgBSTDP9-Fs",
             ]).responseJSON { response in

@@ -65,8 +65,8 @@ class FinalIteration2ViewController: UIViewController,
         
         dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), {
             // Do something...
-            util!.getAllLocations(self.lat,long: self.long,
-            type: "doctor|hospital|pharmacy|physiotherapist") {
+            util!.getAllLocations(self.lat,long: self.long, name : "",
+                                  type: "doctor|hospital|pharmacy|physiotherapist") {
                 choiceList in
                 
                 self.locationList = choiceList
@@ -75,7 +75,7 @@ class FinalIteration2ViewController: UIViewController,
         });
     }
     
-    func filterResults(type : String){
+    func filterResults(type : String, name : String){
         let util        : Utility?
         var resultType  : String!
         
@@ -89,8 +89,8 @@ class FinalIteration2ViewController: UIViewController,
         
         dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), {
             // Do something...
-            util!.getAllLocations(self.lat,long: self.long,
-            type: resultType) {
+            util!.getAllLocations(self.lat,long: self.long, name: name,
+                                  type: resultType) {
                 choiceList in
                 
                 self.locationList = choiceList

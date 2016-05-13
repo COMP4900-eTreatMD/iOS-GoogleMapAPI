@@ -40,6 +40,8 @@ class FinalIteration2DetailViewController: UIViewController{
     @IBOutlet weak var locationPhoneNumber  : UIButton!
     @IBOutlet weak var locationCategory     : UILabel!
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "ReachabilityStatusChanged", name: "ReachStatusChanged", object: nil)
