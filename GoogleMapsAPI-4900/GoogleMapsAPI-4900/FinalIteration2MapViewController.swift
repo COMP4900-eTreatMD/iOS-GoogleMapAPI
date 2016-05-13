@@ -23,6 +23,7 @@ class FinalIteration2MapViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+          NSNotificationCenter.defaultCenter().addObserver(self, selector: "ReachabilityStatusChanged", name: "ReachStatusChanged", object: nil)
         setMap(lat, long: long)
     }
     
@@ -34,6 +35,20 @@ class FinalIteration2MapViewController: UIViewController{
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
         
+    }
+    
+    func ReachabilityStatusChanged(){
+        if(reachabilityStatus == kNOTREACHABLE ){
+            let alertController = UIAlertController(title: "Lost Internet Connection", message:
+                "Please connect to internet to use the app", preferredStyle: .ActionSheet)
+            self.presentViewController(alertController, animated: true, completion: nil)
+        }else if reachabilityStatus == kREACHABLE {
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
+    }
+    
+    deinit{
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "ReachStatusChanged", object: nil)
     }
     
     func setMap(lat : Double, long : Double){

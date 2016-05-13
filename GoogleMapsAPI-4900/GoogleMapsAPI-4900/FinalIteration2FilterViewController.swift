@@ -29,9 +29,25 @@ class FinalIteration2FilterViewController: UIViewController,UIPickerViewDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "ReachabilityStatusChanged", name: "ReachStatusChanged", object: nil)
         picker.dataSource = self
         picker.delegate = self
 
+    }
+    
+    func ReachabilityStatusChanged(){
+        if(reachabilityStatus == kNOTREACHABLE ){
+            let alertController = UIAlertController(title: "Lost Internet Connection", message:
+                "Please connect to internet to use the app", preferredStyle: .ActionSheet)
+            self.presentViewController(alertController, animated: true, completion: nil)
+        }else if reachabilityStatus == kREACHABLE {
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
+    }
+    
+    deinit{
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "ReachStatusChanged", object: nil)
     }
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
