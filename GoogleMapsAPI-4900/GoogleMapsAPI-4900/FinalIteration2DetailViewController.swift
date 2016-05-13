@@ -33,7 +33,7 @@ class FinalIteration2DetailViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "ReachabilityStatusChanged", name: "ReachStatusChanged", object: nil)
         locationTitle.title     = location.name
         locationName.text       = location.name
         locationAddress.text    = location.vicinity
@@ -42,6 +42,20 @@ class FinalIteration2DetailViewController: UIViewController{
         locationImage.image = util.properIcon(location)
         
         setMap(lat,long: long)
+    }
+    
+    func ReachabilityStatusChanged(){
+        if(reachabilityStatus == kNOTREACHABLE ){
+            let alertController = UIAlertController(title: "Lost Internet Connection", message:
+                "Please connect to internet to use the app", preferredStyle: .ActionSheet)
+            self.presentViewController(alertController, animated: true, completion: nil)
+        }else if reachabilityStatus == kREACHABLE {
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
+    }
+    
+    deinit{
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "ReachStatusChanged", object: nil)
     }
     
     override func viewDidAppear(animated: Bool) {
