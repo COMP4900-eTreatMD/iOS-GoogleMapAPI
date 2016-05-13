@@ -16,6 +16,7 @@ class FinalIteration2FilterViewController: UIViewController, UITextFieldDelegate
                                            UIPickerViewDelegate,UIPickerViewDataSource{
     
     @IBOutlet weak var picker: UIPickerView!
+    @IBOutlet weak var specialization: UIPickerView!
     
     var long                 : Double!
     var lat                  : Double!
@@ -29,8 +30,6 @@ class FinalIteration2FilterViewController: UIViewController, UITextFieldDelegate
     
     var filter          : String            = "All"
     
-    @IBOutlet weak var specilization: UITextField!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,8 +37,6 @@ class FinalIteration2FilterViewController: UIViewController, UITextFieldDelegate
         picker.dataSource = self
         picker.delegate = self
         
-        specilization.hidden = true
-        specilization.delegate = self
 
     }
     
@@ -57,11 +54,20 @@ class FinalIteration2FilterViewController: UIViewController, UITextFieldDelegate
         NSNotificationCenter.defaultCenter().removeObserver(self, name: "ReachStatusChanged", object: nil)
     }
     
+    // MARK: -- UI PICKER
+    
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
     }
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        /*
+        if(pickerView == picker){
+            print("PICKER")
+        } else {
+            print("SPEC")
+        }'
+         */
         return filterData.count
     }
     
@@ -71,10 +77,14 @@ class FinalIteration2FilterViewController: UIViewController, UITextFieldDelegate
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if(filterData[row] == "Doctor"){
-            specilization.hidden = false
+            //specilization.hidden = false
+        }
+        if(pickerView == picker){
+            print("PICKER")
+        } else {
+            print("SPEC")
         }
         
-        print(filterData[row])
         index = row
     }
     
@@ -94,7 +104,7 @@ class FinalIteration2FilterViewController: UIViewController, UITextFieldDelegate
         
         print("segue")
         if(filterData[index] == "Doctor"){
-            specilizationString = specilization.text!
+            //specilizationString = specilization.text!
         }
         
         yourNextViewController.lat          = lat!
