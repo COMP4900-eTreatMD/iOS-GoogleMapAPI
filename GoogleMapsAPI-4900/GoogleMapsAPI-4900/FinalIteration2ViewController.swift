@@ -14,7 +14,6 @@ import MBProgressHUD
 
 class FinalIteration2ViewController: UIViewController,
                                      UITableViewDelegate, UITableViewDataSource{
-
     
     @IBOutlet weak var filterType: UILabel!
     @IBOutlet weak var myTable: UITableView!
@@ -25,22 +24,33 @@ class FinalIteration2ViewController: UIViewController,
     var filter          : String             = "All"
     var currentLocation : CLLocation!
     
-    var names = ["1","2","3"]
-    var address = ["123","123","123"]
-    var category = ["123","123","123"]
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         currentLocation = CLLocation(latitude: lat,longitude: long)
         filterType.text = filter + " Types"
-
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "ReachabilityStatusChanged", name: "ReachStatusChanged", object: nil)
+        currentLocation = CLLocation(latitude: lat,longitude: long)
     }
     
     override func viewDidAppear(animated: Bool) {
         
     }
     
+    func ReachabilityStatusChanged(){
+        if(reachabilityStatus == kNOTREACHABLE ){
+            let alertController = UIAlertController(title: "Lost Internet Connection", message:
+                "Please connect to internet to use the app", preferredStyle: .ActionSheet)
+            self.presentViewController(alertController, animated: true, completion: nil)
+        }else if reachabilityStatus == kREACHABLE {
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
+    }
+    
+    deinit{
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "ReachStatusChanged", object: nil)
+    }
+    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

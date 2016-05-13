@@ -30,7 +30,7 @@ class FinalIteration2DetailViewController: UIViewController{
     @IBOutlet weak var locationImage        : UIImageView!
     @IBOutlet weak var locationName         : UILabel!
     @IBOutlet weak var locationAddress      : UILabel!
-    @IBOutlet weak var locationPhoneNumber  : UIButton!
+    @IBOutlet weak var locationPhoneNumber: UIButton!
     @IBOutlet weak var locationCategory     : UILabel!
     
     override func viewDidLoad() {
@@ -113,15 +113,19 @@ class FinalIteration2DetailViewController: UIViewController{
             }
         });
     }
-    
+
     @IBAction func callPhone(sender: AnyObject) {
-        let phoneNumber = "tel://" + locationPhoneNumber.titleLabel!.text!
-        //let phoneNumber = "tel://778-996-0036"
+        
+        let firstPart   = locationPhoneNumber.titleLabel!.text!.characters.prefix(5)
+        let secondPart  = locationPhoneNumber.titleLabel!.text!.characters.suffix(8)
+        
+        let phoneNumber = "tel://" + String(firstPart) + "-" + String(secondPart)
+        
         if let url = NSURL(string: phoneNumber) {
             UIApplication.sharedApplication().openURL(url)
         }
     }
-
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         let yourNextViewController = (segue.destinationViewController as! FinalIteration2ViewController)
