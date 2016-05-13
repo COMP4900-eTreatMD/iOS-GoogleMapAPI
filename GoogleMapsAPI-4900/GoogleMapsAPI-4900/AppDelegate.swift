@@ -11,8 +11,8 @@ import GoogleMaps
 import CoreLocation
 
 var reachability: Reachability?
-let REACHABLE = "reachable"
-let NOTREACHABLE = "NotReachable"
+let kREACHABLE = "Reachable"
+let kNOTREACHABLE = "NotReachable"
 var reachabilityStatus: String?
 
 @UIApplicationMain
@@ -24,7 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "reachabilityChanged:", name: kReachabilityChangedNotification, object: nil)
+      
         GMSServices.provideAPIKey("AIzaSyBPqY-Cb5udIHNCIwwWQi3qmdtXMQbCCGw")
+       
         internetReach = Reachability.reachabilityForInternetConnection()
         internetReach?.startNotifier()
         if internetReach != nil{
@@ -35,13 +37,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //AIzaSyBWQyWLKeu_VGL2RgXeyM-_TgBSTDP9-Fs
         
-        
-        
         return true
     }
     
     func reachabilityChanged(notification: NSNotification){
-        print("status changed")
         reachability = notification.object as? Reachability
         self.statusChangeWithReachability(reachability!)
     }
@@ -49,11 +48,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func statusChangeWithReachability(currentStatus: Reachability){
         let networkStatus: NetworkStatus = currentStatus.currentReachabilityStatus()
         if(networkStatus.rawValue == NotReachable.rawValue){
-            print("Network not available")
-            reachabilityStatus = NOTREACHABLE
-        }else if(networkStatus == ReachableViaWiFi || networkStatus == ReachableViaWWAN){
-            print("network is okay")
-            reachabilityStatus = REACHABLE
+            reachabilityStatus = kNOTREACHABLE
+        }else if(networkStatus.rawValue == ReachableViaWiFi.rawValue || networkStatus.rawValue == ReachableViaWWAN.rawValue){
+            reachabilityStatus = kREACHABLE
         }
         NSNotificationCenter.defaultCenter().postNotificationName("ReachStatusChanged", object: nil)
     }

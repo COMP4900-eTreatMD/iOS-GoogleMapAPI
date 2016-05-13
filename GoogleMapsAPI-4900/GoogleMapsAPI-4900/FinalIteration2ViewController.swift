@@ -22,31 +22,28 @@ class FinalIteration2ViewController: UIViewController, UITextFieldDelegate,
     var lat             : Double!
     var locationList    : Array<Location>    = Array<Location>()
     
-    var names = ["1","2","3"]
-    var address = ["123","123","123"]
-    var category = ["123","123","123"]
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "ReachabilityStatusChanged", name: "ReachStatusChanged", object: nil)
         self.filterTextField.delegate = self;
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reachabilityStatusChanged", name: "ReachStatusChanged", object: nil)
-    }
-    
-    deinit{
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: "ReachStatusChanged", object: nil)
     }
     
     override func viewDidAppear(animated: Bool) {
         
     }
     
-    func reachabilityStatusChanged(){
-        if(reachability == NOTREACHABLE){
-            print("not good")
-        }else if(reachability == REACHABLE){
-            print("good")
+    func ReachabilityStatusChanged(){
+        if(reachabilityStatus == kNOTREACHABLE ){
+            let alertController = UIAlertController(title: "Lost Internet Connection", message:
+                "Please connect to internet to use the app", preferredStyle: .ActionSheet)
+            self.presentViewController(alertController, animated: true, completion: nil)
+        }else if reachabilityStatus == kREACHABLE {
+            self.dismissViewControllerAnimated(true, completion: nil)
         }
+    }
+    
+    deinit{
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "ReachStatusChanged", object: nil)
     }
     
     override func didReceiveMemoryWarning() {
