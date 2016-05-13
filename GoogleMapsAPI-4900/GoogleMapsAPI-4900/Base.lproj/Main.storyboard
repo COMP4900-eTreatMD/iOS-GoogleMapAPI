@@ -221,11 +221,6 @@
                                     <navigationItem title="Search" id="0Do-vC-HKe"/>
                                 </items>
                             </navigationBar>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="All Types" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F58-kO-g6k">
-                                <rect key="frame" x="-25" y="-30" width="97" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ePr-hF-Izw">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <constraints>
@@ -386,45 +381,48 @@
                                     <segue destination="IfK-jU-nZX" kind="show" identifier="goToFilterViewController" id="KLC-28-uDY"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All Types" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mkl-vI-hEp">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="140" y="79" width="114" height="21"/>
+                                </variation>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="rc0-bH-eGi" secondAttribute="trailing" id="5cL-O7-Jcx"/>
                             <constraint firstItem="ePr-hF-Izw" firstAttribute="trailing" secondItem="PPR-6s-vph" secondAttribute="trailingMargin" id="BBX-6i-aDM"/>
                             <constraint firstItem="rc0-bH-eGi" firstAttribute="leading" secondItem="PPR-6s-vph" secondAttribute="leading" id="CV2-ro-N72"/>
-                            <constraint firstItem="acJ-HY-mML" firstAttribute="top" secondItem="F58-kO-g6k" secondAttribute="top" id="JMx-lL-hPQ"/>
                             <constraint firstItem="acJ-HY-mML" firstAttribute="leading" secondItem="PPR-6s-vph" secondAttribute="leadingMargin" id="JOc-og-S5v"/>
                             <constraint firstItem="acJ-HY-mML" firstAttribute="baseline" secondItem="ePr-hF-Izw" secondAttribute="baseline" id="Omv-Wb-dyc"/>
                             <constraint firstItem="rc0-bH-eGi" firstAttribute="top" secondItem="3LZ-b5-099" secondAttribute="bottom" id="SYV-sO-qeK"/>
                             <constraint firstItem="npI-VJ-c0y" firstAttribute="top" secondItem="acJ-HY-mML" secondAttribute="bottom" constant="8" symbolic="YES" id="Urw-ma-KVn"/>
                             <constraint firstItem="rc0-bH-eGi" firstAttribute="leading" secondItem="npI-VJ-c0y" secondAttribute="leading" id="hNk-4U-eAz"/>
                             <constraint firstItem="rc0-bH-eGi" firstAttribute="trailing" secondItem="npI-VJ-c0y" secondAttribute="trailing" id="kKf-Jy-gaE"/>
-                            <constraint firstItem="ePr-hF-Izw" firstAttribute="leading" secondItem="F58-kO-g6k" secondAttribute="trailing" constant="34" id="qWO-Xl-PKb"/>
                             <constraint firstItem="npI-VJ-c0y" firstAttribute="bottom" secondItem="5Wf-vy-yZ4" secondAttribute="top" id="qZV-NU-VKD"/>
-                            <constraint firstItem="rc0-bH-eGi" firstAttribute="centerX" secondItem="F58-kO-g6k" secondAttribute="centerX" id="t5b-zh-44z"/>
                             <constraint firstItem="acJ-HY-mML" firstAttribute="top" secondItem="rc0-bH-eGi" secondAttribute="bottom" constant="11" id="vbj-3f-jJq"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="rc0-bH-eGi"/>
-                                <exclude reference="F58-kO-g6k"/>
                                 <exclude reference="ePr-hF-Izw"/>
                                 <exclude reference="npI-VJ-c0y"/>
                                 <exclude reference="acJ-HY-mML"/>
+                                <exclude reference="mkl-vI-hEp"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="JMx-lL-hPQ"/>
                                 <exclude reference="JOc-og-S5v"/>
                                 <exclude reference="Omv-Wb-dyc"/>
                                 <exclude reference="vbj-3f-jJq"/>
                                 <exclude reference="BBX-6i-aDM"/>
-                                <exclude reference="qWO-Xl-PKb"/>
                                 <exclude reference="5cL-O7-Jcx"/>
                                 <exclude reference="CV2-ro-N72"/>
                                 <exclude reference="SYV-sO-qeK"/>
                                 <exclude reference="hNk-4U-eAz"/>
                                 <exclude reference="kKf-Jy-gaE"/>
-                                <exclude reference="t5b-zh-44z"/>
                                 <exclude reference="Urw-ma-KVn"/>
                                 <exclude reference="qZV-NU-VKD"/>
                             </mask>
@@ -432,31 +430,28 @@
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="rc0-bH-eGi"/>
-                                <include reference="F58-kO-g6k"/>
                                 <include reference="ePr-hF-Izw"/>
                                 <include reference="npI-VJ-c0y"/>
                                 <include reference="acJ-HY-mML"/>
+                                <include reference="mkl-vI-hEp"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="JMx-lL-hPQ"/>
                                 <include reference="JOc-og-S5v"/>
                                 <include reference="Omv-Wb-dyc"/>
                                 <include reference="vbj-3f-jJq"/>
                                 <include reference="BBX-6i-aDM"/>
-                                <include reference="qWO-Xl-PKb"/>
                                 <include reference="5cL-O7-Jcx"/>
                                 <include reference="CV2-ro-N72"/>
                                 <include reference="SYV-sO-qeK"/>
                                 <include reference="hNk-4U-eAz"/>
                                 <include reference="kKf-Jy-gaE"/>
-                                <include reference="t5b-zh-44z"/>
                                 <include reference="Urw-ma-KVn"/>
                                 <include reference="qZV-NU-VKD"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="filterTextField" destination="F58-kO-g6k" id="eQQ-aH-i7Z"/>
+                        <outlet property="filterType" destination="mkl-vI-hEp" id="TAC-q7-1K0"/>
                         <outlet property="myTable" destination="npI-VJ-c0y" id="U0Q-Uf-gSr"/>
                     </connections>
                 </viewController>

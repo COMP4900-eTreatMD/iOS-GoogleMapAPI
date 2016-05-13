@@ -24,6 +24,8 @@ class FinalIteration2DetailViewController: UIViewController{
     
     var util            : Utility = Utility()
     
+    var filter          : String            = "All Types"
+    
     @IBOutlet weak var locationTitle        : UINavigationItem!
     @IBOutlet weak var locationImage        : UIImageView!
     @IBOutlet weak var locationName         : UILabel!
@@ -119,6 +121,7 @@ class FinalIteration2DetailViewController: UIViewController{
         yourNextViewController.lat          = lat!
         yourNextViewController.long         = long!
         yourNextViewController.locationList = locationList
+        yourNextViewController.filter       = filter
         
     }
     

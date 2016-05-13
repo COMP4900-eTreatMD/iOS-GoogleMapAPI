@@ -17,6 +17,7 @@ class FinalIteration2MapViewController: UIViewController{
     var long            : Double!
     var lat             : Double!
     var locationList    : Array<Location>    = Array<Location>()
+    var filter          : String             = "All Types"
     
     var mapView         : GMSMapView!
     
@@ -80,6 +81,7 @@ class FinalIteration2MapViewController: UIViewController{
         yourNextViewController.lat          = lat!
         yourNextViewController.long         = long!
         yourNextViewController.locationList = locationList
+        yourNextViewController.filter       = filter
         
     }
     

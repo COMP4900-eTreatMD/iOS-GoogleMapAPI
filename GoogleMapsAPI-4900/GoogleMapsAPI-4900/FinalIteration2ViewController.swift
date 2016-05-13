@@ -12,15 +12,17 @@ import SwiftyJSON
 import GoogleMaps
 import MBProgressHUD
 
-class FinalIteration2ViewController: UIViewController, UITextFieldDelegate,
+class FinalIteration2ViewController: UIViewController,
                                      UITableViewDelegate, UITableViewDataSource{
+
     
-    @IBOutlet weak var filterTextField: UITextField!
+    @IBOutlet weak var filterType: UILabel!
     @IBOutlet weak var myTable: UITableView!
     
     var long            : Double!
     var lat             : Double!
     var locationList    : Array<Location>    = Array<Location>()
+    var filter          : String             = "All Types"
     var currentLocation : CLLocation!
     
     var names = ["1","2","3"]
@@ -30,8 +32,8 @@ class FinalIteration2ViewController: UIViewController, UITextFieldDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.filterTextField.delegate = self;
         currentLocation = CLLocation(latitude: lat,longitude: long)
+        filterType.text = filter
 
     }
     
@@ -95,6 +97,7 @@ class FinalIteration2ViewController: UIViewController, UITextFieldDelegate,
             yourNextViewController.lat          = lat!
             yourNextViewController.long         = long!
             yourNextViewController.locationList = locationList
+            yourNextViewController.filter       = filter
         }
         
         if(segue.identifier == "goToFinalIteration2DetailViewController"){
@@ -105,6 +108,7 @@ class FinalIteration2ViewController: UIViewController, UITextFieldDelegate,
                 viewController.long         = long!
                 viewController.locationList = locationList
                 viewController.location     = locationList[indexPath.row]
+                viewController.filter       = filter
                 
                 viewController.initialSetUp()
             }
@@ -116,17 +120,10 @@ class FinalIteration2ViewController: UIViewController, UITextFieldDelegate,
             yourNextViewController.lat          = lat!
             yourNextViewController.long         = long!
             yourNextViewController.locationList = locationList
+            yourNextViewController.filter       = filter
         }
         
         
-    }
-    
-    
-    // MARK: -- TextField
-    
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        self.view.endEditing(true)
-        return false
     }
     
     // MARK: -- TableView
