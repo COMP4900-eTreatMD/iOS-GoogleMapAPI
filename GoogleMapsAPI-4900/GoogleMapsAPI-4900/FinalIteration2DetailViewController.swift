@@ -61,7 +61,7 @@ class FinalIteration2DetailViewController: UIViewController{
         
         camera      = GMSCameraPosition.cameraWithLatitude(location.lat, longitude: location.long,
                                                            zoom: 16)
-        boundaries  = CGRectMake(0,200,606,606)
+        boundaries  = CGRectMake(0,200,400,466)
         
         mapView                     = GMSMapView.mapWithFrame(boundaries!, camera: camera!)
         mapView.myLocationEnabled   = true
