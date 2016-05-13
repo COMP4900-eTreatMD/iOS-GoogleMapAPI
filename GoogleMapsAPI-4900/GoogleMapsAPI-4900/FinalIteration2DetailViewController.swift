@@ -24,11 +24,13 @@ class FinalIteration2DetailViewController: UIViewController{
     
     var util            : Utility = Utility()
     
+    var filter          : String            = "All"
+    
     @IBOutlet weak var locationTitle        : UINavigationItem!
     @IBOutlet weak var locationImage        : UIImageView!
     @IBOutlet weak var locationName         : UILabel!
     @IBOutlet weak var locationAddress      : UILabel!
-    @IBOutlet weak var locationPhoneNumber  : UILabel!
+    @IBOutlet weak var locationPhoneNumber: UIButton!
     @IBOutlet weak var locationCategory     : UILabel!
     
     override func viewDidLoad() {
@@ -75,7 +77,7 @@ class FinalIteration2DetailViewController: UIViewController{
         
         camera      = GMSCameraPosition.cameraWithLatitude(location.lat, longitude: location.long,
                                                            zoom: 16)
-        boundaries  = CGRectMake(0,200,606,606)
+        boundaries  = CGRectMake(0,200,400,466)
         
         mapView                     = GMSMapView.mapWithFrame(boundaries!, camera: camera!)
         mapView.myLocationEnabled   = true
@@ -121,9 +123,21 @@ class FinalIteration2DetailViewController: UIViewController{
         dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), {
             // Do something...
             self.util.getLocationDetails(self.location) { phoneNumber in
-                self.locationPhoneNumber.text = phoneNumber
+                self.locationPhoneNumber.setTitle(phoneNumber, forState: .Normal)
             }
         });
+    }
+
+    @IBAction func callPhone(sender: AnyObject) {
+        
+        let firstPart   = locationPhoneNumber.titleLabel!.text!.characters.prefix(5)
+        let secondPart  = locationPhoneNumber.titleLabel!.text!.characters.suffix(8)
+        
+        let phoneNumber = "tel://" + String(firstPart) + "-" + String(secondPart)
+        
+        if let url = NSURL(string: phoneNumber) {
+            UIApplication.sharedApplication().openURL(url)
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -133,6 +147,7 @@ class FinalIteration2DetailViewController: UIViewController{
         yourNextViewController.lat          = lat!
         yourNextViewController.long         = long!
         yourNextViewController.locationList = locationList
+        yourNextViewController.filter       = filter
         
     }
     

@@ -25,6 +25,8 @@ class FinalIteration2FilterViewController: UIViewController,UIPickerViewDelegate
 
     var filterData = ["All","Hospital", "Pharmacy", "Physiotherapist", "Docotor"];
     
+    var filter          : String            = "All"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -83,6 +85,7 @@ class FinalIteration2FilterViewController: UIViewController,UIPickerViewDelegate
         yourNextViewController.lat          = lat!
         yourNextViewController.long         = long!
         yourNextViewController.locationList = locationList
+        yourNextViewController.filter       = filterData[index]
         
         yourNextViewController.filterResults(filterData[index])
         
