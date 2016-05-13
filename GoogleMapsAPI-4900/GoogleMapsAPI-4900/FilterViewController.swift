@@ -81,7 +81,7 @@ class FilterViewController: UIViewController,UIPickerViewDataSource, UIPickerVie
         
         util                    = Utility()
         yourNextViewController  = (segue.destinationViewController as! FinalViewController)
-        
+
         util!.getAllLocations(self.lat!, long: self.long!, name: "", type: types) {
             choiceList in
 
