@@ -154,6 +154,43 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uwh-xq-IyX">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="0.98431372549999996" green="0.41960784309999999" blue="0.035294117649999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="360" id="QqG-nP-vMa"/>
+                                    <constraint firstAttribute="height" constant="47" id="dEy-NT-sRb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Filter">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="QqG-nP-vMa"/>
+                                        <exclude reference="dEy-NT-sRb"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="QqG-nP-vMa"/>
+                                        <include reference="dEy-NT-sRb"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <segue destination="EcP-CN-E1n" kind="show" id="lCe-CF-Sqi"/>
+                                </connections>
+                            </button>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xcI-Ou-tg9">
+                                <rect key="frame" x="0.0" y="-216" width="320" height="216"/>
+                                <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="290" width="400" height="216"/>
+                                </variation>
+                                <connections>
+                                    <outlet property="dataSource" destination="IfK-jU-nZX" id="ULH-QU-2nf"/>
+                                    <outlet property="delegate" destination="IfK-jU-nZX" id="pB5-4r-696"/>
+                                </connections>
+                            </pickerView>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dc6-pU-0uU">
                                 <rect key="frame" x="0.0" y="-216" width="320" height="216"/>
                                 <constraints>
@@ -164,7 +201,8 @@
                                         <exclude reference="VGR-1D-VJY"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact">
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="128" width="400" height="175"/>
                                     <mask key="constraints">
                                         <include reference="VGR-1D-VJY"/>
                                     </mask>
@@ -174,84 +212,55 @@
                                     <outlet property="delegate" destination="IfK-jU-nZX" id="5gO-rE-lIg"/>
                                 </connections>
                             </pickerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uwh-xq-IyX">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <color key="backgroundColor" red="0.98431372549999996" green="0.41960784309999999" blue="0.035294117649999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="47" id="dEy-NT-sRb"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Filter">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="dEy-NT-sRb"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
-                                    <rect key="frame" x="20" y="514" width="360" height="47"/>
-                                    <mask key="constraints">
-                                        <include reference="dEy-NT-sRb"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <segue destination="EcP-CN-E1n" kind="show" id="lCe-CF-Sqi"/>
-                                </connections>
-                            </button>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xcI-Ou-tg9">
-                                <rect key="frame" x="0.0" y="-216" width="320" height="216"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="285" width="400" height="216"/>
-                                </variation>
-                                <connections>
-                                    <outlet property="dataSource" destination="IfK-jU-nZX" id="ULH-QU-2nf"/>
-                                    <outlet property="delegate" destination="IfK-jU-nZX" id="pB5-4r-696"/>
-                                </connections>
-                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="COg-LR-6qa" secondAttribute="trailing" id="DV5-CP-GEy"/>
                             <constraint firstItem="yVj-YC-IUE" firstAttribute="top" secondItem="uwh-xq-IyX" secondAttribute="bottom" constant="39" id="E9u-JH-j21"/>
                             <constraint firstItem="COg-LR-6qa" firstAttribute="trailing" secondItem="dc6-pU-0uU" secondAttribute="trailing" id="HLp-RA-Z2f"/>
+                            <constraint firstItem="xcI-Ou-tg9" firstAttribute="centerX" secondItem="2GY-gQ-Se3" secondAttribute="centerX" id="Nkh-LQ-FgU"/>
                             <constraint firstItem="COg-LR-6qa" firstAttribute="leading" secondItem="dc6-pU-0uU" secondAttribute="leading" id="Tgu-G0-2xP"/>
                             <constraint firstItem="dc6-pU-0uU" firstAttribute="top" secondItem="COg-LR-6qa" secondAttribute="bottom" constant="62" id="iE8-W9-W9M"/>
                             <constraint firstItem="COg-LR-6qa" firstAttribute="leading" secondItem="2GY-gQ-Se3" secondAttribute="leading" id="obi-HI-rdl"/>
                             <constraint firstItem="COg-LR-6qa" firstAttribute="top" secondItem="9da-fi-QSB" secondAttribute="bottom" id="sIg-EI-OHv"/>
+                            <constraint firstItem="uwh-xq-IyX" firstAttribute="centerX" secondItem="2GY-gQ-Se3" secondAttribute="centerX" id="wwG-eK-VkH"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="COg-LR-6qa"/>
-                                <exclude reference="dc6-pU-0uU"/>
                                 <exclude reference="uwh-xq-IyX"/>
                                 <exclude reference="xcI-Ou-tg9"/>
+                                <exclude reference="dc6-pU-0uU"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="iE8-W9-W9M"/>
-                                <exclude reference="E9u-JH-j21"/>
                                 <exclude reference="DV5-CP-GEy"/>
                                 <exclude reference="HLp-RA-Z2f"/>
                                 <exclude reference="Tgu-G0-2xP"/>
                                 <exclude reference="obi-HI-rdl"/>
                                 <exclude reference="sIg-EI-OHv"/>
+                                <exclude reference="iE8-W9-W9M"/>
+                                <exclude reference="Nkh-LQ-FgU"/>
+                                <exclude reference="wwG-eK-VkH"/>
+                                <exclude reference="E9u-JH-j21"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="COg-LR-6qa"/>
-                                <include reference="dc6-pU-0uU"/>
                                 <include reference="uwh-xq-IyX"/>
                                 <include reference="xcI-Ou-tg9"/>
+                                <include reference="dc6-pU-0uU"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="iE8-W9-W9M"/>
-                                <include reference="E9u-JH-j21"/>
                                 <include reference="DV5-CP-GEy"/>
                                 <include reference="HLp-RA-Z2f"/>
                                 <include reference="Tgu-G0-2xP"/>
                                 <include reference="obi-HI-rdl"/>
                                 <include reference="sIg-EI-OHv"/>
+                                <include reference="iE8-W9-W9M"/>
+                                <include reference="Nkh-LQ-FgU"/>
+                                <include reference="wwG-eK-VkH"/>
+                                <include reference="E9u-JH-j21"/>
                             </mask>
                         </variation>
                     </view>
