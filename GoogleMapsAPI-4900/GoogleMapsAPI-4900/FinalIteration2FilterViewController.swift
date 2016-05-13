@@ -12,7 +12,8 @@ import SwiftyJSON
 import GoogleMaps
 import MBProgressHUD
 
-class FinalIteration2FilterViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource{
+class FinalIteration2FilterViewController: UIViewController, UITextFieldDelegate,
+                                           UIPickerViewDelegate,UIPickerViewDataSource{
     
     @IBOutlet weak var picker: UIPickerView!
     
@@ -22,10 +23,13 @@ class FinalIteration2FilterViewController: UIViewController,UIPickerViewDelegate
     var index                : Int      = 0
     
     var locationList         : Array<Location>    = Array<Location>()
+    var specilizationString  : String   = ""
 
-    var filterData = ["All","Hospital", "Pharmacy", "Physiotherapist", "Docotor"];
+    var filterData = ["All","Hospital", "Pharmacy", "Physiotherapist", "Doctor"];
     
     var filter          : String            = "All"
+    
+    @IBOutlet weak var specilization: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +37,9 @@ class FinalIteration2FilterViewController: UIViewController,UIPickerViewDelegate
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "ReachabilityStatusChanged", name: "ReachStatusChanged", object: nil)
         picker.dataSource = self
         picker.delegate = self
+        
+        specilization.hidden = true
+        specilization.delegate = self
 
     }
     
@@ -63,6 +70,11 @@ class FinalIteration2FilterViewController: UIViewController,UIPickerViewDelegate
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if(filterData[row] == "Doctor"){
+            specilization.hidden = false
+        }
+        
+        print(filterData[row])
         index = row
     }
     
@@ -76,19 +88,27 @@ class FinalIteration2FilterViewController: UIViewController,UIPickerViewDelegate
         
     }
     
-
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         let yourNextViewController = (segue.destinationViewController as! FinalIteration2ViewController)
+        
+        print("segue")
+        if(filterData[index] == "Doctor"){
+            specilizationString = specilization.text!
+        }
         
         yourNextViewController.lat          = lat!
         yourNextViewController.long         = long!
         yourNextViewController.locationList = locationList
         yourNextViewController.filter       = filterData[index]
         
-        yourNextViewController.filterResults(filterData[index])
+        yourNextViewController.filterResults(filterData[index],name: specilizationString)
         
+    }
+                                            
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
     
 }
