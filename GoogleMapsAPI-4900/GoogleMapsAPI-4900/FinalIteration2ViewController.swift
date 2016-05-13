@@ -22,7 +22,7 @@ class FinalIteration2ViewController: UIViewController,
     var long            : Double!
     var lat             : Double!
     var locationList    : Array<Location>    = Array<Location>()
-    var filter          : String             = "All Types"
+    var filter          : String             = "All"
     var currentLocation : CLLocation!
     
     var names = ["1","2","3"]
@@ -33,7 +33,7 @@ class FinalIteration2ViewController: UIViewController,
         super.viewDidLoad()
         
         currentLocation = CLLocation(latitude: lat,longitude: long)
-        filterType.text = filter
+        filterType.text = filter + " Types"
 
     }
     

@@ -25,7 +25,7 @@ class FinalIteration2FilterViewController: UIViewController,UIPickerViewDelegate
 
     var filterData = ["All","Hospital", "Pharmacy", "Physiotherapist", "Docotor"];
     
-    var filter          : String            = "All Types"
+    var filter          : String            = "All"
     
     override func viewDidLoad() {
         super.viewDidLoad()

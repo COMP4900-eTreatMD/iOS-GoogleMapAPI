@@ -24,13 +24,13 @@ class FinalIteration2DetailViewController: UIViewController{
     
     var util            : Utility = Utility()
     
-    var filter          : String            = "All Types"
+    var filter          : String            = "All"
     
     @IBOutlet weak var locationTitle        : UINavigationItem!
     @IBOutlet weak var locationImage        : UIImageView!
     @IBOutlet weak var locationName         : UILabel!
     @IBOutlet weak var locationAddress      : UILabel!
-    @IBOutlet weak var locationPhoneNumber  : UILabel!
+    @IBOutlet weak var locationPhoneNumber  : UIButton!
     @IBOutlet weak var locationCategory     : UILabel!
     
     override func viewDidLoad() {
@@ -109,11 +109,19 @@ class FinalIteration2DetailViewController: UIViewController{
         dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), {
             // Do something...
             self.util.getLocationDetails(self.location) { phoneNumber in
-                self.locationPhoneNumber.text = phoneNumber
+                self.locationPhoneNumber.setTitle(phoneNumber, forState: .Normal)
             }
         });
     }
     
+    @IBAction func callPhone(sender: AnyObject) {
+        let phoneNumber = "tel://" + locationPhoneNumber.titleLabel!.text!
+        //let phoneNumber = "tel://778-996-0036"
+        if let url = NSURL(string: phoneNumber) {
+            UIApplication.sharedApplication().openURL(url)
+        }
+    }
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         let yourNextViewController = (segue.destinationViewController as! FinalIteration2ViewController)
