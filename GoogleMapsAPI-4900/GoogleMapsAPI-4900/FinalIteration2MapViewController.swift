@@ -23,7 +23,7 @@ class FinalIteration2MapViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-          NSNotificationCenter.defaultCenter().addObserver(self, selector: "ReachabilityStatusChanged", name: "ReachStatusChanged", object: nil)
+          NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FinalIteration2MapViewController.ReachabilityStatusChanged), name: "ReachStatusChanged", object: nil)
         setMap(lat, long: long)
     }
     

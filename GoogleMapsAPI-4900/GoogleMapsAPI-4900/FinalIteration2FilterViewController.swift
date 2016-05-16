@@ -22,11 +22,12 @@ class FinalIteration2FilterViewController: UIViewController, UITextFieldDelegate
     var long                 : Double!
     var lat                  : Double!
     
-    var filterIndex                : Int      = 0
-    var specIndex                  : Int      = 0
+    var filterIndex          : Int      = 0
+    
+    var specIndex            : Int      = 0
+    var specilizationString  : String   = ""
     
     var locationList         : Array<Location>    = Array<Location>()
-    var specilizationString  : String   = ""
 
     var filterData = ["All","Hospital", "Pharmacy", "Physiotherapist", "Doctor"];
     var specilizationArray = ["Audiologist","Allergist","Andrologists","Anesthesiologist","Cardiologist","Dentist","Dermatologist","Endocrinologist","Epidemiologists","Gastroenterologist","Gynecologist","Hematologist","Hepatologists","Immunologist","Internists","Neonatologist","Nephrologists","Neurologist","Neurosurgeons","Obstetrician","Oncologist","Ophthalmologist","Orthopedist","Primatologist","Parasitologist","Pathologists","Pediatrician","Physiatrist","Plastic Surgeon","Podiatrists","Psychiatrists","Pulmonologist","Radiologists","Reproductive Endocrinologist","Rheumatologist","Surgeon","Thoracic Oncologist","Urologist"]
@@ -36,12 +37,13 @@ class FinalIteration2FilterViewController: UIViewController, UITextFieldDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "ReachabilityStatusChanged", name: "ReachStatusChanged", object: nil)
-        picker.dataSource = self
-        picker.delegate = self
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FinalIteration2FilterViewController.ReachabilityStatusChanged), name: "ReachStatusChanged", object: nil)
         
-        specializationLabel.hidden = true
-        specialization.hidden = true
+        picker.dataSource   = self
+        picker.delegate     = self
+        
+        specializationLabel.hidden  = true
+        specialization.hidden       = true
     }
     
     func ReachabilityStatusChanged(){
@@ -65,13 +67,6 @@ class FinalIteration2FilterViewController: UIViewController, UITextFieldDelegate
     }
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        /*
-        if(pickerView == picker){
-            print("PICKER")
-        } else {
-            print("SPEC")
-        }'
-         */
         if(pickerView == picker){
             return filterData.count
         } else {
@@ -89,14 +84,13 @@ class FinalIteration2FilterViewController: UIViewController, UITextFieldDelegate
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if(pickerView == picker){
-            print("PICKER")
             filterIndex = row
             if(filterData[filterIndex] == "Doctor"){
-                specialization.hidden = false
-                specializationLabel.hidden = false
+                specialization.hidden       = false
+                specializationLabel.hidden  = false
             } else {
-                specialization.hidden = true
-                specializationLabel.hidden = true
+                specialization.hidden       = true
+                specializationLabel.hidden  = true
             }
         } else {
             specIndex = row
@@ -118,9 +112,8 @@ class FinalIteration2FilterViewController: UIViewController, UITextFieldDelegate
         
         let yourNextViewController = (segue.destinationViewController as! FinalIteration2ViewController)
         
-        print("segue")
         if(filterData[filterIndex] == "Doctor"){
-            specilizationString = specilizationArray[specIndex]
+            specilizationString                 = specilizationArray[specIndex]
             yourNextViewController.filter       = specilizationArray[specIndex]
         } else {
             yourNextViewController.filter       = filterData[filterIndex]
@@ -131,7 +124,6 @@ class FinalIteration2FilterViewController: UIViewController, UITextFieldDelegate
         yourNextViewController.locationList = locationList
         
         yourNextViewController.filterResults(filterData[filterIndex],name: specilizationString)
-        
     }
                                             
     func textFieldShouldReturn(textField: UITextField) -> Bool {

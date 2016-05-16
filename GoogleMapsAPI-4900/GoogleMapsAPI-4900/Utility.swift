@@ -63,6 +63,11 @@ public class Utility{
                             "rankby"    : "distance",
                             "key"       :   "AIzaSyBWQyWLKeu_VGL2RgXeyM-_TgBSTDP9-Fs",
             ]).responseJSON { response in
+                
+                
+                print(response.request)
+                
+                
                 switch response.result {
                     case .Success:
                         if let responseJSON = response.result.value {
@@ -132,7 +137,7 @@ public class Utility{
                                     }
                                 }
                                 
-                                let location = Location(placeId : placeId, name : name, lat : lat, long: long, vicinity: vicinity, rating: rating, currentlyOpen: currentlyOpen, type: type)
+                                let location = Location(placeId : placeId, name : name, lat : lat, long: long, vicinity: vicinity, rating: rating, currentlyOpen: currentlyOpen, type: type, recommended: false)
                                 
                                 locationList!.append(location)
                                 

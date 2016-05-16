@@ -11,6 +11,8 @@ import Alamofire
 import SwiftyJSON
 import GoogleMaps
 import MBProgressHUD
+import KRProgressHUD
+
 
 class FinalIteration2ViewController: UIViewController,
                                      UITableViewDelegate, UITableViewDataSource{
@@ -28,7 +30,7 @@ class FinalIteration2ViewController: UIViewController,
         super.viewDidLoad()
         currentLocation = CLLocation(latitude: lat,longitude: long)
         filterType.text = filter + " Types"
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "ReachabilityStatusChanged", name: "ReachStatusChanged", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FinalIteration2ViewController.ReachabilityStatusChanged), name: "ReachStatusChanged", object: nil)
         currentLocation = CLLocation(latitude: lat,longitude: long)
     }
     
@@ -63,14 +65,19 @@ class FinalIteration2ViewController: UIViewController,
         
         util = Utility()
         
+        KRProgressHUD.show()
+
         dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), {
             // Do something...
+            
             util!.getAllLocations(self.lat,long: self.long, name : "",
                                   type: "doctor|hospital|pharmacy|physiotherapist") {
                 choiceList in
                 
                 self.locationList = choiceList
                 self.myTable.reloadData()
+                                    
+                KRProgressHUD.dismiss()
             }
         });
     }
@@ -79,7 +86,8 @@ class FinalIteration2ViewController: UIViewController,
         let util        : Utility?
         var resultType  : String!
         
-        util = Utility()
+        util         = Utility()
+        locationList = Array<Location>()
         
         if(type == "All"){
             resultType = "doctor|hospital|pharmacy|physiotherapist"
@@ -87,14 +95,20 @@ class FinalIteration2ViewController: UIViewController,
             resultType = type.lowercaseString
         }
         
+        KRProgressHUD.show()
+        
+        // do recomended request
+        
         dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), {
             // Do something...
             util!.getAllLocations(self.lat,long: self.long, name: name,
                                   type: resultType) {
                 choiceList in
                 
-                self.locationList = choiceList
+                self.locationList += choiceList
                 self.myTable.reloadData()
+                                    
+                KRProgressHUD.dismiss()
             }
         });
     }
@@ -161,6 +175,7 @@ class FinalIteration2ViewController: UIViewController,
         cell?.name.text     = locationList[indexPath.row].name
         cell?.address.text  = locationList[indexPath.row].vicinity
         cell?.category.text = type
+        cell?.icon.image    = util.properIcon(locationList[indexPath.row])
         
         cell?.distance.text = String(format: "%.2f", distanceInMeters) + " M"
         

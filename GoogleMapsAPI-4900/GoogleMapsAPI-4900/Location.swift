@@ -18,8 +18,9 @@ class Location{
     var rating          : Int!
     var currentlyOpen   : String!
     var type            : String!
+    var recommended     : Bool!
 
-    init(placeId : String, name : String, lat : Double, long : Double, vicinity : String, rating : Int, currentlyOpen : String, type: String){
+    init(placeId : String, name : String, lat : Double, long : Double, vicinity : String, rating : Int, currentlyOpen : String, type: String, recommended : Bool){
         
         self.placeId            = placeId
         self.name               = name
@@ -29,6 +30,7 @@ class Location{
         self.rating             = rating
         self.currentlyOpen      = currentlyOpen
         self.type               = type
+        self.recommended        = recommended
 
     }
     
