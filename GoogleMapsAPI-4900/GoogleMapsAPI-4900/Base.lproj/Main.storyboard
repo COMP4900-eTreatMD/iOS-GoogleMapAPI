@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="gcu-Np-IkJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="gcu-Np-IkJ">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -205,7 +205,7 @@
                                     <constraint firstAttribute="height" constant="21" id="v0u-0J-IOD"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -247,7 +247,7 @@
                                     <constraint firstAttribute="height" constant="21" id="dcx-89-i80"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -366,29 +366,60 @@
                                 <color key="backgroundColor" red="0.20784313730000001" green="0.73725490199999999" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="barTintColor" red="0.20784313730000001" green="0.73725490199999999" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <items>
-                                    <navigationItem title="Search" id="0Do-vC-HKe"/>
+                                    <navigationItem title="Search" id="0Do-vC-HKe">
+                                        <barButtonItem key="leftBarButtonItem" style="plain" id="Szv-7o-3S4">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="acJ-HY-mML">
+                                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="35" id="kjt-gG-9Hb">
+                                                        <variation key="widthClass=compact" constant="24"/>
+                                                    </constraint>
+                                                </constraints>
+                                                <state key="normal" image="bars"/>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="kjt-gG-9Hb"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="widthClass=compact">
+                                                    <mask key="constraints">
+                                                        <include reference="kjt-gG-9Hb"/>
+                                                    </mask>
+                                                </variation>
+                                                <connections>
+                                                    <segue destination="IfK-jU-nZX" kind="show" identifier="goToFilterViewController" id="KLC-28-uDY"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" style="plain" id="e2b-FB-wAp">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ePr-hF-Izw">
+                                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="30" id="DH3-Nl-iTy">
+                                                        <variation key="widthClass=compact" constant="32"/>
+                                                    </constraint>
+                                                </constraints>
+                                                <state key="normal" image="placeholder"/>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="DH3-Nl-iTy"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="widthClass=compact">
+                                                    <mask key="constraints">
+                                                        <include reference="DH3-Nl-iTy"/>
+                                                    </mask>
+                                                </variation>
+                                                <connections>
+                                                    <segue destination="k6g-Is-RHD" kind="show" identifier="goToFinalIteration2MapViewController" id="Kyi-yo-E0g"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ePr-hF-Izw">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="DH3-Nl-iTy"/>
-                                </constraints>
-                                <state key="normal" title="Map"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="DH3-Nl-iTy"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="DH3-Nl-iTy"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <segue destination="k6g-Is-RHD" kind="show" identifier="goToFinalIteration2MapViewController" id="Kyi-yo-E0g"/>
-                                </connections>
-                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="95" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="npI-VJ-c0y">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -530,56 +561,30 @@
                                     <outlet property="delegate" destination="EcP-CN-E1n" id="N2A-BO-p2z"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="acJ-HY-mML">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="35" id="kjt-gG-9Hb"/>
-                                </constraints>
-                                <state key="normal" title="Filter"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="kjt-gG-9Hb"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="kjt-gG-9Hb"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <segue destination="IfK-jU-nZX" kind="show" identifier="goToFilterViewController" id="KLC-28-uDY"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XR6-bs-W7X">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="rc0-bH-eGi" secondAttribute="trailing" id="5wW-hv-8DX"/>
-                            <constraint firstItem="XR6-bs-W7X" firstAttribute="baseline" secondItem="ePr-hF-Izw" secondAttribute="baseline" id="65W-y9-bul"/>
                             <constraint firstItem="rc0-bH-eGi" firstAttribute="trailing" secondItem="npI-VJ-c0y" secondAttribute="trailing" id="9FY-WT-jDv"/>
+                            <constraint firstItem="npI-VJ-c0y" firstAttribute="top" secondItem="XR6-bs-W7X" secondAttribute="bottom" constant="13" id="AAU-SC-dqE"/>
                             <constraint firstItem="rc0-bH-eGi" firstAttribute="leading" secondItem="npI-VJ-c0y" secondAttribute="leading" id="ERg-pc-cUy"/>
                             <constraint firstItem="rc0-bH-eGi" firstAttribute="leading" secondItem="PPR-6s-vph" secondAttribute="leading" id="LfP-FQ-THC"/>
-                            <constraint firstItem="npI-VJ-c0y" firstAttribute="top" secondItem="acJ-HY-mML" secondAttribute="bottom" constant="8" symbolic="YES" id="MdB-pS-TWU"/>
-                            <constraint firstItem="ePr-hF-Izw" firstAttribute="trailing" secondItem="PPR-6s-vph" secondAttribute="trailingMargin" id="QV0-zQ-Vda"/>
-                            <constraint firstItem="XR6-bs-W7X" firstAttribute="leading" secondItem="acJ-HY-mML" secondAttribute="trailing" constant="8" symbolic="YES" id="S64-59-OTv"/>
                             <constraint firstItem="rc0-bH-eGi" firstAttribute="top" secondItem="3LZ-b5-099" secondAttribute="bottom" id="VEt-oG-EkA"/>
-                            <constraint firstItem="acJ-HY-mML" firstAttribute="baseline" secondItem="XR6-bs-W7X" secondAttribute="baseline" id="f8G-J3-J0G"/>
-                            <constraint firstItem="acJ-HY-mML" firstAttribute="top" secondItem="rc0-bH-eGi" secondAttribute="bottom" constant="11" id="oeJ-hA-lS4"/>
-                            <constraint firstItem="ePr-hF-Izw" firstAttribute="leading" secondItem="XR6-bs-W7X" secondAttribute="trailing" constant="8" symbolic="YES" id="pwj-fG-2pb"/>
+                            <constraint firstItem="XR6-bs-W7X" firstAttribute="top" secondItem="rc0-bH-eGi" secondAttribute="bottom" constant="15" id="aPR-sz-c9d"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="XR6-bs-W7X" secondAttribute="trailing" constant="38" id="rgN-fI-1Zn"/>
+                            <constraint firstItem="XR6-bs-W7X" firstAttribute="leading" secondItem="PPR-6s-vph" secondAttribute="leadingMargin" constant="43" id="rwi-mh-ojt"/>
                             <constraint firstItem="npI-VJ-c0y" firstAttribute="bottom" secondItem="5Wf-vy-yZ4" secondAttribute="top" id="xXh-Yh-l95"/>
-                            <constraint firstItem="acJ-HY-mML" firstAttribute="leading" secondItem="PPR-6s-vph" secondAttribute="leadingMargin" id="yV9-eD-jKl"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="rc0-bH-eGi"/>
-                                <exclude reference="ePr-hF-Izw"/>
                                 <exclude reference="npI-VJ-c0y"/>
-                                <exclude reference="acJ-HY-mML"/>
                                 <exclude reference="XR6-bs-W7X"/>
                             </mask>
                             <mask key="constraints">
@@ -588,23 +593,17 @@
                                 <exclude reference="ERg-pc-cUy"/>
                                 <exclude reference="LfP-FQ-THC"/>
                                 <exclude reference="VEt-oG-EkA"/>
-                                <exclude reference="f8G-J3-J0G"/>
-                                <exclude reference="oeJ-hA-lS4"/>
-                                <exclude reference="yV9-eD-jKl"/>
-                                <exclude reference="65W-y9-bul"/>
-                                <exclude reference="S64-59-OTv"/>
-                                <exclude reference="MdB-pS-TWU"/>
+                                <exclude reference="aPR-sz-c9d"/>
+                                <exclude reference="rgN-fI-1Zn"/>
+                                <exclude reference="rwi-mh-ojt"/>
+                                <exclude reference="AAU-SC-dqE"/>
                                 <exclude reference="xXh-Yh-l95"/>
-                                <exclude reference="QV0-zQ-Vda"/>
-                                <exclude reference="pwj-fG-2pb"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="rc0-bH-eGi"/>
-                                <include reference="ePr-hF-Izw"/>
                                 <include reference="npI-VJ-c0y"/>
-                                <include reference="acJ-HY-mML"/>
                                 <include reference="XR6-bs-W7X"/>
                             </mask>
                             <mask key="constraints">
@@ -613,15 +612,11 @@
                                 <include reference="ERg-pc-cUy"/>
                                 <include reference="LfP-FQ-THC"/>
                                 <include reference="VEt-oG-EkA"/>
-                                <include reference="f8G-J3-J0G"/>
-                                <include reference="oeJ-hA-lS4"/>
-                                <include reference="yV9-eD-jKl"/>
-                                <include reference="65W-y9-bul"/>
-                                <include reference="S64-59-OTv"/>
-                                <include reference="MdB-pS-TWU"/>
+                                <include reference="aPR-sz-c9d"/>
+                                <include reference="rgN-fI-1Zn"/>
+                                <include reference="rwi-mh-ojt"/>
+                                <include reference="AAU-SC-dqE"/>
                                 <include reference="xXh-Yh-l95"/>
-                                <include reference="QV0-zQ-Vda"/>
-                                <include reference="pwj-fG-2pb"/>
                             </mask>
                         </variation>
                     </view>
@@ -683,7 +678,7 @@
                                     <constraint firstAttribute="height" constant="35" id="j1r-FM-B5U"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -702,7 +697,7 @@
                                     <constraint firstAttribute="height" constant="21" id="FIn-ep-mvB"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -928,6 +923,8 @@
     </scenes>
     <resources>
         <image name="back-btn" width="20" height="17"/>
+        <image name="bars" width="24" height="24"/>
+        <image name="placeholder" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="lCe-CF-Sqi"/>
