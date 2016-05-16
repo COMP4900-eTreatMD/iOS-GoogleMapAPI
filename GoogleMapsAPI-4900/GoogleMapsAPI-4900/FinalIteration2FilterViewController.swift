@@ -121,12 +121,14 @@ class FinalIteration2FilterViewController: UIViewController, UITextFieldDelegate
         print("segue")
         if(filterData[filterIndex] == "Doctor"){
             specilizationString = specilizationArray[specIndex]
+            yourNextViewController.filter       = specilizationArray[specIndex]
+        } else {
+            yourNextViewController.filter       = filterData[filterIndex]
         }
         
         yourNextViewController.lat          = lat!
         yourNextViewController.long         = long!
         yourNextViewController.locationList = locationList
-        yourNextViewController.filter       = filterData[filterIndex]
         
         yourNextViewController.filterResults(filterData[filterIndex],name: specilizationString)
         
