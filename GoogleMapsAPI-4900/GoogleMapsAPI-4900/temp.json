@@ -1,0 +1,40 @@
+{
+    "results" : [
+                    {
+                        "name"          : "Jans Hospital",
+                        "Address"       : "6080 Spender Drive",
+                        "Lat"           : "49.2478548",
+                        "Long"          : "-123.0104212",
+                        "Priority"      : "2",
+                        "Phone Number"  : "(604)-773-2356",
+                        "Category"      : "Hospital"
+                    },
+                    {
+                        "name"          : "Andrew Hospital",
+                        "Address"       : "MetroTown",
+                        "Lat"           : "49.2276257",
+                        "Long"          : "-123.0075756",
+                        "Priority"      : "3",
+                        "Phone Number"  : "(604)-773-2356",
+                        "Category"      : "Hospital"
+                    },
+                    {
+                        "name"          : "Rickys Hospital",
+                        "Address"       : "BCIT",
+                        "Lat"           : "49.2487429",
+                        "Long"          : "-123.0011862",
+                        "Priority"      : "1",
+                        "Phone Number"  : "(604)-773-2356",
+                        "Category"      : "Hospital"
+                    },
+                    {
+                        "name"          : "Wayne Hospital",
+                        "Address"       : "Burnaby Hospital",
+                        "Lat"           : "49.2497287",
+                        "Long"          : "-123.01608850000002",
+                        "Priority"      : "4",
+                        "Phone Number"  : "(604)-773-2356",
+                        "Category"      : "Hospital"
+                    }
+    ]
+}
