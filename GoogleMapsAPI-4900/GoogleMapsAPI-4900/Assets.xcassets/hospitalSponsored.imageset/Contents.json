@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "drugstore.png",
+      "filename" : "hospitalSponsored.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "drugstore-1.png",
+      "filename" : "hospitalSponsored-1.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "drugstore-2.png",
+      "filename" : "hospitalSponsored-2.png",
       "scale" : "3x"
     }
   ],
