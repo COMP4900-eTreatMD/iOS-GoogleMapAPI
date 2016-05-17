@@ -11,6 +11,7 @@ import Alamofire
 import SwiftyJSON
 import GoogleMaps
 import MBProgressHUD
+import KRProgressHUD
 
 class FinalIteration2DetailViewController: UIViewController{
     
@@ -27,13 +28,6 @@ class FinalIteration2DetailViewController: UIViewController{
     var filter          : String            = "All"
     
     @IBOutlet weak var locationTitle        : UINavigationItem!
-    /*
-    @IBOutlet weak var locationImage        : UIImageView!
-    @IBOutlet weak var locationName         : UILabel!
-    @IBOutlet weak var locationAddress      : UILabel!
-    @IBOutlet weak var locationPhoneNumber: UIButton!
-    @IBOutlet weak var locationCategory     : UILabel!
-     */
     @IBOutlet weak var locationImage        : UIImageView!
     @IBOutlet weak var locationName         : UILabel!
     @IBOutlet weak var locationAddress      : UILabel!
@@ -44,13 +38,13 @@ class FinalIteration2DetailViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "ReachabilityStatusChanged", name: "ReachStatusChanged", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FinalIteration2DetailViewController.ReachabilityStatusChanged), name: "ReachStatusChanged", object: nil)
         locationTitle.title     = location.name
         
         locationName.text       = location.name
         locationAddress.text    = location.vicinity
         locationCategory.text   = util.formatString(location.type)
-        locationImage.image = util.properIcon(location)
+        locationImage.image     = util.properIcon(location)
         
         
         setMap(lat,long: long)
@@ -130,6 +124,10 @@ class FinalIteration2DetailViewController: UIViewController{
     }
     
     func initialSetUp(){
+        
+        KRProgressHUD.show()
+        
+        
         dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), {
             // Do something...
             self.util.getLocationDetails(self.location) { phoneNumber in
@@ -139,6 +137,8 @@ class FinalIteration2DetailViewController: UIViewController{
                 } else {
                     self.locationPhoneNumber.setTitle(phoneNumber, forState: .Normal)
                 }
+                
+                KRProgressHUD.dismiss()
             }
         });
     }
