@@ -1,6 +1,7 @@
 {
     "results" : [
                     {
+                        "placeId"       : "Priority1",
                         "name"          : "Jans Hospital",
                         "Address"       : "6080 Spender Drive",
                         "Lat"           : "49.2478548",
@@ -10,6 +11,7 @@
                         "Category"      : "Hospital"
                     },
                     {
+                        "placeId"       : "Priority2",
                         "name"          : "Andrew Hospital",
                         "Address"       : "MetroTown",
                         "Lat"           : "49.2276257",
@@ -19,6 +21,7 @@
                         "Category"      : "Hospital"
                     },
                     {
+                        "placeId"       : "Priority3",
                         "name"          : "Rickys Hospital",
                         "Address"       : "BCIT",
                         "Lat"           : "49.2487429",
@@ -28,6 +31,7 @@
                         "Category"      : "Hospital"
                     },
                     {
+                        "placeId"       : "Priority4",
                         "name"          : "Wayne Hospital",
                         "Address"       : "Burnaby Hospital",
                         "Lat"           : "49.2497287",

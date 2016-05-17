@@ -65,7 +65,7 @@ public class Utility{
             ]).responseJSON { response in
                 
                 
-                print(response.request)
+                //print(response.request)
                 
                 
                 switch response.result {
@@ -81,8 +81,6 @@ public class Utility{
                                 var lat             : Double    = 0.0
                                 var long            : Double    = 0.0
                                 var vicinity        : String    = ""
-                                var rating          : Int       = 0
-                                var currentlyOpen   : String    = "Unknown"
                                 var type            : String    = ""
                                 
                                 
@@ -106,18 +104,6 @@ public class Utility{
                                     vicinity = resultVicinity
                                 }
                                 
-                                if let resultRating = subJson["rating"].int {
-                                    rating = resultRating
-                                }
-                                
-                                if let resultCurrentlyOpen = subJson["opening_hours"]["open_now"].bool {
-                                    if(resultCurrentlyOpen){
-                                        currentlyOpen = "Open"
-                                    } else {
-                                        currentlyOpen = "Closed"
-                                    }
-                                }
-                                
                                 let resultTypes = subJson["types"]
                                 
                                 for (_, subJson) in resultTypes {
@@ -137,7 +123,7 @@ public class Utility{
                                     }
                                 }
                                 
-                                let location = Location(placeId : placeId, name : name, lat : lat, long: long, vicinity: vicinity, rating: rating, currentlyOpen: currentlyOpen, type: type, recommended: false)
+                                let location = Location(placeId : placeId, name : name, lat : lat, long: long, vicinity: vicinity, type: type, recommended: false, priority: 0)
                                 
                                 locationList!.append(location)
                                 
