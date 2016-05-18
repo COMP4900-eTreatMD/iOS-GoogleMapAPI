@@ -133,7 +133,7 @@ class FinalViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         cell!.address.text          = locationList[indexPath.row].vicinity
         cell!.name.text             = locationList[indexPath.row].name
-        cell!.availiability.text    = locationList[indexPath.row].currentlyOpen
+        //cell!.availiability.text    = locationList[indexPath.row].currentlyOpen
  
         return cell!
     }

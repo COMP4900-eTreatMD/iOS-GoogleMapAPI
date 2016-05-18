@@ -43,7 +43,7 @@ class FinalIteration2ViewController: UIViewController,
             let alertController = UIAlertController(title: "Lost Internet Connection", message:
                 "Please connect to internet to use the app", preferredStyle: .ActionSheet)
             self.presentViewController(alertController, animated: true, completion: nil)
-        }else if reachabilityStatus == kREACHABLE {
+        } else if reachabilityStatus == kREACHABLE {
             self.dismissViewControllerAnimated(true, completion: nil)
         }
     }
@@ -98,7 +98,30 @@ class FinalIteration2ViewController: UIViewController,
         KRProgressHUD.show()
         
         // do recomended request
+        /*
+        if(resultType ==  "hospital"){
+            if let path = NSBundle.mainBundle().pathForResource("temp", ofType: "json") {
+                do {
+                    let data = try NSData(contentsOfURL: NSURL(fileURLWithPath: path), options: NSDataReadingOptions.DataReadingMappedIfSafe)
+                    let jsonObj = JSON(data: data)
+                    if jsonObj != JSON.null {
+                        print("jsonData:\(jsonObj)")
+                    } else {
+                        print("could not get json from file, make sure that file contains valid json.")
+                    }
+                } catch let error as NSError {
+                    print(error.localizedDescription)
+                }
+            } else {
+                print("Invalid filename/path.")
+            }
+        }
+        */
         
+        util!.getRecommended("hospital") { tempLocationList in
+            self.locationList += tempLocationList
+        }
+
         dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), {
             // Do something...
             util!.getAllLocations(self.lat,long: self.long, name: name,

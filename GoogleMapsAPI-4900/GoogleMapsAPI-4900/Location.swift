@@ -15,22 +15,22 @@ class Location{
     var lat             : Double!
     var long            : Double!
     var vicinity        : String!
-    var rating          : Int!
-    var currentlyOpen   : String!
     var type            : String!
     var recommended     : Bool!
+    var priority        : Int!
+    var phoneNumber     : String!
 
-    init(placeId : String, name : String, lat : Double, long : Double, vicinity : String, rating : Int, currentlyOpen : String, type: String, recommended : Bool){
+    init(placeId : String, name : String, lat : Double, long : Double, vicinity : String, type: String, recommended : Bool, priority : Int, phoneNumber : String){
         
         self.placeId            = placeId
         self.name               = name
         self.lat                = lat
         self.long               = long
         self.vicinity           = vicinity
-        self.rating             = rating
-        self.currentlyOpen      = currentlyOpen
         self.type               = type
         self.recommended        = recommended
+        self.priority           = priority
+        self.phoneNumber        = phoneNumber
 
     }
     
