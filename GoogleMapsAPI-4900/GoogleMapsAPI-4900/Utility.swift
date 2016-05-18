@@ -68,8 +68,6 @@ public class Utility{
                 let data = try NSData(contentsOfURL: NSURL(fileURLWithPath: path!), options: NSDataReadingOptions.DataReadingMappedIfSafe)
                 let jsonObj = JSON(data : data)
                 
-                print(jsonObj)
-                
                 for (_, subJson) in jsonObj["results"] {
                     
                     print(subJson)

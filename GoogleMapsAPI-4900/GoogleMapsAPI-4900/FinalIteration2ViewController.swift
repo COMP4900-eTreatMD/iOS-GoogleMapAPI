@@ -97,7 +97,7 @@ class FinalIteration2ViewController: UIViewController,
         KRProgressHUD.show()
         
         // do recomended request
-        util!.getRecommended(type) { tempLocationList in
+        util!.getRecommended(resultType) { tempLocationList in
             self.locationList += tempLocationList
         }
 
