@@ -97,24 +97,35 @@ class FinalIteration2ViewController: UIViewController,
         KRProgressHUD.show()
         
         // do recomended request
-        util!.getRecommended(resultType) { tempLocationList in
-            let result = util!.sort(tempLocationList)
-            self.locationList += result
+        if(type != "All"){
+            dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), {
+                util!.getRecommended(resultType) { tempLocationList in
+                    let result = util!.sort(tempLocationList)
+                    self.locationList.insertContentsOf(result, at: 0)
+                    self.myTable.reloadData()
+                    
+                    print("done api call")
+                    KRProgressHUD.dismiss()
+                }
+            });
         }
-
         
         dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), {
             // Do something...
             util!.getAllLocations(self.lat,long: self.long, name: name,
-                                  type: resultType) {
-                choiceList in
+                                  type: resultType) { choiceList in
                 
                 self.locationList += choiceList
                 self.myTable.reloadData()
+                print("done google places call")
                                     
                 KRProgressHUD.dismiss()
             }
         });
+    }
+    
+    func setUpLocation(){
+        currentLocation = CLLocation(latitude : lat, longitude : long)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -184,10 +195,6 @@ class FinalIteration2ViewController: UIViewController,
         cell?.distance.text = String(format: "%.2f", distanceInMeters) + " M"
         
         return cell!
-    }
-    
-    func setUpLocation(){
-        currentLocation = CLLocation(latitude: lat,longitude: long)
     }
     
 }

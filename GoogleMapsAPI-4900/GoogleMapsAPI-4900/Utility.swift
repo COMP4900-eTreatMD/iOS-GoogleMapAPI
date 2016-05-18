@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-public class Utility{
+public class Utility {
     
     func formatString(type : String) -> String{
         
@@ -60,6 +60,7 @@ public class Utility{
     }
     
     func getRecommended(type : String,completion:(locationList:Array<Location>)->Void){
+        /*
         var locationList    : Array<Location>    = Array<Location>()
         
         if(type == "hospital"){
@@ -100,7 +101,54 @@ public class Utility{
         }
         
         completion(locationList: locationList)
+        */
+        var locationList    : Array<Location>    = Array<Location>()
+        var finalType                            = type.lowercaseString
         
+        // MADE A TYPO ON THE API
+        if(finalType == "physiotherapist"){
+            finalType = "physiotherapish"
+        }
+        
+        Alamofire.request(.GET, "http://etreatmdapi.rickychen.me/api/"+type+"Lists")
+            .responseJSON { response in
+                
+                switch response.result {
+                case .Success:
+                    if let responseJSON = response.result.value {
+                        let mainJSON    = JSON(responseJSON)
+                        
+                        for (_, subJson) in mainJSON {
+                            var placeId         : String    = ""
+                            var name            : String    = ""
+                            var lat             : Double    = 0.0
+                            var long            : Double    = 0.0
+                            var vicinity        : String    = ""
+                            var type            : String    = ""
+                            var phoneNumber     : String    = ""
+                            var priority        : Int       = 0
+                            
+                            name        = subJson["name"].string!
+                            lat         = subJson["lat"].double!
+                            long        = subJson["longtitude"].double!
+                            type        = subJson["category"].string!
+                            vicinity    = subJson["address"].string!
+                            placeId     = String(subJson[finalType + "PlaceId"].int!)
+                            phoneNumber = subJson["phoneNumber"].string!
+                            priority    = subJson["priority"].int!
+                            
+                            let location = Location(placeId : placeId, name : name, lat : lat, long: long, vicinity: vicinity, type: type, recommended: true, priority: priority,
+                                phoneNumber: phoneNumber)
+                            
+                            locationList.append(location)
+                        }
+                        completion(locationList: locationList)
+                    }
+                    
+                case .Failure(let error):
+                    print(error)
+                }
+        }
     }
     
     /**
@@ -266,7 +314,7 @@ public class Utility{
     func sort(locationList : Array<Location>) -> Array<Location> {
         var resultLocationList = locationList
         
-        resultLocationList.sortInPlace(self.sortPriority)
+        resultLocationList.sortInPlace(sortPriority)
         
         return resultLocationList
     }
@@ -275,6 +323,5 @@ public class Utility{
     func sortPriority(left : Location, right : Location) -> Bool {
         return left.priority < right.priority
     }
-    
     
 }

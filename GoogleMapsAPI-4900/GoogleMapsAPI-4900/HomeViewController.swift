@@ -20,34 +20,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        /*
-        let util = Utility()
-        print("utility")
-        util.doHttpRequest(49.246292,long: -123.116226) {choiceList in
-            print("choiceList")
-            print(choiceList.count)
-            for element in choiceList {
-                print("/nLOCATION")
-                print(element.name)
-                print(element.lat)
-                print(element.long)
-                print(element.rating)
-                print(element.vicinity)
-                print(element.currentlyOpen)
-            }
-        }
-        */
-        /*
-        for element in result {
-            print("/nLOCATION")
-            print(element.name)
-            print(element.lat)
-            print(element.long)
-            print(element.rating)
-            print(element.vicinity)
-            print(element.currentlyOpen)
-        }
-         */
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -64,7 +36,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
     
     func checkCoreLocationPermission(){
         if(CLLocationManager.authorizationStatus() ==  .AuthorizedWhenInUse){
-
             locationManager.startUpdatingLocation()
         } else if(CLLocationManager.authorizationStatus() ==  .NotDetermined){
 
@@ -72,8 +43,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
             checkCoreLocationPermission()
         } else if(CLLocationManager.authorizationStatus() ==  .Restricted) {
             // put an alert and explain what is going on
-
-            
         }
     }
     

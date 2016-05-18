@@ -60,22 +60,31 @@ class FinalIteration2AddressViewController: UIViewController, UITextFieldDelegat
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         let yourNextViewController = (segue.destinationViewController as! FinalIteration2ViewController)
+        if(self.inputLocation.text != ""){
         
-        KRProgressHUD.show()
-        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), {
-            // Do something...
-            self.util.doGeoCoding(self.inputLocation.text!) {
-                receivedLat,receivedLong in
+            KRProgressHUD.show()
+            dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), {
+                // Do something...
                 
-                yourNextViewController.lat          = receivedLat
-                yourNextViewController.long         = receivedLong
-                
-                yourNextViewController.setUpLocation()
-                yourNextViewController.initialSetUp()
-                
-                KRProgressHUD.dismiss()
-            }
-        });
+                self.util.doGeoCoding(self.inputLocation.text!) {
+                    receivedLat,receivedLong in
+                    
+                    yourNextViewController.lat          = receivedLat
+                    yourNextViewController.long         = receivedLong
+                    
+                    yourNextViewController.setUpLocation()
+                    yourNextViewController.initialSetUp()
+                    
+                    KRProgressHUD.dismiss()
+                }
+            });
+        } else {
+            yourNextViewController.lat          = lat
+            yourNextViewController.long         = long
+            
+            yourNextViewController.setUpLocation()
+            yourNextViewController.initialSetUp()
+        }
         
     }
     
