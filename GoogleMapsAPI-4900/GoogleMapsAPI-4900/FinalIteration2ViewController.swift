@@ -98,9 +98,11 @@ class FinalIteration2ViewController: UIViewController,
         
         // do recomended request
         util!.getRecommended(resultType) { tempLocationList in
-            self.locationList += tempLocationList
+            let result = util!.sort(tempLocationList)
+            self.locationList += result
         }
 
+        
         dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), {
             // Do something...
             util!.getAllLocations(self.lat,long: self.long, name: name,

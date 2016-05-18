@@ -93,7 +93,7 @@
                                 <color key="barTintColor" red="0.12941176470588237" green="0.67843137254901964" blue="0.99607843137254903" alpha="1" colorSpace="calibratedRGB"/>
                                 <items>
                                     <navigationItem title="Location Manager" id="gJI-IL-8Pv">
-                                        <barButtonItem key="leftBarButtonItem" style="plain" id="K6f-3R-j2I">
+                                        <barButtonItem key="leftBarButtonItem" id="K6f-3R-j2I">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="BMY-z6-gco">
                                                 <rect key="frame" x="20" y="7" width="46" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
