@@ -68,11 +68,7 @@ public class Utility{
                 let data = try NSData(contentsOfURL: NSURL(fileURLWithPath: path!), options: NSDataReadingOptions.DataReadingMappedIfSafe)
                 let jsonObj = JSON(data : data)
                 
-                print(jsonObj)
-                
                 for (_, subJson) in jsonObj["results"] {
-                    
-                    print(subJson)
                     
                     var placeId         : String    = ""
                     var name            : String    = ""
@@ -81,6 +77,7 @@ public class Utility{
                     var vicinity        : String    = ""
                     var type            : String    = ""
                     var phoneNumber     : String    = ""
+                    var priority        : Int       = 0
                     
                     name        = subJson["name"].string!
                     lat         = Double(subJson["Lat"].string!)!
@@ -89,8 +86,9 @@ public class Utility{
                     vicinity    = subJson["Address"].string!
                     placeId     = subJson["placeId"].string!
                     phoneNumber = subJson["PhoneNumber"].string!
+                    priority    = Int(subJson["Priority"].string!)!
                     
-                    let location = Location(placeId : placeId, name : name, lat : lat, long: long,    vicinity: vicinity, type: type, recommended: true, priority: 0,
+                    let location = Location(placeId : placeId, name : name, lat : lat, long: long,    vicinity: vicinity, type: type, recommended: true, priority: priority,
                                             phoneNumber: phoneNumber)
                     
                     locationList.append(location)
@@ -264,6 +262,19 @@ public class Utility{
         }
     }
     
-
+    
+    func sort(locationList : Array<Location>) -> Array<Location> {
+        var resultLocationList = locationList
+        
+        resultLocationList.sortInPlace(self.sortPriority)
+        
+        return resultLocationList
+    }
+    
+    
+    func sortPriority(left : Location, right : Location) -> Bool {
+        return left.priority < right.priority
+    }
+    
     
 }
