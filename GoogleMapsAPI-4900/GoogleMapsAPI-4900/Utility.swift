@@ -25,19 +25,84 @@ public class Utility{
      
         let pharmacy = UIImage(named : "pharmacy")
         let hospital = UIImage(named : "hospital")
-        let physio   = UIImage(named : "clinic")
-        let doctor   = UIImage(named : "acupuncture")
+        let physio   = UIImage(named : "physiotherapist")
+        let doctor   = UIImage(named : "doctor")
         
-        if(location.type == "hospital"){
-            return hospital!
-        } else if(location.type == "pharmacy"){
-            return pharmacy!
-        } else if(location.type == "physiotherapist"){
-            return physio!
+        let pharmacySpons = UIImage(named : "pharmacySponsored")
+        let hospitalSpons = UIImage(named : "hospitalSponsored")
+        let physioSpons   = UIImage(named : "physiotherapistSponsored")
+        let doctorSpons   = UIImage(named : "doctorSponsored")
+        
+        let typeLowerCase = location.type.lowercaseString
+        
+        if((location.recommended) == true){
+            if(typeLowerCase == "hospital"){
+                return hospitalSpons!
+            } else if(typeLowerCase == "pharmacy"){
+                return pharmacySpons!
+            } else if(typeLowerCase == "physiotherapist"){
+                return physioSpons!
+            } else {
+                return doctorSpons!
+            }
         } else {
-            return doctor!
+            if(typeLowerCase == "hospital"){
+                return hospital!
+            } else if(typeLowerCase == "pharmacy"){
+                return pharmacy!
+            } else if(typeLowerCase == "physiotherapist"){
+                return physio!
+            } else {
+                return doctor!
+            }
         }
         
+    }
+    
+    func getRecommended(type : String,completion:(locationList:Array<Location>)->Void){
+        var locationList    : Array<Location>    = Array<Location>()
+        
+        if(type == "hospital"){
+            let path = NSBundle.mainBundle().pathForResource("temp", ofType: "json")
+            do {
+                let data = try NSData(contentsOfURL: NSURL(fileURLWithPath: path!), options: NSDataReadingOptions.DataReadingMappedIfSafe)
+                let jsonObj = JSON(data : data)
+                
+                print(jsonObj)
+                
+                for (_, subJson) in jsonObj["results"] {
+                    
+                    print(subJson)
+                    
+                    var placeId         : String    = ""
+                    var name            : String    = ""
+                    var lat             : Double    = 0.0
+                    var long            : Double    = 0.0
+                    var vicinity        : String    = ""
+                    var type            : String    = ""
+                    var phoneNumber     : String    = ""
+                    
+                    name        = subJson["name"].string!
+                    lat         = Double(subJson["Lat"].string!)!
+                    long        = Double(subJson["Long"].string!)!
+                    type        = subJson["Category"].string!
+                    vicinity    = subJson["Address"].string!
+                    placeId     = subJson["placeId"].string!
+                    phoneNumber = subJson["PhoneNumber"].string!
+                    
+                    let location = Location(placeId : placeId, name : name, lat : lat, long: long,    vicinity: vicinity, type: type, recommended: true, priority: 0,
+                                            phoneNumber: phoneNumber)
+                    
+                    locationList.append(location)
+                }
+                
+            } catch let error as NSError {
+                print(error.localizedDescription)
+            }
+        }
+        
+        completion(locationList: locationList)
+
     }
     
     /**
@@ -123,7 +188,7 @@ public class Utility{
                                     }
                                 }
                                 
-                                let location = Location(placeId : placeId, name : name, lat : lat, long: long, vicinity: vicinity, type: type, recommended: false, priority: 0)
+                                let location = Location(placeId : placeId, name : name, lat : lat, long: long, vicinity: vicinity, type: type, recommended: false, priority: 0, phoneNumber: "")
                                 
                                 locationList!.append(location)
                                 

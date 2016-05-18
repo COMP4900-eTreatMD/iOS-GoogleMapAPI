@@ -18,8 +18,9 @@ class Location{
     var type            : String!
     var recommended     : Bool!
     var priority        : Int!
+    var phoneNumber     : String!
 
-    init(placeId : String, name : String, lat : Double, long : Double, vicinity : String, type: String, recommended : Bool, priority : Int){
+    init(placeId : String, name : String, lat : Double, long : Double, vicinity : String, type: String, recommended : Bool, priority : Int, phoneNumber : String){
         
         self.placeId            = placeId
         self.name               = name
@@ -29,6 +30,7 @@ class Location{
         self.type               = type
         self.recommended        = recommended
         self.priority           = priority
+        self.phoneNumber        = phoneNumber
 
     }
     

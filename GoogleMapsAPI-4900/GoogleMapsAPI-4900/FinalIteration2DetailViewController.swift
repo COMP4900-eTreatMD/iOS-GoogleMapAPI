@@ -46,6 +46,8 @@ class FinalIteration2DetailViewController: UIViewController{
         locationCategory.text   = util.formatString(location.type)
         locationImage.image     = util.properIcon(location)
         
+        locationPhoneNumber.setTitle(self.location.phoneNumber, forState: .Normal)
+        
         
         setMap(lat,long: long)
     }
@@ -93,12 +95,6 @@ class FinalIteration2DetailViewController: UIViewController{
     
     func setMarker(location : Location){
         
-        let pharmacy = UIImage(named : "pharmacy")
-        let hospital = UIImage(named : "hospital")
-        let physio   = UIImage(named : "clinic")
-        let doctor   = UIImage(named : "acupuncture")
-        
-       
         var marker : GMSMarker?
         var locationCoordinates : CLLocationCoordinate2D?
         
@@ -108,16 +104,7 @@ class FinalIteration2DetailViewController: UIViewController{
         marker!.position    = locationCoordinates!
         marker!.title       = location.name
         marker!.snippet     = location.vicinity
-        
-        if(location.type == "hospital"){
-            marker!.icon = hospital
-        } else if(location.type == "pharmacy"){
-            marker!.icon = pharmacy
-        } else if(location.type == "physiotherapist"){
-            marker!.icon = physio
-        } else if(location.type == "doctor"){
-            marker!.icon = doctor
-        }
+        marker!.icon        = util.properIcon(location)
         
         marker!.map = mapView
         
@@ -125,22 +112,21 @@ class FinalIteration2DetailViewController: UIViewController{
     
     func initialSetUp(){
         
-        KRProgressHUD.show()
-        
-        
-        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), {
-            // Do something...
-            self.util.getLocationDetails(self.location) { phoneNumber in
-                if(phoneNumber == ""){
-                    self.locationPhoneNumber.setTitle("Phone Number Invalid", forState: .Normal)
-                    self.locationPhoneNumber.enabled = false
-                } else {
-                    self.locationPhoneNumber.setTitle(phoneNumber, forState: .Normal)
+        if(self.location.recommended == false){
+            KRProgressHUD.show()
+            dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), {
+                // Do something...
+                self.util.getLocationDetails(self.location) { phoneNumber in
+                    if(phoneNumber == ""){
+                        self.locationPhoneNumber.setTitle("Phone Number Invalid", forState: .Normal)
+                        self.locationPhoneNumber.enabled = false
+                    } else {
+                        self.locationPhoneNumber.setTitle(phoneNumber, forState: .Normal)
+                    }
+                    KRProgressHUD.dismiss()
                 }
-                
-                KRProgressHUD.dismiss()
-            }
-        });
+            });
+        }
     }
 
 
