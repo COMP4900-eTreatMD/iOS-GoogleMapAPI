@@ -7,21 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		87026FEC1CEBEFAA00413BD1 /* FinalIteration2AddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87026FEB1CEBEFAA00413BD1 /* FinalIteration2AddressViewController.swift */; };
 		871697201CD40A53004073FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8716971F1CD40A53004073FF /* AppDelegate.swift */; };
 		871697221CD40A53004073FF /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871697211CD40A53004073FF /* MapViewController.swift */; };
 		871697251CD40A53004073FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 871697231CD40A53004073FF /* Main.storyboard */; };
 		871697271CD40A53004073FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 871697261CD40A53004073FF /* Assets.xcassets */; };
 		8716972A1CD40A53004073FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 871697281CD40A53004073FF /* LaunchScreen.storyboard */; };
+		876280AD1CE52EED00B0D56E /* FinalIteration2FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876280AC1CE52EED00B0D56E /* FinalIteration2FilterViewController.swift */; };
 		8764351C1CD8268A00741BA1 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8764351B1CD8268A00741BA1 /* Utility.swift */; };
 		8764351E1CD826CD00741BA1 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8764351D1CD826CD00741BA1 /* Location.swift */; };
 		876DB0DE1CD467F200B39C98 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876DB0DD1CD467F200B39C98 /* HomeViewController.swift */; };
 		876DB0E01CD468AA00B39C98 /* PlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876DB0DF1CD468AA00B39C98 /* PlacesViewController.swift */; };
+		8794985A1CE3FEDE00A1FAF1 /* FinalIteration2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879498591CE3FEDE00A1FAF1 /* FinalIteration2ViewController.swift */; };
+		8794985C1CE412EA00A1FAF1 /* FinalIteration2MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8794985B1CE412EA00A1FAF1 /* FinalIteration2MapViewController.swift */; };
+		87A8E1711CDC3F5300610C81 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A8E1701CDC3F5300610C81 /* FilterViewController.swift */; };
+		87BA08B71CEBC73A00452C2F /* temp.json in Resources */ = {isa = PBXBuildFile; fileRef = 87BA08B61CEBC73A00452C2F /* temp.json */; };
+		87F456D61CE427F500092F27 /* FinalIteration2DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F456D51CE427F500092F27 /* FinalIteration2DetailViewController.swift */; };
 		87FBC6DF1CD85D19002C9034 /* FinalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FBC6DE1CD85D19002C9034 /* FinalViewController.swift */; };
-		87FBC6E61CD86B32002C9034 /* CustomLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FBC6E51CD86B32002C9034 /* CustomLocationManager.swift */; };
 		D3C91B66DCE6FD95C15427BD /* Pods_GoogleMapsAPI_4900.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC712430909BC01B661259B0 /* Pods_GoogleMapsAPI_4900.framework */; };
+		EB1C60041CE521AF0004C451 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = EB1C60031CE521AF0004C451 /* Reachability.m */; };
+		EB6ABF641CE1374F009826BD /* Final.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB6ABF621CE1374F009826BD /* Final.storyboard */; };
+		EB6ABF6A1CE4084D009826BD /* CustomeCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6ABF691CE4084D009826BD /* CustomeCell2.swift */; };
+		EB7A465A1CD9502E005A4477 /* CustomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7A46591CD9502E005A4477 /* CustomeCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		87026FEB1CEBEFAA00413BD1 /* FinalIteration2AddressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinalIteration2AddressViewController.swift; sourceTree = "<group>"; };
 		8716971C1CD40A53004073FF /* GoogleMapsAPI-4900.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GoogleMapsAPI-4900.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8716971F1CD40A53004073FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		871697211CD40A53004073FF /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -29,14 +40,25 @@
 		871697261CD40A53004073FF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		871697291CD40A53004073FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8716972B1CD40A53004073FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		876280AC1CE52EED00B0D56E /* FinalIteration2FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinalIteration2FilterViewController.swift; sourceTree = "<group>"; };
 		8764351B1CD8268A00741BA1 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		8764351D1CD826CD00741BA1 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		876DB0DD1CD467F200B39C98 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		876DB0DF1CD468AA00B39C98 /* PlacesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacesViewController.swift; sourceTree = "<group>"; };
+		879498591CE3FEDE00A1FAF1 /* FinalIteration2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinalIteration2ViewController.swift; sourceTree = "<group>"; };
+		8794985B1CE412EA00A1FAF1 /* FinalIteration2MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinalIteration2MapViewController.swift; sourceTree = "<group>"; };
+		87A8E1701CDC3F5300610C81 /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		87BA08B61CEBC73A00452C2F /* temp.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = temp.json; sourceTree = "<group>"; };
+		87F456D51CE427F500092F27 /* FinalIteration2DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinalIteration2DetailViewController.swift; sourceTree = "<group>"; };
 		87FBC6DE1CD85D19002C9034 /* FinalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinalViewController.swift; sourceTree = "<group>"; };
-		87FBC6E51CD86B32002C9034 /* CustomLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLocationManager.swift; sourceTree = "<group>"; };
 		CD2508B3C5E41E4CB2FC3200 /* Pods-GoogleMapsAPI-4900.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoogleMapsAPI-4900.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GoogleMapsAPI-4900/Pods-GoogleMapsAPI-4900.debug.xcconfig"; sourceTree = "<group>"; };
 		D4B30D068B691F7A9B8196F5 /* Pods-GoogleMapsAPI-4900.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoogleMapsAPI-4900.release.xcconfig"; path = "Pods/Target Support Files/Pods-GoogleMapsAPI-4900/Pods-GoogleMapsAPI-4900.release.xcconfig"; sourceTree = "<group>"; };
+		EB1C60011CE521AE0004C451 /* GoogleMapsAPI-4900-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GoogleMapsAPI-4900-Bridging-Header.h"; sourceTree = "<group>"; };
+		EB1C60021CE521AF0004C451 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		EB1C60031CE521AF0004C451 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		EB6ABF631CE1374F009826BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Final.storyboard; sourceTree = "<group>"; };
+		EB6ABF691CE4084D009826BD /* CustomeCell2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomeCell2.swift; sourceTree = "<group>"; };
+		EB7A46591CD9502E005A4477 /* CustomeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomeCell.swift; sourceTree = "<group>"; };
 		EC712430909BC01B661259B0 /* Pods_GoogleMapsAPI_4900.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoogleMapsAPI_4900.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -77,19 +99,46 @@
 				87FBC6E01CD864C7002C9034 /* Classes */,
 				8716971F1CD40A53004073FF /* AppDelegate.swift */,
 				871697231CD40A53004073FF /* Main.storyboard */,
+				EB6ABF621CE1374F009826BD /* Final.storyboard */,
 				871697261CD40A53004073FF /* Assets.xcassets */,
+				87BA08B61CEBC73A00452C2F /* temp.json */,
 				871697281CD40A53004073FF /* LaunchScreen.storyboard */,
 				8716972B1CD40A53004073FF /* Info.plist */,
+				EB1C60021CE521AF0004C451 /* Reachability.h */,
+				EB1C60031CE521AF0004C451 /* Reachability.m */,
+				EB1C60011CE521AE0004C451 /* GoogleMapsAPI-4900-Bridging-Header.h */,
 			);
 			path = "GoogleMapsAPI-4900";
+			sourceTree = "<group>";
+		};
+		87EC12BB1CEC219D00EC0AE5 /* FinalIteration2 */ = {
+			isa = PBXGroup;
+			children = (
+				879498591CE3FEDE00A1FAF1 /* FinalIteration2ViewController.swift */,
+				8794985B1CE412EA00A1FAF1 /* FinalIteration2MapViewController.swift */,
+				87F456D51CE427F500092F27 /* FinalIteration2DetailViewController.swift */,
+				876280AC1CE52EED00B0D56E /* FinalIteration2FilterViewController.swift */,
+				87026FEB1CEBEFAA00413BD1 /* FinalIteration2AddressViewController.swift */,
+			);
+			name = FinalIteration2;
+			sourceTree = "<group>";
+		};
+		87EC12BC1CEC21B000EC0AE5 /* FinalIteration */ = {
+			isa = PBXGroup;
+			children = (
+				87FBC6DE1CD85D19002C9034 /* FinalViewController.swift */,
+				87A8E1701CDC3F5300610C81 /* FilterViewController.swift */,
+			);
+			name = FinalIteration;
 			sourceTree = "<group>";
 		};
 		87FBC6E01CD864C7002C9034 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				EB7A46591CD9502E005A4477 /* CustomeCell.swift */,
 				8764351B1CD8268A00741BA1 /* Utility.swift */,
 				8764351D1CD826CD00741BA1 /* Location.swift */,
-				87FBC6E51CD86B32002C9034 /* CustomLocationManager.swift */,
+				EB6ABF691CE4084D009826BD /* CustomeCell2.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -97,7 +146,8 @@
 		87FBC6E21CD864DC002C9034 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				87FBC6DE1CD85D19002C9034 /* FinalViewController.swift */,
+				87EC12BC1CEC21B000EC0AE5 /* FinalIteration */,
+				87EC12BB1CEC219D00EC0AE5 /* FinalIteration2 */,
 				876DB0DF1CD468AA00B39C98 /* PlacesViewController.swift */,
 				876DB0DD1CD467F200B39C98 /* HomeViewController.swift */,
 				871697211CD40A53004073FF /* MapViewController.swift */,
@@ -157,6 +207,7 @@
 				TargetAttributes = {
 					8716971B1CD40A53004073FF = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = PGZ4KJH3U6;
 					};
 				};
 			};
@@ -184,6 +235,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8716972A1CD40A53004073FF /* LaunchScreen.storyboard in Resources */,
+				EB6ABF641CE1374F009826BD /* Final.storyboard in Resources */,
+				87BA08B71CEBC73A00452C2F /* temp.json in Resources */,
 				871697271CD40A53004073FF /* Assets.xcassets in Resources */,
 				871697251CD40A53004073FF /* Main.storyboard in Resources */,
 			);
@@ -244,13 +297,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				876280AD1CE52EED00B0D56E /* FinalIteration2FilterViewController.swift in Sources */,
 				876DB0E01CD468AA00B39C98 /* PlacesViewController.swift in Sources */,
 				87FBC6DF1CD85D19002C9034 /* FinalViewController.swift in Sources */,
+				8794985A1CE3FEDE00A1FAF1 /* FinalIteration2ViewController.swift in Sources */,
+				EB6ABF6A1CE4084D009826BD /* CustomeCell2.swift in Sources */,
+				87026FEC1CEBEFAA00413BD1 /* FinalIteration2AddressViewController.swift in Sources */,
 				871697221CD40A53004073FF /* MapViewController.swift in Sources */,
+				8794985C1CE412EA00A1FAF1 /* FinalIteration2MapViewController.swift in Sources */,
 				871697201CD40A53004073FF /* AppDelegate.swift in Sources */,
+				87A8E1711CDC3F5300610C81 /* FilterViewController.swift in Sources */,
 				8764351C1CD8268A00741BA1 /* Utility.swift in Sources */,
-				87FBC6E61CD86B32002C9034 /* CustomLocationManager.swift in Sources */,
+				EB7A465A1CD9502E005A4477 /* CustomeCell.swift in Sources */,
+				EB1C60041CE521AF0004C451 /* Reachability.m in Sources */,
 				8764351E1CD826CD00741BA1 /* Location.swift in Sources */,
+				87F456D61CE427F500092F27 /* FinalIteration2DetailViewController.swift in Sources */,
 				876DB0DE1CD467F200B39C98 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -272,6 +333,14 @@
 				871697291CD40A53004073FF /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		EB6ABF621CE1374F009826BD /* Final.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EB6ABF631CE1374F009826BD /* Base */,
+			);
+			name = Final.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -367,10 +436,16 @@
 			baseConfigurationReference = CD2508B3C5E41E4CB2FC3200 /* Pods-GoogleMapsAPI-4900.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jan Ycasas (8J4C82FVX9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jan Ycasas (8J4C82FVX9)";
 				INFOPLIST_FILE = "GoogleMapsAPI-4900/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.janycasas.GoogleMapsAPI-4900";
+				PRODUCT_BUNDLE_IDENTIFIER = com.janycasas.GoogleMapsAPI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "82e7684e-d6da-4726-a2c3-1ceac4486172";
+				SWIFT_OBJC_BRIDGING_HEADER = "GoogleMapsAPI-4900/GoogleMapsAPI-4900-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -379,10 +454,15 @@
 			baseConfigurationReference = D4B30D068B691F7A9B8196F5 /* Pods-GoogleMapsAPI-4900.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jan Ycasas (8J4C82FVX9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jan Ycasas (8J4C82FVX9)";
 				INFOPLIST_FILE = "GoogleMapsAPI-4900/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.janycasas.GoogleMapsAPI-4900";
+				PRODUCT_BUNDLE_IDENTIFIER = com.janycasas.GoogleMapsAPI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "82e7684e-d6da-4726-a2c3-1ceac4486172";
+				SWIFT_OBJC_BRIDGING_HEADER = "GoogleMapsAPI-4900/GoogleMapsAPI-4900-Bridging-Header.h";
 			};
 			name = Release;
 		};
