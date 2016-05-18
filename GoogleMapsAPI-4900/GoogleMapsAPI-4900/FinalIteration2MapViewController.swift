@@ -91,12 +91,23 @@ class FinalIteration2MapViewController: UIViewController{
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        let yourNextViewController = (segue.destinationViewController as! FinalIteration2ViewController)
+        if(segue.identifier == "goBack") {
         
-        yourNextViewController.lat          = lat!
-        yourNextViewController.long         = long!
-        yourNextViewController.locationList = locationList
-        yourNextViewController.filter       = filter
+            let yourNextViewController = (segue.destinationViewController as! FinalIteration2ViewController)
+            
+            yourNextViewController.lat          = lat!
+            yourNextViewController.long         = long!
+            yourNextViewController.locationList = locationList
+            yourNextViewController.filter       = filter
+            yourNextViewController.setUpLocation()
+            
+        } else if(segue.identifier == "putAddress"){
+            let yourNextViewController = (segue.destinationViewController as! FinalIteration2AddressViewController)
+            
+            yourNextViewController.lat          = lat!
+            yourNextViewController.long         = long!
+            yourNextViewController.locationList = locationList
+        }
         
     }
     

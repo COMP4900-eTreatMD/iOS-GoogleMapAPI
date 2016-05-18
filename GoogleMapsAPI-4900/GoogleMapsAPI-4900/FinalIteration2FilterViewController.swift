@@ -123,6 +123,7 @@ class FinalIteration2FilterViewController: UIViewController, UITextFieldDelegate
         yourNextViewController.long         = long!
         yourNextViewController.locationList = locationList
         
+        yourNextViewController.setUpLocation()
         yourNextViewController.filterResults(filterData[filterIndex],name: specilizationString)
     }
                                             

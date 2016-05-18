@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		87026FEC1CEBEFAA00413BD1 /* FinalIteration2AddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87026FEB1CEBEFAA00413BD1 /* FinalIteration2AddressViewController.swift */; };
 		871697201CD40A53004073FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8716971F1CD40A53004073FF /* AppDelegate.swift */; };
 		871697221CD40A53004073FF /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871697211CD40A53004073FF /* MapViewController.swift */; };
 		871697251CD40A53004073FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 871697231CD40A53004073FF /* Main.storyboard */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		87026FEB1CEBEFAA00413BD1 /* FinalIteration2AddressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinalIteration2AddressViewController.swift; sourceTree = "<group>"; };
 		8716971C1CD40A53004073FF /* GoogleMapsAPI-4900.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GoogleMapsAPI-4900.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8716971F1CD40A53004073FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		871697211CD40A53004073FF /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				8794985B1CE412EA00A1FAF1 /* FinalIteration2MapViewController.swift */,
 				87F456D51CE427F500092F27 /* FinalIteration2DetailViewController.swift */,
 				876280AC1CE52EED00B0D56E /* FinalIteration2FilterViewController.swift */,
+				87026FEB1CEBEFAA00413BD1 /* FinalIteration2AddressViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 				87FBC6DF1CD85D19002C9034 /* FinalViewController.swift in Sources */,
 				8794985A1CE3FEDE00A1FAF1 /* FinalIteration2ViewController.swift in Sources */,
 				EB6ABF6A1CE4084D009826BD /* CustomeCell2.swift in Sources */,
+				87026FEC1CEBEFAA00413BD1 /* FinalIteration2AddressViewController.swift in Sources */,
 				871697221CD40A53004073FF /* MapViewController.swift in Sources */,
 				8794985C1CE412EA00A1FAF1 /* FinalIteration2MapViewController.swift in Sources */,
 				871697201CD40A53004073FF /* AppDelegate.swift in Sources */,

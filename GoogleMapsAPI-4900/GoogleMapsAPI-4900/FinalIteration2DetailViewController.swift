@@ -149,6 +149,7 @@ class FinalIteration2DetailViewController: UIViewController{
         yourNextViewController.long         = long!
         yourNextViewController.locationList = locationList
         yourNextViewController.filter       = filter
+        yourNextViewController.setUpLocation()
         
     }
     

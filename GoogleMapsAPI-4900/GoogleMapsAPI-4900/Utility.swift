@@ -102,7 +102,7 @@ public class Utility{
         }
         
         completion(locationList: locationList)
-
+        
     }
     
     /**
@@ -126,11 +126,14 @@ public class Utility{
                             "types"     :   type,
                             "name"      :   name,
                             "rankby"    : "distance",
-                            "key"       :   "AIzaSyBWQyWLKeu_VGL2RgXeyM-_TgBSTDP9-Fs",
+                            "key"       :   "AIzaSyBPqY-Cb5udIHNCIwwWQi3qmdtXMQbCCGw",
             ]).responseJSON { response in
                 
                 
                 //print(response.request)
+                
+                //AIzaSyBWQyWLKeu_VGL2RgXeyM-_TgBSTDP9-Fs
+                //AIzaSyBPqY-Cb5udIHNCIwwWQi3qmdtXMQbCCGw
                 
                 
                 switch response.result {
@@ -206,7 +209,7 @@ public class Utility{
         
         Alamofire.request(.GET, "https://maps.googleapis.com/maps/api/place/details/json"
             , parameters: [ "placeid"  :   location.placeId,
-                            "key"       :   "AIzaSyBWQyWLKeu_VGL2RgXeyM-_TgBSTDP9-Fs",
+                            "key"      :   "AIzaSyBPqY-Cb5udIHNCIwwWQi3qmdtXMQbCCGw",
             ]).responseJSON { response in
                 
                 switch response.result {
@@ -221,6 +224,38 @@ public class Utility{
                         }
                         
                         completion(phoneNumber: phoneNumber)
+                    }
+                    
+                case .Failure(let error):
+                    print(error)
+                }
+        }
+    }
+    
+    func doGeoCoding(location : String, completion: (lat: Double, long : Double) -> Void) {
+        
+        Alamofire.request(.GET, "https://maps.googleapis.com/maps/api/geocode/json"
+            , parameters: [ "address"   :   location,
+                            "key"       :   "AIzaSyBPqY-Cb5udIHNCIwwWQi3qmdtXMQbCCGw",
+            ]).responseJSON { response in
+                
+                print(response.request)
+                
+                switch response.result {
+                case .Success:
+                    if let responseJSON = response.result.value {
+                        let mainJSON    = JSON(responseJSON)
+                        var lat  : Double = 0.0
+                        var long : Double = 0.0
+                        
+                        for (_, subJson) in mainJSON["results"] {
+                            let geometryJSON    = subJson["geometry"]
+                            let locationJSON    = geometryJSON["location"]
+                            lat = locationJSON["lat"].double!
+                            long = locationJSON["lng"].double!
+                            
+                        }
+                        completion(lat: lat, long : long)
                     }
                     
                 case .Failure(let error):
