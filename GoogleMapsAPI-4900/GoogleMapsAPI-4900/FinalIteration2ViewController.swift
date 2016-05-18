@@ -28,10 +28,9 @@ class FinalIteration2ViewController: UIViewController,
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        currentLocation = CLLocation(latitude: lat,longitude: long)
+        
         filterType.text = filter + " Types"
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FinalIteration2ViewController.ReachabilityStatusChanged), name: "ReachStatusChanged", object: nil)
-        currentLocation = CLLocation(latitude: lat,longitude: long)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -98,27 +97,7 @@ class FinalIteration2ViewController: UIViewController,
         KRProgressHUD.show()
         
         // do recomended request
-        /*
-        if(resultType ==  "hospital"){
-            if let path = NSBundle.mainBundle().pathForResource("temp", ofType: "json") {
-                do {
-                    let data = try NSData(contentsOfURL: NSURL(fileURLWithPath: path), options: NSDataReadingOptions.DataReadingMappedIfSafe)
-                    let jsonObj = JSON(data: data)
-                    if jsonObj != JSON.null {
-                        print("jsonData:\(jsonObj)")
-                    } else {
-                        print("could not get json from file, make sure that file contains valid json.")
-                    }
-                } catch let error as NSError {
-                    print(error.localizedDescription)
-                }
-            } else {
-                print("Invalid filename/path.")
-            }
-        }
-        */
-        
-        util!.getRecommended("hospital") { tempLocationList in
+        util!.getRecommended(type) { tempLocationList in
             self.locationList += tempLocationList
         }
 
@@ -203,6 +182,10 @@ class FinalIteration2ViewController: UIViewController,
         cell?.distance.text = String(format: "%.2f", distanceInMeters) + " M"
         
         return cell!
+    }
+    
+    func setUpLocation(){
+        currentLocation = CLLocation(latitude: lat,longitude: long)
     }
     
 }

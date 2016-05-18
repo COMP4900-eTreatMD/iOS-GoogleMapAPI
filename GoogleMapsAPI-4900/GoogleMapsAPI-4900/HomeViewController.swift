@@ -114,6 +114,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
             yourNextViewController.lat  = lat!
             yourNextViewController.long = long!
             
+            yourNextViewController.setUpLocation()
             yourNextViewController.initialSetUp()
             
         }
