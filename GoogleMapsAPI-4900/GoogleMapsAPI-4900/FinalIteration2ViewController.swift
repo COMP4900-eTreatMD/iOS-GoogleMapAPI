@@ -100,13 +100,21 @@ class FinalIteration2ViewController: UIViewController,
         if(type != "All"){
             dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), {
                 util!.getRecommended(resultType) { tempLocationList in
-                    let result = util!.sort(tempLocationList)
+                    var resultLocationList : Array<Location> = Array<Location>()
+                    
+                    if(resultType == "doctor"){
+                        for location in tempLocationList{
+                            if(location.type == name.lowercaseString){
+                                resultLocationList.append(location)
+                            }
+                        }
+                    } else {
+                        resultLocationList = tempLocationList
+                    }
+                    let result = util!.sort(resultLocationList)
                     self.locationList.insertContentsOf(result, at: 0)
                     self.myTable.reloadData()
-                    
-                    print("done api call")
-                    KRProgressHUD.dismiss()
-                }
+                                    }
             });
         }
         
@@ -117,7 +125,6 @@ class FinalIteration2ViewController: UIViewController,
                 
                 self.locationList += choiceList
                 self.myTable.reloadData()
-                print("done google places call")
                                     
                 KRProgressHUD.dismiss()
             }

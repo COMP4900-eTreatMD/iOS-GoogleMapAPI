@@ -30,7 +30,7 @@ class FinalIteration2FilterViewController: UIViewController, UITextFieldDelegate
     var locationList         : Array<Location>    = Array<Location>()
 
     var filterData = ["All","Hospital", "Pharmacy", "Physiotherapist", "Doctor"];
-    var specilizationArray = ["Audiologist","Allergist","Andrologists","Anesthesiologist","Cardiologist","Dentist","Dermatologist","Endocrinologist","Epidemiologists","Gastroenterologist","Gynecologist","Hematologist","Hepatologists","Immunologist","Internists","Neonatologist","Nephrologists","Neurologist","Neurosurgeons","Obstetrician","Oncologist","Ophthalmologist","Orthopedist","Primatologist","Parasitologist","Pathologists","Pediatrician","Physiatrist","Plastic Surgeon","Podiatrists","Psychiatrists","Pulmonologist","Radiologists","Reproductive Endocrinologist","Rheumatologist","Surgeon","Thoracic Oncologist","Urologist"]
+    var specilizationArray = ["acupuncturist","Audiologist","Allergist","Andrologists","Anesthesiologist","Cardiologist","Dentist","Dermatologist","Endocrinologist","Epidemiologists","Gastroenterologist","Gynecologist","Hematologist","Hepatologists","Immunologist","Internists","Neonatologist","Nephrologists","Neurologist","Neurosurgeons","Obstetrician","Oncologist","Ophthalmologist","Orthopedist","Primatologist","Parasitologist","Pathologists","Pediatrician","Physiatrist","Plastic Surgeon", "Podiatrists", "Psychiatrists", "Pulmonologist","Radiologists","Reproductive Endocrinologist","Rheumatologist","Surgeon","Thoracic Oncologist","Urologist"]
     
     var filter          : String            = "All"
     
@@ -51,7 +51,7 @@ class FinalIteration2FilterViewController: UIViewController, UITextFieldDelegate
             let alertController = UIAlertController(title: "Lost Internet Connection", message:
                 "Please connect to internet to use the app", preferredStyle: .ActionSheet)
             self.presentViewController(alertController, animated: true, completion: nil)
-        }else if reachabilityStatus == kREACHABLE {
+        } else if reachabilityStatus == kREACHABLE {
             self.dismissViewControllerAnimated(true, completion: nil)
         }
     }
