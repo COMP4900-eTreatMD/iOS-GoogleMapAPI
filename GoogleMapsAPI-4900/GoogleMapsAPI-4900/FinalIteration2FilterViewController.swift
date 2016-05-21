@@ -7,12 +7,9 @@
 //
 
 import UIKit
-import Alamofire
-import SwiftyJSON
-import GoogleMaps
 import MBProgressHUD
 
-class FinalIteration2FilterViewController: UIViewController, UITextFieldDelegate,
+class FinalIteration2FilterViewController: UIViewController,
                                            UIPickerViewDelegate,UIPickerViewDataSource{
     
     @IBOutlet weak var picker: UIPickerView!
@@ -29,8 +26,8 @@ class FinalIteration2FilterViewController: UIViewController, UITextFieldDelegate
     
     var locationList         : Array<Location>    = Array<Location>()
 
-    var filterData = ["All","Hospital", "Pharmacy", "Physiotherapist", "Doctor"];
-    var specilizationArray = ["Audiologist","Allergist","Andrologists","Anesthesiologist","Cardiologist","Dentist","Dermatologist","Endocrinologist","Epidemiologists","Gastroenterologist","Gynecologist","Hematologist","Hepatologists","Immunologist","Internists","Neonatologist","Nephrologists","Neurologist","Neurosurgeons","Obstetrician","Oncologist","Ophthalmologist","Orthopedist","Primatologist","Parasitologist","Pathologists","Pediatrician","Physiatrist","Plastic Surgeon","Podiatrists","Psychiatrists","Pulmonologist","Radiologists","Reproductive Endocrinologist","Rheumatologist","Surgeon","Thoracic Oncologist","Urologist"]
+    var filterData          = ["All","Hospital", "Pharmacy", "Physiotherapist", "Doctor"];
+    var specilizationArray  = ["Acupuncturist","Audiologist","Allergist","Andrologists","Anesthesiologist","Cardiologist","Dentist","Dermatologist","Endocrinologist","Epidemiologists","Gastroenterologist","Gynecologist","Hematologist","Hepatologists","Immunologist","Internists","Neonatologist","Nephrologists","Neurologist","Neurosurgeons","Obstetrician","Oncologist","Ophthalmologist","Orthopedist","Primatologist","Parasitologist","Pathologists","Pediatrician","Physiatrist","Plastic Surgeon", "Podiatrists", "Psychiatrists", "Pulmonologist","Radiologists","Reproductive Endocrinologist","Rheumatologist","Surgeon","Thoracic Oncologist","Urologist"]
     
     var filter          : String            = "All"
     
@@ -47,17 +44,46 @@ class FinalIteration2FilterViewController: UIViewController, UITextFieldDelegate
     }
     
     func ReachabilityStatusChanged(){
-        if(reachabilityStatus == kNOTREACHABLE ){
+        if(reachabilityStatus == kNOTREACHABLE ) {
             let alertController = UIAlertController(title: "Lost Internet Connection", message:
                 "Please connect to internet to use the app", preferredStyle: .ActionSheet)
             self.presentViewController(alertController, animated: true, completion: nil)
-        }else if reachabilityStatus == kREACHABLE {
+        } else if reachabilityStatus == kREACHABLE {
             self.dismissViewControllerAnimated(true, completion: nil)
         }
     }
     
     deinit{
         NSNotificationCenter.defaultCenter().removeObserver(self, name: "ReachStatusChanged", object: nil)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+        
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        let yourNextViewController = (segue.destinationViewController as! FinalIteration2ViewController)
+        
+        if(filterData[filterIndex] == "Doctor"){
+            specilizationString                 = specilizationArray[specIndex]
+            yourNextViewController.filter       = specilizationArray[specIndex]
+        } else {
+            yourNextViewController.filter       = filterData[filterIndex]
+        }
+        
+        yourNextViewController.lat          = lat!
+        yourNextViewController.long         = long!
+        yourNextViewController.locationList = locationList
+        
+        yourNextViewController.filterResults(filterData[filterIndex],name: specilizationString)
+        yourNextViewController.setUpLocation()
     }
     
     // MARK: -- UI PICKER
@@ -97,40 +123,7 @@ class FinalIteration2FilterViewController: UIViewController, UITextFieldDelegate
         }
         
     }
-    
-    override func viewDidAppear(animated: Bool) {
-        
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-        
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-        let yourNextViewController = (segue.destinationViewController as! FinalIteration2ViewController)
-        
-        if(filterData[filterIndex] == "Doctor"){
-            specilizationString                 = specilizationArray[specIndex]
-            yourNextViewController.filter       = specilizationArray[specIndex]
-        } else {
-            yourNextViewController.filter       = filterData[filterIndex]
-        }
-        
-        yourNextViewController.lat          = lat!
-        yourNextViewController.long         = long!
-        yourNextViewController.locationList = locationList
-        
-        yourNextViewController.filterResults(filterData[filterIndex],name: specilizationString)
-        yourNextViewController.setUpLocation()
-    }
-                                            
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        self.view.endEditing(true)
-        return false
-    }
+
     
 }
 

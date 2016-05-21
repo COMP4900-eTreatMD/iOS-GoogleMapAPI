@@ -12,6 +12,12 @@ import SwiftyJSON
 
 public class Utility {
     
+    /**
+     
+        Returns a string that capatilizes the first character in the string.
+     
+     */
+    
     func formatString(type : String) -> String{
         
         var returnType : String!
@@ -20,6 +26,12 @@ public class Utility {
         
         return returnType
     }
+    
+    /**
+        
+        Returns a proper image that matches the location.
+     
+     */
     
     func properIcon(location : Location) -> UIImage{
      
@@ -59,49 +71,15 @@ public class Utility {
         
     }
     
+    /**
+     
+     Does an HTTP request to the API that we created. Uses the data that we got from the API and uses a closure
+     to return an array that contains a list of locations that fits the type that was given.
+     
+     */
+    
     func getRecommended(type : String,completion:(locationList:Array<Location>)->Void){
-        /*
-        var locationList    : Array<Location>    = Array<Location>()
         
-        if(type == "hospital"){
-            let path = NSBundle.mainBundle().pathForResource("temp", ofType: "json")
-            do {
-                let data = try NSData(contentsOfURL: NSURL(fileURLWithPath: path!), options: NSDataReadingOptions.DataReadingMappedIfSafe)
-                let jsonObj = JSON(data : data)
-                
-                for (_, subJson) in jsonObj["results"] {
-                    
-                    var placeId         : String    = ""
-                    var name            : String    = ""
-                    var lat             : Double    = 0.0
-                    var long            : Double    = 0.0
-                    var vicinity        : String    = ""
-                    var type            : String    = ""
-                    var phoneNumber     : String    = ""
-                    var priority        : Int       = 0
-                    
-                    name        = subJson["name"].string!
-                    lat         = Double(subJson["Lat"].string!)!
-                    long        = Double(subJson["Long"].string!)!
-                    type        = subJson["Category"].string!
-                    vicinity    = subJson["Address"].string!
-                    placeId     = subJson["placeId"].string!
-                    phoneNumber = subJson["PhoneNumber"].string!
-                    priority    = Int(subJson["Priority"].string!)!
-                    
-                    let location = Location(placeId : placeId, name : name, lat : lat, long: long,    vicinity: vicinity, type: type, recommended: true, priority: priority,
-                                            phoneNumber: phoneNumber)
-                    
-                    locationList.append(location)
-                }
-                
-            } catch let error as NSError {
-                print(error.localizedDescription)
-            }
-        }
-        
-        completion(locationList: locationList)
-        */
         var locationList    : Array<Location>    = Array<Location>()
         var finalType                            = type.lowercaseString
         
@@ -251,6 +229,13 @@ public class Utility {
         }
     }
     
+    /**
+     
+     Does an HTTP request to Google Maps API to get a list of details of the location. Returns 
+     the phone number of the location.
+     
+     */
+    
     func getLocationDetails(location : Location, completion: (phoneNumber: String) -> Void) {
         
         Alamofire.request(.GET, "https://maps.googleapis.com/maps/api/place/details/json"
@@ -278,10 +263,16 @@ public class Utility {
         }
     }
     
-    func doGeoCoding(location : String, completion: (lat: Double, long : Double) -> Void) {
+    /**
+     
+     Does GeoCoding. It takes an address and returns latitude and longitude of the location.
+     
+     */
+    
+    func doGeoCoding(address : String, completion: (lat: Double, long : Double) -> Void) {
         
         Alamofire.request(.GET, "https://maps.googleapis.com/maps/api/geocode/json"
-            , parameters: [ "address"   :   location,
+            , parameters: [ "address"   :   address,
                             "key"       :   "AIzaSyBPqY-Cb5udIHNCIwwWQi3qmdtXMQbCCGw",
             ]).responseJSON { response in
                 
@@ -310,6 +301,11 @@ public class Utility {
         }
     }
     
+    /**
+     
+     Sorts the location list by priority.
+     
+     */
     
     func sort(locationList : Array<Location>) -> Array<Location> {
         var resultLocationList = locationList
@@ -319,6 +315,11 @@ public class Utility {
         return resultLocationList
     }
     
+    /**
+     
+     Comparison algoirthm for the sorting function.
+     
+     */
     
     func sortPriority(left : Location, right : Location) -> Bool {
         return left.priority < right.priority
