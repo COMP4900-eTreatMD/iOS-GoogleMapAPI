@@ -7,10 +7,7 @@
 //
 
 import UIKit
-import Alamofire
-import SwiftyJSON
 import GoogleMaps
-import MBProgressHUD
 import KRProgressHUD
 
 class FinalIteration2DetailViewController: UIViewController{
@@ -76,6 +73,12 @@ class FinalIteration2DetailViewController: UIViewController{
         
     }
     
+    /**
+     
+     Setting the initial map of the view.
+     
+     */
+    
     func setMap(lat : Double, long : Double){
     
         var camera      : GMSCameraPosition?
@@ -93,6 +96,12 @@ class FinalIteration2DetailViewController: UIViewController{
         setMarker(location)
     }
     
+    /**
+     
+     Used to set the marker on the map.
+     
+     */
+    
     func setMarker(location : Location){
         
         var marker : GMSMarker?
@@ -109,6 +118,12 @@ class FinalIteration2DetailViewController: UIViewController{
         marker!.map = mapView
         
     }
+    
+    /**
+     
+     Does a REST call with Google Places API to get the phone number.
+     
+     */
     
     func initialSetUp(){
         
@@ -129,6 +144,11 @@ class FinalIteration2DetailViewController: UIViewController{
         }
     }
 
+    /**
+     
+     Used to call the phone number of the location.
+     
+     */
 
     @IBAction func callPhone(sender: AnyObject) {
         let firstPart   = locationPhoneNumber.titleLabel!.text!.characters.prefix(5)

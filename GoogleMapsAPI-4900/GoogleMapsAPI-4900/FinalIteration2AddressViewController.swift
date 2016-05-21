@@ -7,10 +7,6 @@
 //
 
 import UIKit
-import Alamofire
-import SwiftyJSON
-import GoogleMaps
-import MBProgressHUD
 import KRProgressHUD
 
 class FinalIteration2AddressViewController: UIViewController, UITextFieldDelegate{
@@ -35,11 +31,16 @@ class FinalIteration2AddressViewController: UIViewController, UITextFieldDelegat
     
     func ReachabilityStatusChanged(){
         if(reachabilityStatus == kNOTREACHABLE ){
+            
             let alertController = UIAlertController(title: "Lost Internet Connection", message:
                 "Please connect to internet to use the app", preferredStyle: .ActionSheet)
+            
             self.presentViewController(alertController, animated: true, completion: nil)
-        }else if reachabilityStatus == kREACHABLE {
+            
+        } else if reachabilityStatus == kREACHABLE {
+            
             self.dismissViewControllerAnimated(true, completion: nil)
+            
         }
     }
     
@@ -60,7 +61,7 @@ class FinalIteration2AddressViewController: UIViewController, UITextFieldDelegat
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         let yourNextViewController = (segue.destinationViewController as! FinalIteration2ViewController)
-        if(self.inputLocation.text != ""){
+        if(self.inputLocation.text != "") {
         
             KRProgressHUD.show()
             dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), {
@@ -88,6 +89,7 @@ class FinalIteration2AddressViewController: UIViewController, UITextFieldDelegat
         
     }
     
+    // MARK: -- TextField
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         self.view.endEditing(true)

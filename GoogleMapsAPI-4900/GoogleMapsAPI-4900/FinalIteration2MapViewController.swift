@@ -7,10 +7,7 @@
 //
 
 import UIKit
-import Alamofire
-import SwiftyJSON
 import GoogleMaps
-import MBProgressHUD
 
 class FinalIteration2MapViewController: UIViewController{
 
@@ -51,6 +48,12 @@ class FinalIteration2MapViewController: UIViewController{
         NSNotificationCenter.defaultCenter().removeObserver(self, name: "ReachStatusChanged", object: nil)
     }
     
+    /**
+     
+     Setting the initial map of the view.
+     
+     */
+    
     func setMap(lat : Double, long : Double){
         
         var camera      : GMSCameraPosition?
@@ -66,6 +69,12 @@ class FinalIteration2MapViewController: UIViewController{
         
         setMarker()
     }
+    
+    /**
+     
+     Used to set the marker on the map.
+     
+     */
     
     func setMarker(){
         

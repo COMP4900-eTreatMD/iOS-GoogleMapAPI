@@ -7,10 +7,7 @@
 //
 
 import UIKit
-import Alamofire
-import SwiftyJSON
-import GoogleMaps
-import MBProgressHUD
+import CoreLocation
 import KRProgressHUD
 
 
@@ -58,6 +55,12 @@ class FinalIteration2ViewController: UIViewController,
         
     }
     
+    /**
+     
+     Does a REST call with Google Places API to search for Doctors, Hospitals, Pharmacy.
+     
+     */
+    
     func initialSetUp(){
         
         let util : Utility?
@@ -80,6 +83,12 @@ class FinalIteration2ViewController: UIViewController,
             }
         });
     }
+    
+    /**
+     
+     Does the filtering HTTP request.
+     
+     */
     
     func filterResults(type : String, name : String){
         let util        : Utility?
@@ -131,6 +140,12 @@ class FinalIteration2ViewController: UIViewController,
         });
     }
     
+    
+    /**
+     
+     Instantiate the currentLocation
+     
+     */
     func setUpLocation(){
         currentLocation = CLLocation(latitude : lat, longitude : long)
     }
